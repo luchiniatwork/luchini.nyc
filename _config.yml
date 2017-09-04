@@ -18,7 +18,8 @@ email: info@tiagoluchini.eu
 description: > # this means to ignore newlines until "baseurl:"
   I build <a href="https://work.co">digital products</a> people use everyday.
   Avid <a href="https://instagram.com/tiagoruns">distance runner</a>, Open Source
-  supporter, software engineer at heart, business by training, and
+  supporter, software engineer at heart, business by
+  <a href="https://www.linkedin.com/in/tiagoluchini#education">training</a>, and
   <a href="https://boardgamegeek.com/user/tiagoluchini">board game</a> enthusiast.
   Partner, Technology @ <a href="https://work.co">work.co</a>.
 baseurl: "" # the subpath of your site, e.g. /blog
