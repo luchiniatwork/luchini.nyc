@@ -27,6 +27,8 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: tiagoluchini
 github_username: luchiniatwork
 
+google_analytics: UA-105784466-1
+
 urls:
   github: https://github.com/luchiniatwork
   twitter: https://twitter.com/tiagoluchini
