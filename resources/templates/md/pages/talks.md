@@ -3,7 +3,6 @@
  :page-index 3
  :navbar? true}
 
-## Look at this sweet page
+## Clojure
 
-this is another custom page
-totally not a post
+* 2017 Clojure/conj - The Power of Lacinia & Hystrix in Production
