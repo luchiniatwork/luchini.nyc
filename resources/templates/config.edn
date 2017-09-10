@@ -1,8 +1,7 @@
 {:site-title           "Luchini, Tiago"
  :author               "Tiago Luchini"
- :description          "I build <a href=\"https://work.co\">digital products</a> people use everyday.
-Avid <a href=\"https://instagram.com/tiagoruns\">distance runner</a>, Open Source supporter, software engineer at heart, business by <a href=\"https://www.linkedin.com/in/tiagoluchini#education\">training</a>, and <a href=\"https://boardgamegeek.com/user/tiagoluchini\">board game</a> enthusiast.
-Partner, Technology @ <a href=\"https://work.co\">work.co</a>."
+ :description          "I build digital products people use everyday. Avid distance runner, Open Source supporter, software engineer at heart, business by training, and board game enthusiast. Partner, Technology @ work.co."
+ :keywords             "Technology, Business, Product Development, Product Creation, HTML, JavaScript, Clojure, ClojureScript"
  :site-url             "https://luchini.nyc"
  :post-root            "posts"
  :page-root            "pages"
