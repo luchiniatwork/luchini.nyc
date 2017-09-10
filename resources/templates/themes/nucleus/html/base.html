@@ -44,7 +44,7 @@
         <ul class="menu">
           <li {% if home %} class="active" {% endif %}><a title="Home" href="{{index-uri}}">Home</a></li>
           <!-- <li {% if archives %} class="active" {% endif %}><a title="Archives" href="{{archives-uri}}">Archives</a></li> -->
-          <!-- {% if tags|not-empty %} -->
+          {% if tags|not-empty %}
           <li {%ifequal uri tags-uri %} class="active" {% endifequal %}><a title="Tags" href="{{tags-uri}}">Tags</a></li>
           {% endif %}
           {% for nav-page in navbar-pages %}
