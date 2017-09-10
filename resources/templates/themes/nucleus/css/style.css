@@ -63,6 +63,7 @@ body {
 a {
     color: #A71E2E;
     text-decoration: none;
+    font-weight: bold;
 }
 
 a:hover {
