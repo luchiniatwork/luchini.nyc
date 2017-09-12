@@ -19,9 +19,10 @@
 
 ## Mobile Devices & Hardware
 
-* Nokia (US)
+* Nokia (Finland)
 * Samsung (US)
 * Otto (US)
+* Polar (Finland)
 
 ## Media
 
@@ -65,4 +66,3 @@
 ## Health
 
 * NHS (United Kingdom)
-* Polar (Finland)
