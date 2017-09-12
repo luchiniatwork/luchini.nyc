@@ -41,6 +41,7 @@
 * Aesop (US)
 * Aldo Shoes (US)
 * Philz Coffee (US)
+* Just Mayo (US)
 * Companhia Brasileira de Distribuição (Brazil)
 
 ## Automotive
