@@ -5,30 +5,31 @@
 
 ## Pics & Reports
 
-[Instagram](https://instagram.com/tiagoruns) is updated regularly. Check it out.
+[Instagram](https://instagram.com/tiagoruns) is updated regularly with some of my latest training and running.
 
 I also wrote [What I learned running my first 100 miles race](https://medium.com/@luchini/what-i-learned-running-my-first-100-miles-race-3a27dcb6c1ae).
 
 ## Half-Marathons (13.1 Miles)
 
-1. Staten island 2014
-2. Fred lebow 2015
-3. Brooklyn 2015
-4. Staten island 2015
+1. NYRR Staten Island 2014
+2. NYRR Fred Lebow 2015
+3. NYRR Brooklyn 2015
+4. NYRR Staten Island 2015
 5. Prospect Park 2016
-6. St Patrick far Rockaway 2016
-7. NYC half 2016
-8. DC trail 2016
-9. Brooklyn 2016
-10. Frozen bonsai 2016
-11. Fred lebow 2017
-12. Central Park Half 2017
-13. Frozen penguin Bay ridge 2017
-14. West Point 2017
+6. St Patrick Far Rockaway 2016
+7. NYRR Manhattan Half 2016
+8. The North Face Endyrance Trail DC Half 2016
+9. NYRR Brooklyn Half 2016
+10. NYCRUNS Frozen Bonsai 2016
+11. NYRR Fred Lebow 2017
+12. NYCRUNS Central Park Half 2017
+13. NYCRUNS Frozen penguin Bay Ridge 2017
+14. NYCRUNS West Point 2017
 15. NYCRUNS Queens Half 2017
-16. The North Face Endurance trail Half - NY Bear Mountain 2017
+16. The North Face Endurance Trail Bear Mountain 2017
 17. NYRR Brooklyn Half 2017
 18. Far Rockaway Half Marathon 2017
+19. NYRR Staten Island 2017
 
 ## Marathons (26.2 Miles)
 
