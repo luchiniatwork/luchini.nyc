@@ -16,3 +16,7 @@
 ## Static Location
 
     resources/public/
+
+## Automatic Deploy (Netlify)
+
+Rebase and push onto branch `release`.
