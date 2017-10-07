@@ -54,7 +54,7 @@
 ## Telecom Carriers
 
 * T-Mobile (US)
-* China Telecom (US)
+* China Telecom (China)
 * Telefónica (Brazil)
 
 ## Financial Services
@@ -63,6 +63,11 @@
 * Mastercard (US)
 * Elo (Brazil)
 * Itaú (Brazil)
+
+## NGOs
+
+* Salvation Army (Brazil)
+* Breastcancer.org (US)
 
 ## Health
 
