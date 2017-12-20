@@ -69,6 +69,7 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 ## 100 Milers
 
 1. Easter States 2017
+2. Devil Dog Ultra 2017
 
 ## Endurance 12H
 
