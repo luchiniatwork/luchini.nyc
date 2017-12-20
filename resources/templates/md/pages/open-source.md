@@ -10,6 +10,7 @@
 * [terra](https://github.com/luchiniatwork/terra) Write Terraform configurations in pure Clojure.
 * [lein-terra](https://github.com/luchiniatwork/lein-terra) Companion Leiningen plugin to `terra`.
 * [Concordia](https://github.com/luchiniatwork/concordia) Converters for Om Next Queries to GraphQL and vice-versa.
+* [Migrana](https://github.com/luchiniatwork/migrana) Datomic migration tool that gives you the control over how your Datomic database evolves.
 
 ## [](#work-oss)Company-Sponsored Open Source Projects
 
