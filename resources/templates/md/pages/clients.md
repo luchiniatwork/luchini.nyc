@@ -44,18 +44,20 @@
 * Just Mayo (US)
 * Companhia Brasileira de Distribuição (Brazil)
 
-## Automotive
+## Automotive & Aerospace
 
 * Porsche (US)
 * Volkswagen (US)
 * Peugeot (Brazil)
 * Marcopolo (Brazil)
+* Embraer (US)
 
 ## Telecom Carriers
 
 * T-Mobile (US)
 * China Telecom (China)
 * Telefónica (Brazil)
+* Oi (Brazil)
 
 ## Financial Services
 
