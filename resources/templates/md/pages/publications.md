@@ -35,5 +35,6 @@
 
 ## My publications
 
+* 2017 [TheNextweb.com - Smarter bots, deeper learning, and better blockchaining: Mobile app trends in 2018](https://thenextweb.com/contributors/2017/12/08/smarter-bots-deeper-learning-better-blockchaining-mobile-app-trends-2018/)
 * 2017 [Advertising Age (or “AdAge”) Magazine - Fake Apps on Rise: How to Protect Your Brand in the App Store](http://adage.com/article/digitalnext/protecting-brands-fake-apps/307483/)
 * 2017 [TheNextWeb.com - Building the Travel App that Makes Flying Fun Again](https://thenextweb.com/insider/2016/09/29/the-app-that-makes-flying-fun-again/#.tnw_qrCjrLFC)

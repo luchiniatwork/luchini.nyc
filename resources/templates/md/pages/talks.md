@@ -9,4 +9,5 @@
 
 ## Product Development
 
+* 2017 TheNextWeb NYC - Afterhour Session: Tech's Toughest Questions
 * 2015 Digital Dumbo - Panel: Quality in Digital Product Creation
