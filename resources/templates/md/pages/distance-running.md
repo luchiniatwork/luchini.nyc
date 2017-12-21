@@ -9,6 +9,44 @@
 
 I also wrote [What I learned running my first 100 miles race](https://medium.com/@luchini/what-i-learned-running-my-first-100-miles-race-3a27dcb6c1ae).
 
+## 100 Milers
+
+1. Easter States 2017
+2. Devil Dog Ultra 2017
+
+## 50 Milers
+
+1. Beast of Burden summer 2016
+2. Beast of Burden winter 2017
+3. Febapple 2017 (DNF)
+4. Grand Canyon 50M 2017
+
+## 60k
+
+1. NYRR Central Park 60K 2016
+2. NYRR Central Park 60K 2017
+
+## 50k
+
+1. Florida Palm 50K 2015
+2. Caumsett Park 50K 2017
+3. The North Face Endurance trail 50K - NY Bear Mountain 2017
+
+## Marathons (26.2 Miles)
+
+1. Philadelphia 2014
+2. Philadelphia 2015
+3. New York 2015
+4. Rock'n Roll DC 2016
+5. Big Sur 2016
+6. Mexico City 2016
+7. Chicago 2016
+8. Brasilia ecocross 2016
+9. New York 2016
+10. Sao Paulo 2017
+11. Berlin 2017
+12. NYCRUNS Brooklyn 2017
+
 ## Half-Marathons (13.1 Miles)
 
 1. NYRR Staten Island 2014
@@ -32,44 +70,6 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 19. NYRR Staten Island 2017
 20. NYCRUNS Haunted Half Marathon 2017
 21. Steep Rock Trail Half 2017
-
-## Marathons (26.2 Miles)
-
-1. Philadelphia 2014
-2. Philadelphia 2015
-3. New York 2015
-4. Rock'n Roll DC 2016
-5. Big Sur 2016
-6. Mexico City 2016
-7. Chicago 2016
-8. Brasilia ecocross 2016
-9. New York 2016
-10. Sao Paulo 2017
-11. Berlin 2017
-12. NYCRUNS Brooklyn 2017
-
-## 50k
-
-1. Florida Palm 50K 2015
-2. Caumsett Park 50K 2017
-3. The North Face Endurance trail 50K - NY Bear Mountain 2017
-
-## 60k
-
-1. NYRR Central Park 60K 2016
-2. NYRR Central Park 60K 2017
-
-## 50 Milers
-
-1. Beast of Burden summer 2016
-2. Beast of Burden winter 2017
-3. Febapple 2017 (DNF)
-4. Grand Canyon 50M 2017
-
-## 100 Milers
-
-1. Easter States 2017
-2. Devil Dog Ultra 2017
 
 ## Endurance 12H
 
