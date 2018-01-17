@@ -22,6 +22,7 @@
 * Nokia (Finland)
 * Samsung (US)
 * Otto (US)
+* Kodak (LATAM)
 * Polar (Finland)
 
 ## Media
@@ -70,6 +71,10 @@
 
 * Salvation Army (Brazil)
 * Breastcancer.org (US)
+
+## CPG
+
+* Gatorade (US)
 
 ## Health
 
