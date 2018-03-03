@@ -2,7 +2,7 @@
  :layout :page
  :home? true}
 
-## I build [digital products](https://work.co) people use everyday. Avid [distance runner](distance-running), [Open Source](open-source) supporter, [software engineer](https://github.com/luchiniatwork/emacs.d) at heart, business by [training](https://www.linkedin.com/in/tiagoluchini#education), and [board game](https://boardgamegeek.com/user/tiagoluchini) enthusiast.
+## I build [digital products](https://work.co) people use everyday. Avid [distance runner](distance-running), [Open Source](open-source) supporter, [software engineer](https://github.com/luchiniatwork/emacs.d) at heart, [business by training](https://www.linkedin.com/in/tiagoluchini#education), and [board game](https://boardgamegeek.com/user/tiagoluchini) enthusiast.
 
 ## Partner, Technology @ [work.co](https://work.co).
 
