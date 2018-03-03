@@ -67,7 +67,7 @@
 * Elo (Brazil)
 * Itaú (Brazil)
 
-## NGOs
+## NGO
 
 * Salvation Army (Brazil)
 * Breastcancer.org (US)
