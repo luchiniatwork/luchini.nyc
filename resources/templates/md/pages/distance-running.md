@@ -70,6 +70,8 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 19. NYRR Staten Island 2017
 20. NYCRUNS Haunted Half Marathon 2017
 21. Steep Rock Trail Half 2017
+22. NYRR Fred Lebow 2018
+23. NYCRUNS Central Park Half 2018
 
 ## Endurance 12H
 
