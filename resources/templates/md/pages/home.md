@@ -13,3 +13,4 @@
 * My [awards & publications](publications).
 * Past and future [talks](talks).
 * A bit on [distance running](distance-running).
+* Here are some [blog posts](archives) or organized by [tags](tags).
