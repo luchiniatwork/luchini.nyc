@@ -237,8 +237,8 @@ After that it was just a matter of putting things together by using the `defun` 
 To make sure I was in the right track, I typed:
 
 ```lisp
-    (is-f-start "forfo")    ==&gt; T
-    (is-f-start "bar")    ==&gt; NIL
+    (is-f-start "forfo")    ;; ==> T
+    (is-f-start "bar")      ;; ==> NIL
 ```
 
 Meaning that "forfo" does start with 'f' and "bar" does not start with 'f' (great "achievement"!)
