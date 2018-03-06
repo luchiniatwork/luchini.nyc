@@ -1,4 +1,4 @@
-{:title  "EJB3 Comments"
+{:title  "10 things I learned after a long EJB3 project"
  :layout :post
  :date   "2007-06-11"
  :tags   ["technology" "java"]}

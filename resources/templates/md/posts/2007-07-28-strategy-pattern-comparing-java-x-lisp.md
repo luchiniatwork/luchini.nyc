@@ -16,22 +16,21 @@ Let's assume that we need to write a small algorithm that takes a list of words 
 Before diving into the LISP code, let's solve this problem in pure Java first. Let's start with a very simple class called `ListExtractor` which has only one static method called `extract`:
 
 ```java
-    package org.luchini.listextractor;
-    
-    import java.util.ArrayList;
-    
-    public class ListExtractor {
-      public static String[] extract (String[] list) {
-        ArrayList&lt;String&gt; out = new ArrayList&lt;String&gt;();
-        for (String word : list) {
-          if (word.charAt(0) == 'f') {
-            out.add(word);
-          }
-        }
-        return out.toArray(new String[0]);
+package org.luchini.listextractor;
+
+import java.util.ArrayList;
+
+public class ListExtractor {
+  public static String[] extract (String[] list) {
+    ArrayList&lt;String&gt; out = new ArrayList&lt;String&gt;();
+    for (String word : list) {
+      if (word.charAt(0) == 'f') {
+        out.add(word);
       }
-    
     }
+    return out.toArray(new String[0]);
+  }
+}
 ```
 
 Very simple stuff here. Our method receives an array of `String`, iterates through its items and creates a new `ArrayList` containing those words starting with 'f'. It then returns the list to the caller by converting it back to a pure array.
@@ -41,26 +40,26 @@ If you have enough experience with Java you may have noticed that I wanted a ver
 To make sure that our code works, let's write a 'test' class (no unit test here - just a simple main method for learning purposes). The `ListExtractorTest` class looks like this:
 
 ```java
-    package org.luchini.listextractor;
-    
-    public class ListExtractorTest {
-    
-      public static void main(String[] args) {
-        String[] myList = new String[] {"foo", "bar", "foobar", "baz"};
-        String[] newList = ListExtractor.extract(myList);
-    
-        for (String word : newList) {
-          System.out.println(word);
-        }
-      }
+package org.luchini.listextractor;
+
+public class ListExtractorTest {
+
+  public static void main(String[] args) {
+    String[] myList = new String[] {"foo", "bar", "foobar", "baz"};
+    String[] newList = ListExtractor.extract(myList);
+
+    for (String word : newList) {
+      System.out.println(word);
     }
+  }
+}
 ```
 
 We send a list containing 4 words (foo, bar, foobar and baz) to the `extract` method. If we run this code, the result should be something like:
 
 ```text
-    foo
-    foobar
+foo
+foobar
 ```
 **Strategy Pattern**
 
@@ -71,25 +70,25 @@ Let's assume that some business people decide that now our algorithm needs to re
 That is when the Strategy Pattern comes on handy. Our `ListExtrator` class will need to consult a Strategy implementation to decide whether the item must be extracted or not. Let's start by defining the `ExtractingStragey` interface:
 
 ```java
-    package org.luchini.listextractor;
-    
-    public interface ExtractingStrategy {
-      public boolean isExtractable(String word);
-    }
+package org.luchini.listextractor;
+
+public interface ExtractingStrategy {
+  public boolean isExtractable(String word);
+}
 ```
 
 This interface defines only one method that returns a boolean by responding the question "is this specific word extractable?" Let's then implement this strategy for extracting 'b' words:
 
 ```java
-    package org.luchini.listextractor;
-    
-    public class ExtractingStrategyStartingBImpl implements ExtractingStrategy {
-    
-      public boolean isExtractable(String word) {
-        return (word.charAt(0) == 'b');
-      }
-    
-    }
+package org.luchini.listextractor;
+
+public class ExtractingStrategyStartingBImpl implements ExtractingStrategy {
+
+  public boolean isExtractable(String word) {
+    return (word.charAt(0) == 'b');
+  }
+
+}
 ```
 
 Our `ExtractingStrategyStartingBImpl` class implements the `ExtractingStrategy` interface by checking whether the received word starts with 'b' - returning true when so and false otherwise.
@@ -97,97 +96,97 @@ Our `ExtractingStrategyStartingBImpl` class implements the `ExtractingStrategy` 
 Then we need to change our `ListExtractor` class to accept the strategy in place. A very simple alternative is to write it like this:
 
 ```java
-    package org.luchini.listextractor;
-    
-    import java.util.ArrayList;
-    
-    public class ListExtractor {
-    
-      public static String[] extract (String[] list**, ExtractingStrategy strategy**) {
-        ArrayList&lt;String&gt; out = new ArrayList&lt;String&gt;();
-        for (String word : list) {
-          if (**strategy.isExtractable(word)**) {
-            out.add(word);
-          }
-        }
-        return out.toArray(new String[0]);
+package org.luchini.listextractor;
+
+import java.util.ArrayList;
+
+public class ListExtractor {
+
+  public static String[] extract (String[] list**, ExtractingStrategy strategy**) {
+    ArrayList&lt;String&gt; out = new ArrayList&lt;String&gt;();
+    for (String word : list) {
+      if (**strategy.isExtractable(word)**) {
+        out.add(word);
       }
     }
+    return out.toArray(new String[0]);
+  }
+}
 ```
 
 Now our `ListExtractor` consults the Strategy implementation before acting upon extracting the word or not. Our `ListExtractorTest` has to be updated as well to reflect this new parameter required by `ListExtractor`'s `extract` method:
 
 ```java
-    package org.luchini.listextractor;
-    
-    public class ListExtractorTest {
-    
-      public static void main(String[] args) {
-        String[] myList = new String[] {"foo", "bar", "foobar", "baz"};
-        String[] newList = ListExtractor.extract(myList, new ExtractingStrategyStartingBImpl());
-    
-        for (String word : newList) {
-          System.out.println(word);
-        }
-      }
+package org.luchini.listextractor;
+
+public class ListExtractorTest {
+
+  public static void main(String[] args) {
+    String[] myList = new String[] {"foo", "bar", "foobar", "baz"};
+    String[] newList = ListExtractor.extract(myList, new ExtractingStrategyStartingBImpl());
+
+    for (String word : newList) {
+      System.out.println(word);
     }
+  }
+}
 ```
 
 A successful run of this test will return:
 
 ```text
-    bar
-    baz
+bar
+baz
 ```
 
 The nice thing when using the Strategy Pattern is that our code becomes easily expandable and highly flexible. It is possible for example, to have multiple strategies and use the ones that better suits your needs. Let's implement the 'f' logic as well in its own class:
 
 ```java
-    package org.luchini.listextractor;
-    
-    public class ExtractingStrategyStartingFImpl implements ExtractingStrategy {
-    
-      public boolean isExtractable(String word) {
-        return (word.charAt(0) == 'f');
-      }
-    
-    }
+package org.luchini.listextractor;
+
+public class ExtractingStrategyStartingFImpl implements ExtractingStrategy {
+
+  public boolean isExtractable(String word) {
+    return (word.charAt(0) == 'f');
+  }
+
+}
 ```
 
 And then we update the test class to run both strategies:
 
 ```java
-    package org.luchini.listextractor;
-    
-    public class ListExtractorTest {
-    
-      public static void main(String[] args) {
-        String[] myList = new String[] {"foo", "bar", "foobar", "baz"};
-    
-        String[] newListB = ListExtractor.extract(myList, new ExtractingStrategyStartingBImpl());
-        for (String word : newListB) {
-          System.out.println(word);
-        }
-    
-        System.out.println();
-    
-        String[] newListF = ListExtractor.extract(myList, new ExtractingStrategyStartingFImpl());
-        for (String word : newListF) {
-          System.out.println(word);
-        }
-    
-      }
+package org.luchini.listextractor;
+
+public class ListExtractorTest {
+
+  public static void main(String[] args) {
+    String[] myList = new String[] {"foo", "bar", "foobar", "baz"};
+
+    String[] newListB = ListExtractor.extract(myList, new ExtractingStrategyStartingBImpl());
+    for (String word : newListB) {
+      System.out.println(word);
     }
+
+    System.out.println();
+
+    String[] newListF = ListExtractor.extract(myList, new ExtractingStrategyStartingFImpl());
+    for (String word : newListF) {
+      System.out.println(word);
+    }
+
+  }
+}
 ```
 
 Not a very beautiful test but a successful run shows:
 
 ```text
-    bar
-    baz
-    
-    foo
-    foobar
+bar
+baz
+
+foo
+foobar
 ```
 
 **Strategy Pattern is powerful**
@@ -203,8 +202,8 @@ Let's try to follow the same path as with Java. LISP has a more functional appro
 The way LISP is structured also forces you into trying to solve the problems bottom up so, the first thing that comes to my mind is defining whether a word starts with 'f' or not. The function `is-f-start` follows:
 
 ```lisp
-    (defun is-f-start (word)
-      (char= (elt word 0) #f))
+(defun is-f-start (word)
+  (char= (elt word 0) #f))
 ```
 
 I know it looks a little cryptic but the REPL (read-eval-print-loop) idea is very helpful here. This concept is very well-known by Perl, Python, Lua and Ruby developers but very unusual for someone from the Java school of thought.
@@ -214,7 +213,7 @@ The idea is to have the language responding as a command prompt in a terminal wi
 Considering I am very new to LISP I had to undergo some tests at the REPL console to achieve the above code. I first typed something like:
 
 ```lisp
-    (char= #f #f)
+(char= #f #f)
 ```
 
 And received a T meaning true. This silly piece of code is checking if the character 'f' (`#\f`) is equal (`char=`) to the character 'f'. Although very stupid, this test made sure I knew how to write the equality expression.
@@ -222,7 +221,7 @@ And received a T meaning true. This silly piece of code is checking if the chara
 The second step was to remember how to get a character from a string so I did:
 
 ```lisp
-    (elt "test" 0)</pre>
+(elt "test" 0)</pre>
 ```
 
 And got a `#\t` (character 't') as a response - the first (`0`) character of the `"test"` string.
@@ -230,15 +229,15 @@ And got a `#\t` (character 't') as a response - the first (`0`) character of the
 After that it was just a matter of putting things together by using the `defun` macro to create a function:
 
 ```lisp
-    (defun is-f-start (word)
-      (char= (elt word 0) #f))
+(defun is-f-start (word)
+  (char= (elt word 0) #f))
 ```
 
 To make sure I was in the right track, I typed:
 
 ```lisp
-    (is-f-start "forfo")    ;; ==> T
-    (is-f-start "bar")      ;; ==> NIL
+(is-f-start "forfo");; ==> T
+(is-f-start "bar")  ;; ==> NIL
 ```
 
 Meaning that "forfo" does start with 'f' and "bar" does not start with 'f' (great "achievement"!)
@@ -246,19 +245,19 @@ Meaning that "forfo" does start with 'f' and "bar" does not start with 'f' (grea
 There is a function called `remove-if-not` that is capable of removing items on a list that do not meet a certain criteria. At the REPL console I tried:
 
 ```lisp
-    (remove-if-not #'evenp '(1 2 3 4))
+(remove-if-not #'evenp '(1 2 3 4))
 ```
 
 The first parameter of `remove-if-not` is the function to be called when evaluating the items of the second parameter (which happens to be the list to be iterated). Special notation symbols express this scenario: `#'` is used to indicate a function (which could also be done by using `(function evenp)`) and `'` is used to indicate the special function 'quote' (which could also be done by using `(quote (1 2 3 4))`). That said, the following line is exactly equivalent than the above (just longer):
 
 ```lisp
-    (remove-if-not (function evenp) (quote (1 2 3 4)))
+(remove-if-not (function evenp) (quote (1 2 3 4)))
 ```
 
 The `evenp` function returns true if the number passed to it is even and false otherwise so, this small line of code is removing those items on the list that are not even (removing the odds). The result, as expected is:
 
 ```lisp
-    (2 4)
+(2 4)
 ```
 
 The beauty of LISP is that, with its entangled concept of data and code, we are not even talking about Strategy Pattern anymore: it is just happening!
@@ -266,19 +265,19 @@ The beauty of LISP is that, with its entangled concept of data and code, we are 
 Returning to our problem at hand, let's just couple `remove-if-not` and `is-f-start` together and see what happens:
 
 ```lisp
-    (remove-if-not #'is-f-start '("foo" "bar" "foobar" "baz"))
+(remove-if-not #'is-f-start '("foo" "bar" "foobar" "baz"))
 ```
 
 As expected, the result is:
 
 ```lisp
-    ("foo" "foobar")
+("foo" "foobar")
 ```
 
 Another interesting feature of LISP is the `lambda` function. It allows you to create functions on the fly so, if you face a situation where testing the 'b' scenario is a quick thing, something like this could take care of the task:
 
 ```lisp
-    (remove-if-not #'(lambda(x) (char= (elt x 0) #b)) '("foo" "bar" "foobar" "baz"))
+(remove-if-not #'(lambda(x) (char= (elt x 0) #b)) '("foo" "bar" "foobar" "baz"))
 ```
 
 Notice that the `lambda` function is just like the `defun` used for `is-f-start`. It was just used "on the spot" instead of written somewhere else.
