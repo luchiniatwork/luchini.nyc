@@ -11,10 +11,10 @@
     <meta name="description" content="{{description}}">
     <meta name="author" content="{{author}}">
     <meta name="keywords" content="{{keywords}}">
-    <meta property="og:title" content="{{title}}" />
-    <meta property="og:description" content="{{description}}" />
+    <meta property="og:title" content="{% if post.title %}{{post.title}}{% else %}{{title}}{% endif %}" />
+    <meta property="og:description" content="{%if post.abstract %}{{post.abstract}}{% else %}{{description}}{% endif %}" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{site-url}}" />
+    <meta property="og:url" content="{{site-url}}{% if post.uri %}{{post.uri}}{% endif %}" />
     <meta property="og:image" content="{{site-url}}/img/avatar.jpg" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="apple-touch-icon" sizes="180x180" href="/img/ico/apple-touch-icon.png">
