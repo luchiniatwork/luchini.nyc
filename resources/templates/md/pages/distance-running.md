@@ -61,7 +61,7 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 10. NYCRUNS Frozen Bonsai 2016
 11. NYRR Fred Lebow 2017
 12. NYCRUNS Central Park Half 2017
-13. NYCRUNS Frozen penguin Bay Ridge 2017
+13. NYCRUNS Frozen Penguin Bay Ridge 2017
 14. NYCRUNS West Point 2017
 15. NYCRUNS Queens Half 2017
 16. The North Face Endurance Trail Bear Mountain 2017
@@ -72,6 +72,7 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 21. Steep Rock Trail Half 2017
 22. NYRR Fred Lebow 2018
 23. NYCRUNS Central Park Half 2018
+24. NYCRUNS Frozen Penguin Bay Ridge 2018
 
 ## Endurance 12H
 
