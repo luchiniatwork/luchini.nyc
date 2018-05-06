@@ -14,12 +14,17 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 1. Easter States 2017
 2. Devil Dog Ultra 2017
 
+## 74 Milers
+
+1. Georgia Death Race 2018
+
 ## 50 Milers
 
 1. Beast of Burden summer 2016
 2. Beast of Burden winter 2017
 3. Febapple 2017 (DNF)
 4. Grand Canyon 50M 2017
+5. The Northe Face Endurance trail 50M - NY Bear Mountain 2018
 
 ## 60k
 
@@ -46,6 +51,7 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 10. Sao Paulo 2017
 11. Berlin 2017
 12. NYCRUNS Brooklyn 2017
+13. Belgrade Marathon 2018
 
 ## Half-Marathons (13.1 Miles)
 
@@ -72,15 +78,21 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 21. Steep Rock Trail Half 2017
 22. NYRR Fred Lebow 2018
 23. NYCRUNS Central Park Half 2018
-24. NYCRUNS Frozen Penguin Bay Ridge 2018
+24. NYRR NYC Half 2018
+25. NYCRUNS Frozen Penguin Bay Ridge 2018
 
 ## Endurance 12H
 
 1. Montour 2016 (48.5)
 
+## Endurance 14H
+
+1. Vertical Playground 2018 (35)
+
 ## Endurance 24h
 
 1. Montour 2017 (70.4)
+2. Virginia 24H (66)
 
 ## Spartan Beasts:
 
