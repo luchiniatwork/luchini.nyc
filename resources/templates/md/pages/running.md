@@ -13,6 +13,7 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 
 1. Easter States 2017
 2. Devil Dog Ultra 2017
+3. Infinitus 2018
 
 ## 74 Milers
 
@@ -24,7 +25,7 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 2. Beast of Burden winter 2017
 3. Febapple 2017 (DNF)
 4. Grand Canyon 50M 2017
-5. The Northe Face Endurance trail 50M - NY Bear Mountain 2018
+5. The North Face Endurance trail 50M - NY Bear Mountain 2018
 
 ## 60k
 
@@ -80,6 +81,7 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 23. NYCRUNS Central Park Half 2018
 24. NYRR NYC Half 2018
 25. NYCRUNS Frozen Penguin Bay Ridge 2018
+26. NYRR Brooklyn Half 2018
 
 ## Endurance 12H
 
