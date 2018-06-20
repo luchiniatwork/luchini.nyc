@@ -5,13 +5,13 @@
 Hi, I'm Tiago!
 
 I'm currently building [digital products][1] people use everyday at [Work & Co][2].
-In my free time I'm an avid [distance runner][3], [Open Source][4] supporter, and
+In my free time I'm an avid [distance runner][3], [open source][4] supporter, and
 [board game][5] enthusiast. My passion is bridging business and technology. I'm a
-[software engineer][6] at heart and [businessperson][7] by training. In my past life I
+[software engineer][6] at heart and [businessperson by training][7]. In my past life I
 was a technologist at [Digitalist][9] (Finland), where I oversaw large-scale technical
-projects and ramped up mobile device R&D centers in Beijing and Chengdu (China). I'm
-an alum of [Columbia University][10], [London Business School][11], and [Unicamp][12]
-(Brazil) where I received my MBAs and MSc respectively.
+projects and ramped up R&D centers in Beijing and Chengdu (China). I'm an alum of
+[Columbia University][10], [London Business School][11], and [Unicamp][12] (Brazil)
+where I received my MBAs and MSc respectively.
 
 [1]: clients
 [2]: https://work.co

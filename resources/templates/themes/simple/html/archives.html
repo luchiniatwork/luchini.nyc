@@ -1,20 +1,26 @@
 {% extends "/html/base.html" %}
 {%block subtitle %}: Blog Archives{% endblock %}
-{% block content %}
-<div id="posts">
-    <div id="page-header">
-        <h1>Blog Archives</h1>
-    </div>
-    {% for group in groups %}
-        <h4>{{group.group}}</h4>
-        <ul>
-        {% for post in group.posts %}
-        <li>
-            {{post.date|date:"MMM dd"}} - <a href="{{post.uri}}">{{post.title}}</a>
-        </li>
-        {% endfor %}
-        </ul>
-    {% endfor %}
 
-</div>
+{% block content %}
+<article class="container">
+  <header>
+    <div id="page-header">
+      <h1>Blog Archives</h1>
+    </div>
+  </header>
+  <section>
+    {% for group in groups %}
+    <h2>{{group.group}}</h2>
+    <ul>
+      {% for post in group.posts %}
+      <section class="index">
+        <li><a href="{{post.uri}}" rel="prefetch">{{post.title}}</a></li>
+      </section>
+      {% endfor %}
+    </ul>
+    <hr>
+    {% endfor %}
+  </section>
+</article>
+
 {% endblock %}
