@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/ico/favicon-16x16.png">
+    <link rel="manifest" href="/img/ico/manifest.json">
+    <link rel="mask-icon" href="/img/ico/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/img/ico/favicon.ico">
+
+    <meta name="msapplication-config" content="/img/ico/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="canonical" href="https://luchini.nyc/">
+
+    <meta name="description" content="{{description}}">
+    <meta name="author" content="{{author}}">
+    <meta name="keywords" content="{{keywords}}">
+
+    <meta property="og:title" content="{% if post.title %}{{post.title}}{% else %}{{title}}{% endif %}" />
+    <meta property="og:description" content="{%if post.abstract %}{{post.abstract}}{% else %}{{description}}{% endif %}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{site-url}}{% if post.uri %}{{post.uri}}{% endif %}" />
+    <meta property="og:image" content="{{site-url}}/img/avatar.jpg" />
+
+    {% style "css/style.css" %}
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">    
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,500,600,700|Roboto:400,500,600,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow-night-eighties.min.css">
+  </head>
+  <body>
+    <section class="site-nav">
+      <header>
+        <nav id="navigation">
+          <ul id="navigation-menu">
+            <li>
+              <a class="logo nav-button-home" href="/">
+                <img src="/img/logo-color.jpg" />
+              </a>
+            </li>
+            {% for nav-page in navbar-pages %}
+            <li>
+              <a class="nav-text-button" href="{{nav-page.uri}}">
+                {{nav-page.title}}
+              </a>
+            </li>
+            {% endfor %}
+            <li>
+              <a class="nav-text-button" href="{{archives-uri}}">
+                BLOG
+              </a>
+            </li>
+            <!-- {% if tags|not-empty %}
+                 <li>
+                 <a class="nav-text-button" href="{{tags-uri}}">
+                 TAGS
+                 </a>
+                 </li>
+                 {% endif %} -->
+          </ul>
+        </nav>
+      </header>
+    </section>
+
+    {% block content %}
+    {% endblock %}
+    
+    <footer class="site-footer">
+      <div class="contact"> 
+        <a href="http://twitter.com/tiagoluchini" class="home"><span class="fa fa-twitter"></span></a>
+        <a href="https://github.com/luchiniatwork" class="home"><span class="fa fa-github"></span></a>
+        <a href="https://www.instagram.com/tiagoruns/" class="home"><span class="fa fa-instagram"></span></a>
+        <a href="http://linkedin.com/in/tiagoluchini" class="home"><span class="fa fa-linkedin"></span></a> 
+      </div>
+      <div class="blah">
+        &copy; 2018 <a href="https://luchini.nyc/">Tiago Luchini</a>
+      </div>
+    </footer>
+
+    <script type="text/javascript">
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-105784466-1', 'auto');ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

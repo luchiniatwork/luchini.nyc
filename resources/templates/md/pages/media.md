@@ -1,9 +1,9 @@
-{:title "Awards & Publications"
+{:title "Media"
  :layout :page
  :page-index 2
  :navbar? true}
 
-## Projects Awards
+ ## Projects Awards
 
 * **2017 The One Show** – Bronze Pencil Award, Virgin America Travel App
 * **2017 CES Innovation Award Honoree** (Computer Electronics Show/ Owned by Computer Technology Association™), Virgin America Mobile App
@@ -40,3 +40,9 @@
 * 2017 [TheNextweb.com - Smarter bots, deeper learning, and better blockchaining: Mobile app trends in 2018](https://thenextweb.com/contributors/2017/12/08/smarter-bots-deeper-learning-better-blockchaining-mobile-app-trends-2018/)
 * 2017 [Advertising Age (or “AdAge”) Magazine - Fake Apps on Rise: How to Protect Your Brand in the App Store](http://adage.com/article/digitalnext/protecting-brands-fake-apps/307483/)
 * 2017 [TheNextWeb.com - Building the Travel App that Makes Flying Fun Again](https://thenextweb.com/insider/2016/09/29/the-app-that-makes-flying-fun-again/#.tnw_qrCjrLFC)
+
+## Public Talks
+
+* 2017 Clojure/conj - [The Power of Lacinia & Hystrix in Production](https://github.com/luchiniatwork/conj2017)
+* 2017 TheNextWeb NYC - Afterhour Session: Tech's Toughest Questions
+* 2015 Digital Dumbo - Panel: Quality in Digital Product Creation

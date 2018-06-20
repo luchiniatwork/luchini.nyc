@@ -1,6 +1,6 @@
-{:title "Distance Running"
+{:title "Running"
  :layout :page
- :page-index 4
+ :page-index 3
  :navbar? true}
 
 ## Pics & Reports

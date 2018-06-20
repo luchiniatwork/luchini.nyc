@@ -1,4 +1,4 @@
-{:title "Open Source Projects"
+{:title "Open Source"
  :layout :page
  :page-index 1
  :navbar? true}

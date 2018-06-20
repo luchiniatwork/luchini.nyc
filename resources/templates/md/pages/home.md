@@ -1,16 +1,26 @@
 {:title "Tiago Luchini"
- :layout :page
+ :layout :home
  :home? true}
 
-## I build [digital products](https://work.co) people use everyday. Avid [distance runner](distance-running), [Open Source](open-source) supporter, [software engineer](https://github.com/luchiniatwork/emacs.d) at heart, [business by training](https://www.linkedin.com/in/tiagoluchini#education), and [board game](https://boardgamegeek.com/user/tiagoluchini) enthusiast.
+Hi, I'm Tiago!
 
-## Partner, Technology @ [work.co](https://work.co).
+I'm currently building [digital products][1] people use everyday at [Work & Co][2].
+In my free time I'm an avid [distance runner][3], [Open Source][4] supporter, and
+[board game][5] enthusiast. My passion is bridging business and technology. I'm a
+[software engineer][6] at heart and [businessperson][7] by training. In my past life I
+was a technologist at [Digitalist][9] (Finland), where I oversaw large-scale technical
+projects and ramped up mobile device R&D centers in Beijing and Chengdu (China). I'm
+an alum of [Columbia University][10], [London Business School][11], and [Unicamp][12]
+(Brazil) where I received my MBAs and MSc respectively.
 
-***
-
-* Noteworthy [clients](clients).
-* [Open source](open-source) projects I've been active on lately.
-* My [awards & publications](publications).
-* Past and future [talks](talks).
-* A bit on [distance running](distance-running).
-* Here are some [blog posts](archives) or organized by [tags](tags).
+[1]: clients
+[2]: https://work.co
+[3]: running
+[4]: open-source
+[5]: https://boardgamegeek.com/user/tiagoluchini
+[6]: https://github.com/luchiniatwork/emacs.d
+[7]: https://www.linkedin.com/in/tiagoluchini#education
+[9]: https://digitalist.global/
+[10]: https://www8.gsb.columbia.edu/
+[11]: https://www.london.edu/
+[12]: http://www.unicamp.br/unicamp/?language=en
