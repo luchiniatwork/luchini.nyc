@@ -1,9 +1,13 @@
 % Cover letter using letter.sty
 \documentclass{letter} % Uses 10pt
 
+\usepackage{url,parskip} 	%other packages for formatting
+\RequirePackage{color,graphicx}
+
 % hyperref package for links
 \usepackage[pdfborder={0 0 0}]{hyperref}
-\urlstyle{same}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
 
 %Use \documentstyle[newcent]{letter} for New Century Schoolbook postscript font
 % the following commands control the margins:
@@ -19,11 +23,10 @@
 \let\raggedleft\raggedright                % needed to get date flush left
  
  
-\begin{letter}{Ms. Terri Roberts \\
-Senior Staff Recruiter \\
-XYZ Corporation \\
-Rt. 56 \\
-Anytown, New Jersey 05867}
+\begin{letter}{Mr. David Taylor \\
+Apple Inc. \\
+1 Infinite Loop \\
+Cupertino, CA}
 
 
 \begin{flushleft}
@@ -31,41 +34,60 @@ Anytown, New Jersey 05867}
 \end{flushleft}
 \medskip\hrule
 \begin{flushright}
-\hfill 10 City Point, Apt. 31K, Brooklyn, NY 11201 \\
-\hfill \href{mailto:info@tiagoluchini.eu}{info@tiagoluchini.eu} +1 (646) 684-7728
+\hfill 10 City Point, Apt. 31K, Brooklyn, NY 11201 (Green card holder)\\ \hfill
+\href{mailto:info@tiagoluchini.eu}{info@tiagoluchini.eu} ~~
+\href{https://luchini.nyc}{https://luchini.nyc} ~~ \href{tel:+16466847728}{+1
+  (646) 684 7728}
 \end{flushright}
 \vfill % forces letterhead to top of page
  
-\opening{Dear Ms. Roberts:}
+\opening{Dear Mr. Taylor:}
 
 
-\noindent PARAGRAPH ONE: State reason for letter, name the position or type 
-of work you are applying for and identify source from  which  you 
-learned   of   the  opening.  (i.e.  Career  Development  Center, 
-newspaper, employment service, personal contact). 
+\noindent Apple's interest in Clojure is something worth noticing. The best tech
+company on the planet investing on the most productive language out there can
+only mean there will be an exciting match. In fact, such an exciting match
+motivates me to consider a career move despite not being on the market.
+
+\noindent Despite a long career in leadership roles and using several stacks and
+languages, during the last two years I have been coding exclusively in Clojure
+with some ClojureScript. My Clojure work has been around data-intensive
+applications and tooling for other developers making me very comfortable around
+macros, DSLs, APIs, data-pipelines, distributed systems and the eventual JVM
+optimization.
+
+\noindent In fact, some of my Open Source work is of notice here:
+
+\begin{itemize}
+  \item \href{https://github.com/workco/umlaut}{Umlaut}, a neutral schema
+    parsing tool that outputs diagrams and code, has been downloaded more than
+    4,000 times and is used by developers to model their domain problems.
+  \item \href{https://github.com/luchiniatwork/terra}{Terra} lets developers and
+    DevOps engineers write Terraform configurations in pure Clojure by
+    leveraging the power of Clojure macros. It extends the reach of
+    infrastructure-by-code with the power of Clojure.
+  \item \href{https://github.com/luchiniatwork/migrana}{Migrana} is a Datomic
+    migration tool that gives developers the control over how their Datomic
+    schema evolves. By giving a temporal timeline of schema evolutive steps and
+    letting developers tap into those steps, it offers a simple alternative to
+    manual schema management.
+\end{itemize}
+
+\noindent My current Open Source aspiration is around domain modeling
+abstractions, their low-level APIs, and means of successfully exposing them to
+framework creators. More of my open source work can be found at
+\href{https://luchini.nyc}{my website}.
+
+\noindent Last year I was invited to present at the Clojure/conj the work I had
+been doing with Hystrix and Lacinia. The
+\href{https://github.com/luchiniatwork/conj2017}{video of the talk is here}.
+
+\noindent It would be a pleasure to engage in a personal interview. I'm pretty
+flexible as to the time and place. Feel free to reach me by email or phone. Let
+me know if I can be of assistance to help in a speedy response. Thank you for
+taking time to consider my credentials.
  
-\noindent PARAGRAPH  TWO:  Indicate why you are interested in the position, 
-the company, its products, services - above all, stress what  you 
-can  do  for  the employer. If you are a recent graduate, explain 
-how your academic background makes you a qualified candidate  for 
-the  position.  If  you have practical work experience, point out 
-specific achievements or unique qualifications. Try not to repeat 
-the  same  information  the reader will find in the resume. Refer 
-the reader to the enclosed resume or application which summarizes 
-your  qualifications,  training,  and experiences. The purpose of 
-this section is to strengthen your resume  by  providing  details 
-which bring your experiences to life. 
- 
-\noindent PARAGRAPH THREE: Request a personal interview and  indicate  your 
-flexibility as to the time and place. Repeat your phone number in 
-the letter and offer assistance to help in a speedy response. For 
-example,  state that you will be in the city where the company is 
-located on a certain date and would like to set up an  interview. 
-Or,  state  that  you  will  call  on a certain date to set up an 
-interview. End the letter by thanking  the  employer  for  taking 
-time to consider your credentials. 
- 
-\closing{Sincerely yours,} 
+\closing{Sincerely yours,}
 
 
 
