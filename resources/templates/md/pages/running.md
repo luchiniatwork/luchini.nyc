@@ -15,9 +15,13 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 2. Devil Dog Ultra 2017
 3. Infinitus 2018
 
-## 74 Milers
+## 78 Milers
 
 1. Georgia Death Race 2018
+
+## 54 Milers
+
+1. Manitou's Revenge 2018
 
 ## 50 Milers
 
@@ -53,6 +57,8 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 11. Berlin 2017
 12. NYCRUNS Brooklyn 2017
 13. Belgrade Marathon 2018
+14. Chicago Marathon 2018
+15. New York Marathon 2018
 
 ## Half-Marathons (13.1 Miles)
 
@@ -82,6 +88,8 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 24. NYRR NYC Half 2018
 25. NYCRUNS Frozen Penguin Bay Ridge 2018
 26. NYRR Brooklyn Half 2018
+27. Rock & Roll Philadelphia Half 2018
+28. NYRR Staten Island 2018
 
 ## Endurance 12H
 
