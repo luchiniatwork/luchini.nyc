@@ -90,6 +90,7 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 26. NYRR Brooklyn Half 2018
 27. Rock & Roll Philadelphia Half 2018
 28. NYRR Staten Island 2018
+29. NYRR Fred Lebow 2019
 
 ## Endurance 12H
 
