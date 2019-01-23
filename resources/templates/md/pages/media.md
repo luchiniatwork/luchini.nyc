@@ -3,25 +3,45 @@
  :page-index 2
  :navbar? true}
 
- ## Projects Awards
+## Projects Awards
 
+* **2018 Digiday** -Best Brand Platform, Givewith
+* **2018 CES Innovation Awards** - Software and Mobile Apps, Philz Coffee
+* **2018 W3 Awards** - Mobile Features-Best User Experience for Mobile Sites & Apps, Philz Coffee
+* **2018 HOW International Design Awards** - Website, Aesop
+* **2018 Design Week** - Website, Aesop
 * **2017 The One Show** – Bronze Pencil Award, Virgin America Travel App
-* **2017 CES Innovation Award Honoree** (Computer Electronics Show/ Owned by Computer Technology Association™), Virgin America Mobile App
-* **2017 Webby’s** – Best Practices Award and Best Travel App, Virgin America website/mobile app
+* **2017 CES Innovation Award Honoree** - Virgin America Mobile App
+* **2017 Webby’s** – Best Practices Award and Best Travel App, Virgin America app
+* **2017 Andy Awards** - Mobile App, Digital Design, Virgin America app
 * **2016 Pixel Awards** – People’s Champ – Agency and Best Responsive Design Awards, Virgin America website
+* **2016 CES Innovation Awards** - Software and Mobile Apps, Virgin America app
 * **2015 The One Show** – One Show Merit Award, Virgin America website
 * **2015 Webby’s** – Best Visual Design Award, Virgin America website
+* **2015 Webby’s** – Best User Interface Award, Virgin America website
+* **2015 Webby’s** – Best Practices Award, Virgin America website
 * **2015 Cannes Lions** – Bronze Lion Award, Virgin America project
 * **2015 Clio’s** – Bronze Clio Award, Virgin America project
 * **2015 Digiday Award for Best Brand Platform**, Virgin America project
+* **2015 Pixel Awards** – News & Publications - Finalist, TMZ
 * **2014 User Experience Awards** – Grand Prize for Most Significant Industry Evolution, Virgin America project
 * **2014 London International Awards** – Silver Medal, Virgin America project
 
 ## Company Awards
 
-* **Fast Company’s 10 Most Innovative Companies in Design** list for 2017.
-* **Advertising Age’s 2017 A-List** Stand Outs.
-* **Advertising Age’s “Agencies to Watch”** in 2016.
+* **2018 Digiday, Agency of the Year**
+* **2018 Cannes Lions, Grand Prix**
+* **2018 Cannes Lions, Titanium**
+* **2018 AdAge’s A-List**
+* **2017 Forbes - Next Big Thing**
+* **2017 Inc 5000 - #295**
+* **2017 Fast Company’s 10 Most Innovative Companies in Design**
+* **2017 AdAge’s A-List**
+* **2017 Fast Company Innovation by Design, Websites**
+* **2017 Webby Awards, Professional Services**
+* **2016 DUMBO Improvement District - DUMBO Dozen**
+* **2016 Advertising Age’s “Agencies to Watch”**
+* **2014 Forrester "A Model to Follow"**
 
 ## Project-Related Publications
 
@@ -43,6 +63,7 @@
 
 ## Public Talks
 
+* 2018 Clojure/conj - [Declarative Domain Modeling](https://www.youtube.com/watch?v=EDojA_fahvM)
 * 2017 Clojure/conj - [The Power of Lacinia & Hystrix in Production](https://github.com/luchiniatwork/conj2017)
 * 2017 TheNextWeb NYC - Afterhour Session: Tech's Toughest Questions
 * 2015 Digital Dumbo - Panel: Quality in Digital Product Creation
