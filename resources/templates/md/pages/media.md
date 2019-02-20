@@ -29,13 +29,14 @@
 
 ## Company Awards
 
+* **2019 Fast Company’s 10 Most Innovative Companies**
 * **2018 Digiday, Agency of the Year**
 * **2018 Cannes Lions, Grand Prix**
 * **2018 Cannes Lions, Titanium**
 * **2018 AdAge’s A-List**
 * **2017 Forbes - Next Big Thing**
 * **2017 Inc 5000 - #295**
-* **2017 Fast Company’s 10 Most Innovative Companies in Design**
+* **2017 Fast Company’s 10 Most Innovative Companies**
 * **2017 AdAge’s A-List**
 * **2017 Fast Company Innovation by Design, Websites**
 * **2017 Webby Awards, Professional Services**
