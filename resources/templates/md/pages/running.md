@@ -41,6 +41,8 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 1. Florida Palm 50K 2015
 2. Caumsett Park 50K 2017
 3. The North Face Endurance trail 50K - NY Bear Mountain 2017
+4. Febapple 50K 2019
+5. Salomon River to Castle 50K 2019
 
 ## Marathons (26.2 Miles)
 
@@ -91,6 +93,7 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 27. Rock & Roll Philadelphia Half 2018
 28. NYRR Staten Island 2018
 29. NYRR Fred Lebow 2019
+30. NYRR NYC Half 2019
 
 ## Endurance 12H
 
