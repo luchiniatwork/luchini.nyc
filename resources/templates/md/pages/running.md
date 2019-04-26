@@ -5,9 +5,11 @@
 
 ## Pics & Reports
 
-[Instagram](https://instagram.com/tiagoruns) is updated regularly with some of my latest training and running.
+[Instagram](https://instagram.com/tiagoruns) is updated regularly with
+some of my latest training and running.
 
-I also wrote [What I learned running my first 100 miles race](https://medium.com/@luchini/what-i-learned-running-my-first-100-miles-race-3a27dcb6c1ae).
+I also wrote [What I learned running my first 100 miles
+race](https://medium.com/@luchini/what-i-learned-running-my-first-100-miles-race-3a27dcb6c1ae).
 
 ## 100 Milers
 
