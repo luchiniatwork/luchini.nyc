@@ -4,7 +4,8 @@ rm *.pdf
 docker run --rm -v $(pwd):/src \
        luchiniatwork/beautiful-md \
        sh -c \
-       "latex -output-format=pdf \"Luchini - Cover Letter.tex\" && latex -output-format=pdf \"Luchini - Resume.tex\" && latex -output-format=pdf \"Luchini - Clojure Resume.tex\""
+       "for f in *.tex; do latex -output-format=pdf \"\$f\"; done"
 rm *.aux
 rm *.out
+rm *.log
 #rm *.log
