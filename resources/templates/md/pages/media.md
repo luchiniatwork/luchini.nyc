@@ -29,6 +29,7 @@
 
 ## Company Awards
 
+* **2019 AdAge's A-List**
 * **2019 Fast Company’s 10 Most Innovative Companies**
 * **2018 Digiday, Agency of the Year**
 * **2018 Cannes Lions, Grand Prix**
@@ -64,6 +65,7 @@
 
 ## Public Talks
 
+* 2019 ClojureNorth - Resilience by Design
 * 2018 Clojure/conj - [Declarative Domain Modeling](https://www.youtube.com/watch?v=EDojA_fahvM)
 * 2017 Clojure/conj - [The Power of Lacinia & Hystrix in Production](https://github.com/luchiniatwork/conj2017)
 * 2017 TheNextWeb NYC - Afterhour Session: Tech's Toughest Questions
