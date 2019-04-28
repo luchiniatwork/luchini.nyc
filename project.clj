@@ -2,14 +2,14 @@
   :description "My personal website"
   :url "https://luchini.nyc"
 
-  :dependencies [[org.clojure/clojure "1.9.0"]
-                 [ring/ring-devel "1.6.3"]
-                 [compojure "1.6.0"]
+  :dependencies [[org.clojure/clojure "1.10.0"]
+                 [ring/ring-devel "1.7.1"]
+                 [compojure "1.6.1"]
                  [ring-server "0.5.0"]
                  [cryogen-markdown "0.1.7"]
-                 [cryogen-core "0.1.61"]]
+                 [cryogen-core "0.1.66"]]
 
-  :plugins [[lein-ring "0.9.7"]]
+  :plugins [[lein-ring "0.12.5"]]
 
   :main cryogen.core
 
