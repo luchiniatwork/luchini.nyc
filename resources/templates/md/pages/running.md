@@ -8,8 +8,7 @@
 [Instagram](https://instagram.com/tiagoruns) is updated regularly with
 some of my latest training and running.
 
-I also wrote [What I learned running my first 100 miles
-race](https://medium.com/@luchini/what-i-learned-running-my-first-100-miles-race-3a27dcb6c1ae).
+I also wrote [What I learned running my first 100 miles race](https://medium.com/@luchini/what-i-learned-running-my-first-100-miles-race-3a27dcb6c1ae).
 
 ## 100 Milers
 
@@ -97,11 +96,11 @@ race](https://medium.com/@luchini/what-i-learned-running-my-first-100-miles-race
 29. NYRR Fred Lebow 2019
 30. NYRR NYC Half 2019
 
-## Endurance 12H
+## Endurance 12h
 
 1. Montour 2016 (48.5)
 
-## Endurance 14H
+## Endurance 14h
 
 1. Vertical Playground 2018 (35)
 
@@ -110,13 +109,13 @@ race](https://medium.com/@luchini/what-i-learned-running-my-first-100-miles-race
 1. Montour 2017 (70.4)
 2. Virginia 24H (66)
 
-## Spartan Beasts:
+## Spartan Beasts
 
 1. Killington 2015
 2. Killington 2016
 3. New Jersey 2017
 
-## Spartan Ultra Beasts:
+## Spartan Ultra Beasts
 
 1. New Jersey 2016
 2. New Jersey 2017

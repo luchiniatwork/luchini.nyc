@@ -2,7 +2,7 @@
  :layout :home
  :home? true}
 
-Hi, I'm Tiago!
+# Hi, I'm Tiago!
 
 I'm currently building [digital products][1] people use everyday at [Work & Co][2].
 In my free time I'm an avid [distance runner][3], [open source][4] supporter, and
@@ -13,7 +13,7 @@ projects and ramped up R&D centers in Beijing and Chengdu (China). I'm an alum o
 [Columbia University][10], [London Business School][11], and [Unicamp][12] (Brazil)
 where I received my MBAs and MSc respectively.
 
-[1]: clients
+[1]: portfolio
 [2]: https://work.co
 [3]: running
 [4]: open-source

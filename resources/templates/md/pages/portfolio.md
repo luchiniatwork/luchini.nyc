@@ -1,4 +1,4 @@
-{:title "Clients"
+{:title "Portfolio"
  :layout :page
  :page-index 0
  :navbar? true}
@@ -53,7 +53,14 @@
 * Marcopolo (Brazil)
 * Embraer (US)
 
-## Telecom Carriers
+## Food & Beverage
+
+* Panera Bread (US)
+* CAVA (US)
+* Red Robin (US)
+* Gatorade (US)
+
+## Telecom/Carriers
 
 * T-Mobile (US)
 * China Telecom (China)
@@ -67,14 +74,10 @@
 * Elo (Brazil)
 * Itaú (Brazil)
 
-## NGO
+## NGOs
 
 * Salvation Army (Brazil)
 * Breastcancer.org (US)
-
-## CPG
-
-* Gatorade (US)
 
 ## Health
 
