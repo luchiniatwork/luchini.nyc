@@ -2522,7 +2522,7 @@ table tr:hover td {
 }
 .site-nav #navigation ul li {
     float: left;
-    padding-right: 0.75em;
+    padding-right: 1.1em;
 }
 .site-nav #navigation .nav-text-button {
     font-family: "Fredericka the Great", cursive;
@@ -3074,6 +3074,7 @@ article .full.zoomable img.zoom {
     .site-nav nav {
         height: 110px;
     }
+}
 @media (max-width: 5000px) and (min-width: 600px) {
     .container {
         max-width: 800px;
@@ -3084,16 +3085,10 @@ article .full.zoomable img.zoom {
         margin: 2.25em 0.0em;
     }
 }
-@media (min-width: 828px) {
-    .site-nav,
-    .site-nav nav {
-        height: 80px;
-    }
-}
 @media (max-width: 600px) {
     .site-nav,
     .site-nav nav {
-        height: 90px;
+        height: 110px;
     }
     .MathJax_Display {
         font-size: 85%;
