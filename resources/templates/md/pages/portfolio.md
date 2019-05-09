@@ -9,6 +9,7 @@
 * Facebook (US)
 * Google (US)
 * Twitter (US)
+* Mozilla (US)
 
 ## Transportation & Tourism
 
