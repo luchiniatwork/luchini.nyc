@@ -1,0 +1,373 @@
+\documentclass[a4paper,10pt]{article}
+
+%A Few Useful Packages
+\usepackage{marvosym}
+\usepackage{url,parskip} 	%other packages for formatting
+\RequirePackage{color,graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[big]{layaureo} 				%better formatting of the A4 page
+% an alternative to Layaureo can be ** \usepackage{fullpage} **
+\usepackage{supertabular} 				%for Grades
+\usepackage{titlesec}					%custom \section
+
+%Setup hyperref package, and colours for links
+\usepackage{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+%CV Sections inspired by:
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+%Tweak a bit the top margin
+\addtolength{\voffset}{-1.3cm}
+\addtolength{\textheight}{+2.5cm}
+\addtolength{\footskip}{-30pt}
+%Show the margins and frames if need be
+%\usepackage{showframe}
+
+\usepackage[absolute]{textpos}
+
+\setlength{\TPHorizModule}{30mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{2mm}{0.65\paperheight}
+\setlength{\parindent}{0pt}
+
+%--------------------BEGIN DOCUMENT----------------------
+\begin{document}
+
+\pagestyle{empty} % non-numbered pages
+
+%--------------------TITLE-------------
+\par{\centering
+  {\Huge \textsc{Tiago Luchini}}\bigskip\par}
+
+%--------------------SECTIONS-----------------------------------
+%Section: Personal Data
+\section{Personal Data}
+
+\begin{tabular}{rl}
+  \textsc{Address:} & \begin{tabular}{l}
+    10 City Point, 27G, Brooklyn, NY 11201\ (Green card holder)
+  \end{tabular}\\
+
+  \textsc{Contact:} & \begin{tabular}{lll}
+    \href{mailto:tiago@luchini.nyc}{tiago@luchini.nyc} &
+    \href{https://luchini.nyc}{https://luchini.nyc} &
+    \href{tel:+16466847728}{+1 (646) 684 7728}
+  \end{tabular}
+\end{tabular}
+
+%Section: Work Experience at the top
+\section{Work Experience}
+\begin{tabular}{r|p{11cm}}
+  \emph{Current} & Partner, Technology at \textsc{Work \& Co}, New York \\
+
+  \textsc{Sep 2013} & \emph{Digital Product Creation}\\
+
+  &\footnotesize{Ramped up and led a global team of 100+ engineers,
+    product managers, and strategists who plan, develop, release, and
+    maintain hundreds of cloud-based web, mobile, and backend
+    application products for companies such as \textsc{Apple},
+    \textsc{Facebook}, \textsc{Google}, \textsc{Twitter},
+    \textsc{Pepsi}, \textsc{Philz Coffee}, \textsc{Virgin America},
+    \textsc{Disney} and the \textsc{NBA}. Engaged in setting technical
+    direction and architecture for large systems, software design, and
+    development experience. Responsible for mentoring leadership and
+    defining Work \& Co's technical strategy, vision, development
+    processes, and culture. Tech stack: React/Redux, React Native,
+    Swift, Android, NodeJS, Python, Clojure, Datomic, PostgreSQL,
+    MongoDB, DynamoDB, Terraform/CloudFormation, AWS/GCP.}\\
+
+  \multicolumn{2}{c}{}\\
+
+  \textsc{Aug 2013} & Startup Guy at \textsc{Savalanche} and \textsc{Hintfy}, Oulu, Finland \\
+
+  \textsc{Jan 2013} & \emph{Digital Marketplace and Mobile Recommendation Platforms} \\
+
+  &\footnotesize{Co-founded and led two startups. Acted as
+    \textsc{CTO/CEO}. At \textsc{Hintfy} we explored solutions to
+    improve entertainment discovery on mobile devices. At
+    \textsc{Savalanche} we created a platform for hundreds of media
+    houses and thousands of merchants to establish marketplaces
+    online. Tech stack: Ruby on Rails, PostgreSQL, AWS.}\\
+
+  \multicolumn{2}{c}{}\\
+
+  \textsc{Dec 2012} & Technology Strategist at \textsc{Digitalist},
+  Finland/Germany/China \\
+
+  \textsc{Dec 2006} & \emph{R\&D services for Mobile and Embedded Devices} \\
+
+  &\footnotesize{Responsible for developing new products and new
+    global markets, revamping account management processes, pioneering
+    international expansions, and managing key projects in Asia,
+    Europe and America - in particular for \textsc{Nokia},
+    \textsc{Samsung}, and \textsc{ESPN}. Ramped up R\&D centers in
+    Beijing and Chengdu. Tech stack: Symbian S60, S40, C++, C,
+    Objective-C, Java, Oracle, Protocol \& Kernel development.}\\
+
+  \multicolumn{2}{c}{}\\
+
+  \textsc{Nov 2006} & Guest Lecturer at \textsc{FIAP}, S\~{a}o Paulo, Brazil \\
+
+  \textsc{Aug 2005} & \emph{Data Modeling, Design Patterns, Object Oriented
+    Programming} \\
+
+  &\footnotesize{Received positive review from students. Rated ``\emph{truly
+      inspiring}''.}\\
+
+  \multicolumn{2}{c}{}\\
+
+  \textsc{Jul 2006} & Head of Software Production at \textsc{BDK Solutions},
+  S\~{a}o Paulo, Brazil \\
+
+  \textsc{Mar 2003} & \emph{Data-Driven Business Decision Tools} \\
+
+  &\footnotesize{Led five development teams tasked with creating
+    data-driven business-decision tools. Responsible for managing and
+    architecting all LATAM, multi-million, multi-year projects. Tech
+    stack: C\#, .NET, Java, MySQL, MSSQL, On-Prem Ops.}\\
+
+  \multicolumn{2}{c}{}\\
+
+  \textsc{Feb 2003} & Managing Director at \textsc{St. Paul's School}, S\~{a}o
+  Paulo, Brazil \\
+
+  \textsc{Jan 1996} & \emph{Council of British International Schools} \\
+
+  &\footnotesize{Headed over engineering, IT, accounting, financial, and legal
+    teams. Reported to board of directors. Steered the organization at the
+    tactical and operational level.}\\
+
+\end{tabular}
+
+
+\section{Skills}
+\begin{tabular}{rl}
+  \textsc{Business:} & P\&L Ownership, Strategy, Team ramp up, Culture setting \\
+
+  \textsc{Preferred Languages:} & Clojure(Script), Java, Swift, Kotlin, OCaml \\
+
+  \textsc{Databases/Stores:} & Datomic, Hadoop, Spark, DynamoDB, Cassandra \\
+
+  \textsc{Cloud Infrastructure:} & AWS, GoogleCloud, Docker, Terraform \\
+
+  \textsc{Architectures:} & Event Sourcing, Microservices, Distributed
+  Systems \\
+
+  \textsc{Deep Learning:} & TensorFlow, Theano, Cortex, Flare \\
+\end{tabular}
+
+
+
+%Section: Education
+\section{Education}
+\begin{tabular}{rl}
+ \textsc{2013-2015} & \textsc{Columbia University - Columbia Business School},
+ New York\\
+
+ & Master of Business Administration (\textsc{MBA}), \emph{Executive}\\
+
+ &\\
+
+ \textsc{2013-2015} & \textsc{London Business School - University of London},
+ London\\
+
+ & Master of Business Administration (\textsc{MBA}), \emph{Executive}\\
+
+ &\\
+
+ \textsc{2002-2002} & \textsc{Universidade Estadual de Campinas}, Brazil\\
+
+ & Master of Science (\textsc{MSc}) in \emph{Strategic Management of Information
+   Systems} \\
+
+  &\\
+
+ \textsc{1998-2001} & \textsc{Universidade Presbiteriana Mackenzie}, S\~{a}o
+ Paulo, Brazil\\
+
+ & Bachelor of Arts (\textsc{BA}) in \emph{Business Administration} \\
+
+ &\\
+
+ \textsc{1994-1998} & \textsc{Centro Federal de Educa\c{c}\~{a}o
+   Tecnol\'{o}gica}, S\~{a}o Paulo, Brazil\\
+
+ & Bachelor of Science (\textsc{BSc}) in \emph{Computer Science} \\
+
+\end{tabular}
+
+\section{Objectives}
+\emph{Create and develop a passionate, cross-functional team that aspires to
+  make people's lives better. Innovate responsibly taking into account
+  customers' real needs. Participate in co-defining the future of the
+  organization. Empower the organization through data.}
+
+\section{Personal Philosophies}
+\begin{tabular}{ll}
+
+  \textsc{People First:} & \emph{Technology should make users' lives
+    better.} \\
+
+  \textsc{Pragmatism:} & \emph{Good technology is working technology.}
+  
+\end{tabular}
+
+
+\section{Portfolio}
+
+\begin{tabular}{rl}
+  \textsc{Technology:} &
+    Apple,
+    Facebook,
+    Google,
+    Twitter \\
+
+  \textsc{Transportation \& Tourism:} &
+    Virgin America,
+    Virgin Voyages,
+    Aeromexico,
+    Marriott \\
+
+  \textsc{Mobile Devices \& Hardware:} &
+
+    Nokia,
+    Samsung,
+    Otto,
+    Kodak,
+    Polar \\
+
+  \textsc{Media:} &
+
+    ESPN,
+    ABC,
+    Turner Entertainment,
+    G\"{o}teborgs-Posten \\
+
+  \textsc{Real Estate:} &
+
+    HouseLogic,
+    Haus\\
+
+  \textsc{Retail:} &
+
+    Aesop,
+    Aldo Shoes,
+    Philz Coffee,
+    Just Mayo\\
+
+  \textsc{Automotive \& Aviation:} &
+
+    Porsche,
+    Volkswagen,
+    Peugeot,
+    Marcopolo,
+    Embraer\\
+
+  \textsc{Telecom Carriers:} &
+
+    T-Mobile,
+    China Telecom,
+    Telef\'{o}nica,
+    Oi (Brazil)\\
+
+  \textsc{Financial Services:} &
+
+    Chase,
+    MasterCard,
+    Elo,
+    Ita\'{u} (Brazil)\\
+
+  \textsc{NGO:} &
+
+    Salvation Army (Brazil),
+    Breastcancer.org\\
+    
+  \textsc{CPG:} &
+
+    Gatorade\\
+
+  \textsc{Health:} &
+
+    NHS (United Kingdom)
+\end{tabular}
+
+
+\section{Most Recent Awards}
+\begin{tabular}{rl}
+  \textsc{2019} & \textsc{AdAge's} -- A-List \\
+  \textsc{2019} & \textsc{Fast Company} -- 10 Most Innovative Companies \\
+  \textsc{2018} & \textsc{Digiday} -- Best Brand Platform, Givewith \\
+  \textsc{2018} & \textsc{CES Innovation Awards} -- Software and Mobile Apps, Philz Coffee \\
+  \textsc{2018} & \textsc{W3 Awards} -- Mobile Features-Best User Experience for Mobile Sites \& Apps, Philz Coffee \\
+  \textsc{2018} & \textsc{HOW International Design Awards} -- Website, Aesop \\
+  \textsc{2018} & \textsc{Design Week} -- Website, Aesop \\
+  \textsc{2018} & \textsc{Digiday} -- Agency of the Year \\
+  \textsc{2018} & \textsc{Cannes Lions} -- Grand Prix \& Titanium \\
+  \textsc{2018} & \textsc{AdAge} -- A-List \\
+  \textsc{2017} & \textsc{The One Show} -- Bronze Pencil Award, Virgin America Travel App \\
+  \textsc{2017} & \textsc{CES Innovation Award}, Virgin America Mobile App \\
+  \textsc{2017} & \textsc{Webby's} -- Best Practices Award, Virgin America website \\
+  \textsc{2017} & \textsc{Webby's} -- Best Travel App, Virgin America mobile app \\
+\end{tabular}
+
+
+\section{Speaking Engagements}
+\begin{tabular}{rl}
+  \textsc{2019} & \textsc{Heart of Clojure -- Leuven} -- Resilience by Design \\
+  \textsc{2019} & \textsc{ClojureNorth -- Toronto} -- Resilience by Design \\
+  \textsc{2018} & \textsc{Clojure/conj -- Durham} -- Declarative Domain Modeling \\
+  \textsc{2017} & \textsc{Clojure/conj -- Baltimore} -- The Power of Lacinia \& Hystrix in Production \\
+  \textsc{2017} & \textsc{TheNextWeb -- NYC} -- Afterhour Session: Tech's Toughest Questions \\
+  \textsc{2015} & \textsc{Digital Dumbo -- Brooklyn} -- Panel: Quality in Digital Product Creation \\
+\end{tabular}
+
+
+\section{Publications \& Articles}
+\begin{tabular}{rl}
+  \textsc{2017} & \textsc{TheNextweb} -- \href{https://thenextweb.com/contributors/2017/12/08/smarter-bots-deeper-learning-better-blockchaining-mobile-app-trends-2018/}{Smarter Bots, Deeper Learning, and Better Blockchains} \\
+  \textsc{2017} & \textsc{AdAge Magazine} -- \href{http://adage.com/article/digitalnext/protecting-brands-fake-apps/307483/}{Fake Apps on Rise - Protecting Your Brand} \\
+  \textsc{2017} & \textsc{TheNextWeb} -- \href{https://thenextweb.com/insider/2016/09/29/the-app-that-makes-flying-fun-again/#.tnw_qrCjrLFC}{Building the Travel App that Makes Flying Fun Again} \\
+\end{tabular}
+
+
+\section{Open Source}
+\begin{tabular}{rl}
+  \textsc{Data Modelling:} &
+  \href{https://luchini.nyc/open-source}{Hodur} -- Practices,
+  libraries \& tools for domain modelling \\
+
+  \textsc{Resilient Systems:} &
+  \href{https://luchini.nyc/open-source}{Resilience4clj} -- Functional
+  implementations of resilient systems \\
+
+  \textsc{Database Management:} &
+  \href{https://luchini.nyc/open-source}{Migrana} -- Datomic migration
+  tool; control database evolution \\
+
+  \textsc{Tooling:} & \href{https://luchini.nyc/open-source}{Cambada}
+  -- Packager \& native compiler for Clojure-based apps \\
+\end{tabular}
+
+
+
+%Section: Languages
+\section{Languages}
+\begin{tabular}{lr}
+  \begin{tabular}{ll}
+    \textsc{Portuguese:}&Native\\
+    \textsc{English:}&Fluent\\
+  \end{tabular} &
+  \begin{tabular}{ll}
+    \textsc{Spanish:}&Comprehension\\
+    \textsc{Finnish:}&Basic Knowledge\\
+  \end{tabular}
+\end{tabular}
+
+\section{Interests and Activities}
+Open-Source, Language Design, Deep Learning, Human-Centric Tooling. \\
+Ultra-marathoner, Board Gaming, Trail \& Distance Running.
+
+\end{document}
