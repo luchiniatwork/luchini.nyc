@@ -44,6 +44,7 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 3. The North Face Endurance trail 50K - NY Bear Mountain 2017
 4. Febapple 50K 2019
 5. Salomon River to Castle 50K 2019
+6. North Face Endurance NY 50K 2019
 
 ## Marathons (26.2 Miles)
 
@@ -95,6 +96,8 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 28. NYRR Staten Island 2018
 29. NYRR Fred Lebow 2019
 30. NYRR NYC Half 2019
+31. North Face Endurance NY Half 2019
+32. NYRR Brooklyn Half 2019
 
 ## Endurance 12h
 
