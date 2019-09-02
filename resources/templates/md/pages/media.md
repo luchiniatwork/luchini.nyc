@@ -23,7 +23,7 @@
 
 ## Public Talks
 
-* 2019 Clojure/South - [Datomic vs. Crux and Why It Matters](/assets/datomic-vs-crux-and-why-it-matters.pdf)
+* 2019 Clojure/South - [Datomic vs. Crux and Why It Matters](img/datomic-vs-crux-and-why-it-matters.pdf)
 * 2019 Heart of Clojure - [Building Resilient Clojure Apps](https://www.youtube.com/watch?v=KtN0vqOlmn8)
 * 2019 Clojure/North - [Resilience by Design](https://www.youtube.com/watch?v=ss1v6jHGDfk)
 * 2018 Clojure/conj - [Declarative Domain Modeling](https://www.youtube.com/watch?v=EDojA_fahvM)
