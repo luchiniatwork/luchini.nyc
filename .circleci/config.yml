@@ -42,7 +42,7 @@ jobs:
       - checkout
 
       - attach_workspace:
-          at: resources/public
+          at: .
 
       - restore_cache:
           keys:
