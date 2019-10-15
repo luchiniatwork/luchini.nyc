@@ -61,6 +61,12 @@ jobs:
             - ./node_modules
 
       - run:
+          command: ls -la
+
+      - run:
+          command: ls -la resources/public
+            
+      - run:
           name: Firebase deploy
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
 
