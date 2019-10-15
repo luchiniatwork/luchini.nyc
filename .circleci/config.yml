@@ -67,9 +67,10 @@ jobs:
 workflows:
   version: 2
   main-workflow:
-    branches:
-      only:
-        - firebase
+    filters:
+      branches:
+        only:
+          - firebase
     jobs:
       - build
       - deploy
