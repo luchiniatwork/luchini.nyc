@@ -98,6 +98,7 @@ I also wrote [What I learned running my first 100 miles race](https://medium.com
 30. NYRR NYC Half 2019
 31. North Face Endurance NY Half 2019
 32. NYRR Brooklyn Half 2019
+33. NYRR Staten Island 2019
 
 ## Endurance 12h
 
