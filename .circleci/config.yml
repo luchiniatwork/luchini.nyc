@@ -25,7 +25,7 @@ jobs:
           root: .
           paths:
             - resources/public
-          
+
       - save_cache:
           paths:
             - ~/.m2
@@ -60,12 +60,6 @@ jobs:
           paths:
             - ./node_modules
 
-      - run:
-          command: ls -la
-
-      - run:
-          command: ls -la resources/public
-            
       - run:
           name: Firebase deploy
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
