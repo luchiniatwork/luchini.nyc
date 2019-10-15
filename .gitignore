@@ -12,3 +12,4 @@ pom.xml.asc
 /resources/public/
 .DS_Store
 .firebase/
+node_modules/

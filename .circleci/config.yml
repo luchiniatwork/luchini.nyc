@@ -1,0 +1,72 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/clojure:lein-2.9.1
+
+    working_directory: ~/repo
+
+    environment:
+      JVM_OPTS: -Xmx3200m # Customize the JVM maximum heap limit
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "project.clj"}}
+
+      - run:
+          name: Building assets
+          command: lein run
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - resources/public
+          
+      - save_cache:
+          paths:
+            - ~/.m2
+            - ~/.cognitect-s3-libs
+          key: v1-dependencies-{{ checksum "project.clj"}}
+
+  deploy:
+    docker:
+      - image: circleci/node:10
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: resources/public
+
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json
+            - v1-npm-deps-{{ checksum "package-lock.json" }}
+            # Fallback cache to be used
+            - v1-npm-deps-
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - save_cache:
+          key: v1-npm-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+
+      - run:
+          name: Firebase deploy
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
+
+workflows:
+  version: 2
+  main-workflow:
+    jobs:
+      - build
+      - deploy
