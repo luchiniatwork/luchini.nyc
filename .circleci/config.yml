@@ -64,7 +64,7 @@ jobs:
           name: Firebase deploy
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
 
-  deploy-prod:
+  deploy-staging:
     docker:
       - image: circleci/node:10
 
