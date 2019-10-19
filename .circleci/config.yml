@@ -32,7 +32,7 @@ jobs:
             - ~/.cognitect-s3-libs
           key: v1-dependencies-{{ checksum "project.clj"}}
 
-  deploy:
+  deploy-prod:
     docker:
       - image: circleci/node:10
 
@@ -64,15 +64,57 @@ jobs:
           name: Firebase deploy
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
 
+  deploy-prod:
+    docker:
+      - image: circleci/node:10
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: .
+
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json
+            - v1-npm-deps-{{ checksum "package-lock.json" }}
+            # Fallback cache to be used
+            - v1-npm-deps-
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - save_cache:
+          key: v1-npm-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+
+      - run:
+          name: Firebase deploy
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" -P staging
+
 workflows:
   version: 2
-  main-workflow:
+  prod-workflow:
     jobs:
       - build:
           filters:
             branches:
               only:
                 - release
-      - deploy:
+      - deploy-prod:
+          requires:
+            - build
+  staging-workflow:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+      - deploy-staging:
           requires:
             - build

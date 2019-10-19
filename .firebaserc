@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "luchini-nyc"
+    "default": "luchini-nyc",
+    "staging": "luchini-nyc-staging"
   }
 }
