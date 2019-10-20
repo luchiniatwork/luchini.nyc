@@ -4,17 +4,22 @@
 
 # Hi, I'm Tiago!
 
-I build meaningful [digital products][1] people use everyday.  In my
-free time I'm an avid [distance runner][3], [open source][4]
-supporter, and [board game][5] enthusiast. My passion is bridging
-business and technology. I'm a [software engineer][6] at heart and
-[businessperson by training][7]. In my past life I was Partner at
-[Work & Co][2] (USA), a technologist at [Digitalist][9] (Finland), a
-Sr. Executive for [Nokia][13], where I oversaw large-scale technical
-projects and ramped up R&D centers in Beijing and Chengdu (China), and
-a CTO/Entrepreneur in Brazil. I'm an alum of [Columbia
-University][10], [London Business School][11], and [Unicamp][12]
-(Brazil) where I received my MBAs and MSc respectively.
+I build meaningful [digital products][1] people use everyday. My
+passion is bridging business and technology.
+
+I'm a [software engineer][6] at heart and [businessperson by training][7].
+
+In my past life I was Partner at [Work & Co][2] (USA), a technologist
+at [Digitalist][9] (Finland), a Sr. Executive for [Nokia][13], where I
+oversaw large-scale technical projects and ramped up R&D centers in
+Beijing and Chengdu (China), and a CTO/Entrepreneur in Brazil.
+
+I'm an alum of [Columbia University][10] (USA), [London Business School][11]
+(UK), and [Unicamp][12] (Brazil) where I received my MBAs
+and MSc respectively.
+
+In my free time I'm an avid [distance runner][3], [open source][4]
+supporter, and [board game][5] enthusiast.
 
 [1]: portfolio
 [2]: https://work.co
