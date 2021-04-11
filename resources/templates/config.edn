@@ -18,7 +18,7 @@
  :sass-src             []
  :sass-path            "sass"
  :compass-path         "compass"
- :theme                "simple2019"
+ :theme                "dark2021"
  :resources            ["img"]
  :keep-files           [".git"]
  :disqus?              false

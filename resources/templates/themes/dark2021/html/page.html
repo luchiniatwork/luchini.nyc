@@ -1,0 +1,14 @@
+{% extends "/html/base.html" %}
+
+{% block content %}
+<article class="container">
+  <header>
+    <div id="page-header">
+      <h1>{{page.title}}</h1>
+    </div>
+  </header>
+  <section>
+    {{page.content|safe}}
+  </section>
+</article>
+{% endblock %}

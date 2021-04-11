@@ -2,7 +2,7 @@
  :layout :home
  :home? true}
 
-# Hi, I'm Tiago!
+# About Me
 
 I build meaningful [digital products][1] people use everyday. My
 passion is bridging business and technology.
