@@ -5,10 +5,12 @@
 \usepackage{url,parskip} 	%other packages for formatting
 \RequirePackage{color,graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[big]{layaureo} 				%better formatting of the A4 page
+%\usepackage[big]{layaureo} 				%better formatting of the A4 page
 % an alternative to Layaureo can be ** \usepackage{fullpage} **
+\usepackage{fullpage}
 \usepackage{supertabular} 				%for Grades
 \usepackage{titlesec}					%custom \section
+\usepackage{tabularx}
 
 %Setup hyperref package, and colours for links
 \usepackage{hyperref}
@@ -19,19 +21,35 @@
 %http://stefano.italians.nl/archives/26
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{3pt}{3pt}
+
 %Tweak a bit the top margin
-\addtolength{\voffset}{-1.3cm}
-\addtolength{\textheight}{+2.5cm}
-\addtolength{\footskip}{-30pt}
+%\addtolength{\voffset}{-1.3cm}
+%\addtolength{\textheight}{+2.5cm}
+%\addtolength{\footskip}{-30pt}
+%\addtolength{\oddsidemargin}{-.875in}
+%\addtolength{\evensidemargin}{-.875in}
+%\addtolength{\marginparwidth}{0pt}
+
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  top=20mm,
+  bottom=20mm,
+  left=20mm,
+  top=20mm,
+}
+
 %Show the margins and frames if need be
 %\usepackage{showframe}
+%\renewcommand*\ShowFrameColor{\color{red}}
 
-\usepackage[absolute]{textpos}
+%% \usepackage[absolute]{textpos}
 
-\setlength{\TPHorizModule}{30mm}
-\setlength{\TPVertModule}{\TPHorizModule}
-\textblockorigin{2mm}{0.65\paperheight}
-\setlength{\parindent}{0pt}
+%% \setlength{\TPHorizModule}{30mm}
+%% \setlength{\TPVertModule}{\TPHorizModule}
+%% \textblockorigin{2mm}{0.65\paperheight}
+%% \setlength{\parindent}{0pt}
 
 %--------------------BEGIN DOCUMENT----------------------
 \begin{document}
@@ -48,7 +66,7 @@
 
 \begin{tabular}{rl}
   \textsc{Address:} & \begin{tabular}{l}
-    63 Hortontown Hill Rd., Hopewell Junction, NY 12533\ (Green card holder)
+    63 Hortontown Hill Rd., Hopewell Junction, NY 12533
   \end{tabular}\\
 
   \textsc{Contact:} & \begin{tabular}{lll}
@@ -58,14 +76,36 @@
   \end{tabular}
 \end{tabular}
 
+\section{Where I Can Help}
+\emph{I help organizations find their technology vision. I then help
+them build the digital solutions \& the world-class teams behind
+them. I enjoy socio-technichal challenges, growing teams across
+multiple geographies while managing a diverse set of people,
+technologies \& processes. I am able to participate in co-defining the
+future of organizations \& aspire to empower organizations through
+data.}
+
 %Section: Work Experience at the top
 \section{Work Experience}
-\begin{tabular}{r|p{11cm}}
-  \textsc{\emph{Present}} & Sr. Director of Engineering at \textsc{Viasat}, New York \\
+\begin{tabular}{r|p{14cm}}
+  \textsc{\emph{Present}} & VP of Engineering at \textsc{Odeko}, New York \\
+
+  \textsc{Jun 2021} & \emph{Tools for Local Caf\'{e}s to Operate \& Grow}\\
+
+  &\footnotesize{Developed \& communicated Odeko's technology
+    vision \& strategy. Built a world-class global team of software, data, \&
+    DevOps engineers (from 13 to 65 members). Implemented hiring,
+    productivity, \& quality processes as well as people \& product
+    management practices. Responsible for positevely driving several
+    tech, product, \& business OKRs.}\\
+
+  \multicolumn{2}{c}{}\\
+
+  \textsc{Jun 2021} & Sr. Director of Engineering at \textsc{Viasat}, New York \\
 
   \textsc{Aug 2019} & \emph{Global Technology \& Customer Success}\\
 
-  &\footnotesize{Leading a cross-functional global team of 90+
+  &\footnotesize{Lead a cross-functional global team of 90+
     engineers \& product manager in charge of digital, architectural,
     \& organizational transformations at scale.}\\
 
@@ -140,7 +180,6 @@
     tactical and operational level.}\\
 
 \end{tabular}
-
 
 \section{Noteworthy Clients}
 
@@ -217,6 +256,19 @@
   
 \end{tabular}
 
+\section{Most Recent Awards}
+\begin{tabular}{rl}
+  \textsc{2019} & \textsc{AdAge's} -- A-List, Work \& Co \\
+  \textsc{2019} & \textsc{Fast Company} -- 10 Most Innovative Companies, Work \& Co \\
+  \textsc{2018} & \textsc{Digiday} -- Best Brand Platform, Givewith \\
+  \textsc{2018} & \textsc{CES Innovation Awards} -- Software and Mobile Apps, Philz Coffee \\
+  \textsc{2018} & \textsc{W3 Awards} -- Best User Experience for Mobile Sites \& Apps, Philz Coffee \\
+  \textsc{2018} & \textsc{HOW International Design Awards} -- Website, Aesop \\
+  \textsc{2018} & \textsc{Design Week} -- Website, Aesop \\
+  \textsc{2018} & \textsc{Digiday} -- Agency of the Year, Work \& Co \\
+  \textsc{2018} & \textsc{Cannes Lions} -- Grand Prix \& Titanium, Apple Today\\
+  \textsc{2017} & \textsc{CES Innovation Award}, Virgin America Mobile App \\
+\end{tabular}
 
 
 %Section: Education
@@ -225,80 +277,55 @@
  \textsc{2013-2015} & \textsc{Columbia University - Columbia Business School},
  New York\\
 
- & Master of Business Administration (\textsc{MBA}), \emph{Executive}\\
-
- &\\
+ & \footnotesize{Master of Business Administration (\textsc{MBA}),
+   \emph{Executive}}\\
 
  \textsc{2013-2015} & \textsc{London Business School - University of London},
  London\\
 
- & Master of Business Administration (\textsc{MBA}), \emph{Executive}\\
-
- &\\
+ & \footnotesize{Master of Business Administration (\textsc{MBA}),
+   \emph{Executive}}\\
 
  \textsc{2002-2002} & \textsc{Universidade Estadual de Campinas}, Brazil\\
 
- & Master of Science (\textsc{MSc}) in \emph{Strategic Management of Information
-   Systems} \\
-
-  &\\
+ & \footnotesize{Master of Science (\textsc{MSc}) in \emph{Strategic
+   Management of Information Systems}} \\
 
  \textsc{1998-2001} & \textsc{Universidade Presbiteriana Mackenzie}, S\~{a}o
  Paulo, Brazil\\
 
- & Bachelor of Arts (\textsc{BA}) in \emph{Business Administration} \\
-
- &\\
+ & \footnotesize{Bachelor of Arts (\textsc{BA}) in \emph{Business
+   Administration}} \\
 
  \textsc{1994-1998} & \textsc{Centro Federal de Educa\c{c}\~{a}o
    Tecnol\'{o}gica}, S\~{a}o Paulo, Brazil\\
 
- & Bachelor of Science (\textsc{BSc}) in \emph{Computer Science} \\
+ & \footnotesize{Bachelor of Science (\textsc{BSc}) in \emph{Computer
+   Science}} \\
 
 \end{tabular}
 
-\section{Objectives}
-\emph{Create and develop a passionate, cross-functional team that aspires to
-  make people's lives better. Innovate responsibly taking into account
-  customers' real needs. Participate in co-defining the future of the
-  organization. Empower the organization through data.}
-
-\section{Personal Philosophies}
-\begin{tabular}{ll}
-
-  \textsc{People First:} & \emph{Technology should make users' lives
-    better.} \\
-
-  \textsc{Pragmatism:} & \emph{Good technology is working technology.}
-  
-\end{tabular}
-
-
-\section{Most Recent Awards}
-\begin{tabular}{rl}
-  \textsc{2019} & \textsc{AdAge's} -- A-List \\
-  \textsc{2019} & \textsc{Fast Company} -- 10 Most Innovative Companies \\
-  \textsc{2018} & \textsc{Digiday} -- Best Brand Platform, Givewith \\
-  \textsc{2018} & \textsc{CES Innovation Awards} -- Software and Mobile Apps, Philz Coffee \\
-  \textsc{2018} & \textsc{W3 Awards} -- Mobile Features-Best User Experience for Mobile Sites \& Apps, Philz Coffee \\
-  \textsc{2018} & \textsc{HOW International Design Awards} -- Website, Aesop \\
-  \textsc{2018} & \textsc{Design Week} -- Website, Aesop \\
-  \textsc{2018} & \textsc{Digiday} -- Agency of the Year \\
-  \textsc{2018} & \textsc{Cannes Lions} -- Grand Prix \& Titanium \\
-  \textsc{2017} & \textsc{CES Innovation Award}, Virgin America Mobile App \\
-  \textsc{2017} & \textsc{Webby's} -- Best Practices Award, Virgin America website \\
-  \textsc{2017} & \textsc{Webby's} -- Best Travel App, Virgin America mobile app \\
-\end{tabular}
 
 \section{Skills}
 \begin{tabular}{rl}
-  \textsc{Business:} & P\&L Ownership, Strategy, Team ramp up, Culture setting \\
+  \textsc{Business:} & P\&L Ownership, M\&A, Tech Strategy, Team ramp
+  up \\
 
-  \textsc{Preferred Languages:} & Clojure(Script), Java, Swift, Kotlin, OCaml \\
+  \textsc{Management:} & Hiring \& Retention, Culture setting \\
 
-  \textsc{Databases/Stores:} & Datomic, Hadoop, Spark, DynamoDB, Cassandra \\
+  \textsc{Communication:} & External \& C-level, Established public
+  speaker \\
 
-  \textsc{Cloud Infrastructure:} & AWS, GoogleCloud, Docker, Terraform \\
+  \textsc{Product:} & Product discovery \& Product execution \\
+  
+  \textsc{Preferred Languages:} & Clojure(Script), LISP, Java, Swift,
+  Kotlin, Haskell, OCaml \\
+
+  \textsc{Databases/Stores:} & Datomic, PostgreSQL, Kafka, DynamoDB,
+  Cassandra \\
+
+  \textsc{Cloud Infrastructure:} & AWS, GoogleCloud, Docker,
+  Terraform, Pulumi \\
 
   \textsc{Deep Learning:} & TensorFlow, Theano, Cortex, Flare \\
 \end{tabular}
@@ -313,11 +340,14 @@
   \end{tabular} &
   \begin{tabular}{ll}
     \textsc{Spanish:}&Comprehension\\
+    \textsc{Italian:}&Comprehension\\
+  \end{tabular}
+  \begin{tabular}{ll}
     \textsc{Finnish:}&Basic Knowledge\\
   \end{tabular}
 \end{tabular}
 
-\section{Interests and Activities}
+\section{Interests \& Activities}
 Open-Source, Language Design, Deep Learning, Human-Centric Tooling. \\
 Trail \& Ultra-marathoner, Board Gaming.
 
