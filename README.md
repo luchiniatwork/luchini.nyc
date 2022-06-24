@@ -10,19 +10,19 @@ Personal website at [luchini.nyc](https://luchini.nyc).
 ## Dependencies
 
 * Java
-* Lein
+* Clojure
 
 ## Dev Mode
 
-    $ lein ring server
+    $ clojure -X:serve
 
 ## Static Generation
 
-    $ lein run
+    $ clojure -M:build
 
 ## Static Location
 
-    resources/public/
+    public/
 
 ## Automatic Deploy (Netlify)
 

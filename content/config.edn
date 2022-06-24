@@ -27,7 +27,8 @@
  :posts-per-page       5
  :blocks-per-preview   2
  :previews?            false
- :clean-urls?          true
+ :clean-urls           :trailing-slash
  :hide-future-posts?   true
  :klipse               {}
+ :description-include-elements #{:p :h1 :h2 :h3 :h4 :h5 :h6}
  :debug?               false}
