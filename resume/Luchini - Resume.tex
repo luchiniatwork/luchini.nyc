@@ -43,6 +43,8 @@
 \usepackage{enumitem}
 \setlist{nosep}
 
+\usepackage{fancyhdr}
+
 %Show the margins and frames if need be
 %\usepackage{showframe}
 %\renewcommand*\ShowFrameColor{\color{red}}
@@ -57,28 +59,39 @@
 %--------------------BEGIN DOCUMENT----------------------
 \begin{document}
 
-\pagestyle{empty} % non-numbered pages
+\pagestyle{fancy} % settings below
+
+\fancyhf{}
+\lfoot{Tiago Luchini}
+\cfoot{\begin{tabular}{ll}
+  \href{https://luchini.nyc}{https://luchini.nyc} &
+  \href{tel:+16466847728}{+1 (646) 684 7728}
+\end{tabular}}
+\rfoot{\href{mailto:tiago@luchini.nyc}{tiago@luchini.nyc}}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+
 
 %--------------------TITLE-------------
 \par{\centering
-  {\Huge \textsc{Tiago Luchini}}\bigskip\par}
+  {\Huge\textsc{Tiago Luchini}}\smallskip\par}
 
 %--------------------SECTIONS-----------------------------------
 %Section: Personal Data
-\section{Personal Data}
+%\section{Personal Data}
 
-\begin{tabular}{rl}
-  \textsc{Contact:} & \begin{tabular}{lll}
-    \href{mailto:tiago@luchini.nyc}{tiago@luchini.nyc} &
-    \href{https://luchini.nyc}{https://luchini.nyc} &
-    \href{tel:+16466847728}{+1 (646) 684 7728}
-  \end{tabular}\\
+%% \begin{tabular}{rl}
+%%   \textsc{Contact:} & \begin{tabular}{lll}
+%%     \href{mailto:tiago@luchini.nyc}{tiago@luchini.nyc} &
+%%     \href{https://luchini.nyc}{https://luchini.nyc} &
+%%     \href{tel:+16466847728}{+1 (646) 684 7728}
+%%   \end{tabular}\\
 
-  \textsc{Location:} & \begin{tabular}{l}
-    %63 Hortontown Hill Rd., Hopewell Junction, NY 12533
-    New York Metropolitan Area
-  \end{tabular}
-\end{tabular}
+%%   \textsc{Location:} & \begin{tabular}{l}
+%%     New York Metropolitan Area
+%%   \end{tabular}
+%% \end{tabular}
 
 \section{About}
 \emph{I help organizations create \& execute technology strategies by
@@ -89,7 +102,8 @@ technical, \& segment levels.}
 
 %Section: Work Experience at the top
 \section{Work Experience}
-\begin{tabular}{r|p{14cm}}
+
+\begin{tabular}{r|p{13cm}}
   \textsc{\emph{Present}} & Acting CTO at \textsc{Odeko}, New York \\
 
   \textsc{Jun 2021} & \emph{Tools for Local Caf\'{e}s to Operate \& Grow}\\
@@ -99,18 +113,36 @@ technical, \& segment levels.}
     strategy. Built a world-class global team of software, data, QA,
     \& DevOps engineers. Implemented hiring, productivity \&
     observability processes as well as people \& product management
-    processes. Responsible for driving several key tech, product, \&
-    business OKRs.}\\
+    processes.}\\
 
-  &\emph{Achievements:}\\
+  \textsc{Achievements:} \\
 
-  &$\cdot$ \footnotesize{Grew team size by 5x in 11 months (from 13 engineers to 65).}\\
-  &$\cdot$ \footnotesize{Increased team average seniority by 25\%.}\\
-  &$\cdot$ \footnotesize{Reduced average unwanted churn from 6\% to 1\% - during the great resignation.}\\
-  &$\cdot$ \footnotesize{Increased deployment cycle time by 12x (from ~60 days to less than 5 days.)}\\
-  &$\cdot$ \footnotesize{Removed productivty bottlenecks increasing parallel workstreams by 14x.}\\
-  &$\cdot$ \footnotesize{Revamped architecture from a poorly performing monolith to a highly-resilient micro services setup.}\\
-  &$\cdot$ \footnotesize{Implemented cultural rituals leading to daily improvements and joy.}\\
+  \emph{Team-wise:}
+
+  &$\cdot$ \footnotesize{Achieved a team growth rate of 30\% QoQ (peaking at 70\% - from 13 engineers to 65 in 11 months.)}\\
+  &$\cdot$ \footnotesize{Reduced team attrition by \~4x.}\\
+  &$\cdot$ \footnotesize{Increased team average seniority by 1.7x.}\\
+  &$\cdot$ \footnotesize{Implemented a culture of daily improvement, empowerment \& joy.}\\
+
+  \emph{Productivity-wise}:
+
+  &$\cdot$ \footnotesize{Reduced time-to-deploy from ~60 days to 5d 3h 17m (11.7x faster.)}\\
+  &$\cdot$ \footnotesize{Increased workstreams by 120\%.}\\
+  &$\cdot$ \footnotesize{Reduced complexity of identity systems by 75\%.}\\
+  &$\cdot$ \footnotesize{Simplified APIs by 66\% (making it 33\% easier to integrate.)}\\
+
+  \emph{User Experience-wise:}
+
+  &$\cdot$ \footnotesize{Unified design systems reducing ``hundreds of buttons'' to just one.}\\
+  &$\cdot$ \footnotesize{Reduced app load times by 11\%.}\\
+  &$\cdot$ \footnotesize{Achieved two 9s in application stability (99.99\%.)}\\
+
+  \emph{Business-wise:}
+
+  &$\cdot$ \footnotesize{Tripled order bandwidth capacity.}\\
+  &$\cdot$ \footnotesize{Rolled out two new apps in three markets.}\\
+  &$\cdot$ \footnotesize{Increased business-critical notification delivery rate from 85\% to 100\%.}\\
+  &$\cdot$ \footnotesize{Turned culture around from a purely ops organization to a technology-first posture.}\\
 
   \multicolumn{2}{c}{}\\
 
@@ -120,7 +152,12 @@ technical, \& segment levels.}
 
   &\footnotesize{Lead a cross-functional global team of 90+
     engineers \& product manager in charge of digital, architectural,
-    \& organizational transformations at scale.}\\
+    \& organizational transformations.}\\
+
+  \textsc{Achievements:}
+
+  &$\cdot$ \footnotesize{Revamped hiring practices \& streamlined team composition \& talent pool.}\\
+  &$\cdot$ \footnotesize{Rolled out OKR processes \& realigned engineering organization with Viasat's strategic objectives.}\\
 
   \multicolumn{2}{c}{}\\
 
@@ -136,6 +173,12 @@ technical, \& segment levels.}
     and \textsc{Disney}. Responsible for defining the technical
     strategy, vision, processes, and team culture.}\\
 
+  \textsc{Achievements:}
+
+  &$\cdot$ \footnotesize{From ``engineer zero'' to a thriving PDE organization spanning 6 global offices.}\\
+  &$\cdot$ \footnotesize{Founded two offices in Brazil \& acqui-hired our Croatia operations.}\\
+  &$\cdot$ \footnotesize{Directly responsible for a P\&L generating 40mil\$\/ARR \& 30\% margins.}\\
+
   \multicolumn{2}{c}{}\\
 
   \textsc{Aug 2013} & Startup Founder at \textsc{Savalanche} (CTO) \&
@@ -143,25 +186,12 @@ technical, \& segment levels.}
 
   \textsc{Jan 2013} & \emph{Digital Marketplace and Mobile Recommendation Platforms} \\
 
-  &\footnotesize{Co-founded and led two startups. Acted as
-    \textsc{CTO/CEO}. At \textsc{Hintfy} we explored solutions to
-    improve entertainment discovery on mobile devices. At
-    \textsc{Savalanche} we created a platform for hundreds of media
-    houses \& thousands of merchants in Europe to establish
-    marketplaces online.}\\
-
   \multicolumn{2}{c}{}\\
 
   \textsc{Dec 2012} & Technology Strategist at \textsc{Digitalist},
   Finland/Germany/China \\
 
   \textsc{Dec 2006} & \emph{R\&D services for Mobile and Embedded Devices} \\
-
-  &\footnotesize{Responsible for developing new products and new global markets,
-    revamping account management processes, pioneering international expansions,
-    and managing key projects in Asia, Europe and America - in particular for
-    \textsc{Nokia}, \textsc{Samsung}, and \textsc{ESPN}. Ramped up R\&D centers
-    in Beijing and Chengdu.}\\
 
   \multicolumn{2}{c}{}\\
 
@@ -176,13 +206,6 @@ technical, \& segment levels.}
     Solutions}, S\~{a}o Paulo, Brazil \\
 
   \textsc{Mar 2003} & \emph{Data-Driven Business Decision Tools} \\
-
-  \multicolumn{2}{c}{}\\
-
-  \textsc{Feb 2003} & Managing Director at \textsc{St. Paul's School}, S\~{a}o
-  Paulo, Brazil \\
-
-  \textsc{Jan 1996} & \emph{Council of British International Schools} \\
 
 \end{tabular}
 
