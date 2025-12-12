@@ -1,14 +1,30 @@
 {
-  "name": "luchiniatwork.github.io",
+  "name": "luchini.nyc",
   "version": "1.0.0",
   "description": "## Dependencies",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.17",
+    "daisyui": "^5.5.8",
+    "marked": "^17.0.1",
+    "tailwindcss": "^4.1.17"
+  },
   "devDependencies": {
-    "firebase-tools": "^7.5.0"
+    "@playwright/test": "^1.57.0",
+    "@types/bun": "latest",
+    "bun-html-live-reload": "^1.0.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:css": "bunx @tailwindcss/cli -i app.css -o public/output.css",
+    "watch:css": "bunx @tailwindcss/cli -i app.css -o public/output.css --watch",
+    "dev": "bun run build:css && (bun run watch:css & bun --hot run index.ts)",
+    "start": "bun run build:css && bun run index.ts",
+    "test": "bunx playwright test",
+    "test:ui": "bunx playwright test --ui",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,37 @@
+# Dependencies (will be installed in container)
+node_modules
+
+# Git
+.git
+.gitignore
+
+# Development and testing
+tests
+playwright-report
+playwright.config.ts
+
+# Documentation
+docs
+*.md
+!README.md
+
+# Spec workflow (development tooling)
+.spec-workflow
+
+# IDE and editor
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts that will be regenerated
+public/output.css
+
+# Nix
+flake.nix
+flake.lock

@@ -1,0 +1,228 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Custom theme configuration for luchini.nyc */
+
+@theme {
+  /* Custom colors matching the original dark2021 theme */
+  --color-brand-purple: #110838;
+  --color-brand-teal: #4BD0AE;
+  --color-brand-pink: #FF7BD0;
+  
+  /* Typography */
+  --font-family-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-family-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* DaisyUI theme customization */
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  [data-theme="dark"] {
+    --p: 280 70% 50%;  /* Primary - purple tint */
+    --s: 165 60% 56%;  /* Secondary - teal (#4BD0AE) */
+    --a: 325 100% 74%; /* Accent - pink (#FF7BD0) */
+    --n: 260 30% 15%;  /* Neutral */
+    --b1: 260 70% 12%; /* Base 100 - dark purple (#110838) */
+    --b2: 260 55% 14%; /* Base 200 */
+    --b3: 260 45% 16%; /* Base 300 */
+    --bc: 0 0% 92%;    /* Base content - light text */
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Better text rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* HTMX loading indicator */
+.htmx-indicator {
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}
+
+.htmx-request .htmx-indicator,
+.htmx-request.htmx-indicator {
+  opacity: 1;
+}
+
+/* Page transitions */
+#main-content {
+  transition: opacity 150ms ease-out;
+}
+
+/* Prose styles for blog content */
+.prose {
+  --tw-prose-body: oklch(var(--bc));
+  --tw-prose-headings: oklch(var(--bc));
+  --tw-prose-links: oklch(var(--s));
+  --tw-prose-bold: oklch(var(--bc));
+  --tw-prose-counters: oklch(var(--bc) / 0.7);
+  --tw-prose-bullets: oklch(var(--s) / 0.7);
+  --tw-prose-hr: oklch(var(--bc) / 0.15);
+  --tw-prose-quotes: oklch(var(--bc) / 0.9);
+  --tw-prose-quote-borders: oklch(var(--s));
+  --tw-prose-code: oklch(var(--a));
+  --tw-prose-pre-code: oklch(var(--bc) / 0.9);
+  --tw-prose-pre-bg: oklch(var(--b2));
+}
+
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.prose a:hover {
+  color: oklch(var(--a));
+}
+
+/* Headings spacing */
+.prose h2 {
+  margin-top: 2em;
+}
+
+.prose h3 {
+  margin-top: 1.5em;
+}
+
+/* Code blocks with syntax highlighting */
+.prose pre {
+  background: oklch(var(--b2));
+  border: 1px solid oklch(var(--bc) / 0.1);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  color: oklch(var(--bc) / 0.9);
+  font-family: var(--font-family-mono);
+}
+
+.prose code:not(pre code) {
+  background: oklch(var(--b2));
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: var(--font-family-mono);
+  color: oklch(var(--a));
+}
+
+/* Blockquotes */
+.prose blockquote {
+  border-left: 3px solid oklch(var(--s));
+  padding-left: 1rem;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Lists */
+.prose ul > li::marker {
+  color: oklch(var(--s));
+}
+
+.prose ol > li::marker {
+  color: oklch(var(--s));
+}
+
+/* Images in prose */
+.prose img {
+  border-radius: 0.5rem;
+  margin: 1.5rem auto;
+}
+
+/* Link hover effects */
+a:not(.btn):not(.card):not(.prose a) {
+  transition: color 0.15s ease;
+}
+
+a:not(.btn):not(.card):not(.prose a):hover {
+  color: oklch(var(--s));
+}
+
+/* Card hover effects */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+a.card:hover,
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px oklch(var(--bc) / 0.1);
+}
+
+/* Badge styling */
+.badge-outline {
+  border-color: oklch(var(--bc) / 0.2);
+}
+
+.badge-outline:hover {
+  background: oklch(var(--s) / 0.1);
+  border-color: oklch(var(--s) / 0.5);
+}
+
+/* Button active state */
+.btn-active {
+  background: oklch(var(--s) / 0.15);
+}
+
+/* Smooth scroll anchor offset for fixed header */
+[id] {
+  scroll-margin-top: 2rem;
+}
+
+/* Selection color */
+::selection {
+  background: oklch(var(--s) / 0.3);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid oklch(var(--s));
+  outline-offset: 2px;
+}
+
+/* Line clamp utility */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Syntax highlighting - Tomorrow Night Eighties inspired */
+.prose pre .comment { color: #999; }
+.prose pre .keyword { color: #cc99cc; }
+.prose pre .string { color: #99cc99; }
+.prose pre .number { color: #f99157; }
+.prose pre .function { color: #6699cc; }
+.prose pre .operator { color: #66cccc; }
+.prose pre .class-name { color: #ffcc66; }
