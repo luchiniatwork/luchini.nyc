@@ -97,6 +97,12 @@ export function layout(content: string, options: LayoutOptions = {}): string {
       updateActiveNavLink();
     });
     
+    // Handle browser back/forward navigation (history restore)
+    document.body.addEventListener('htmx:historyRestore', function(evt) {
+      document.getElementById('main-content')?.classList.remove('opacity-50');
+      updateActiveNavLink();
+    });
+    
     // Update active navigation link based on current URL
     function updateActiveNavLink() {
       const currentPath = window.location.pathname;
