@@ -46,8 +46,8 @@ export async function homePage(): Promise<string> {
       
       <p class="text-lg opacity-80 mb-4 leading-relaxed">
         I'm a 5x Founder/CTO, Digital Product Innovation Strategist, and Engineer with 
-        credits including leading <a href="https://www.virginamerica.com" target="_blank" class="link link-secondary">Virgin America</a>'s award-winning digital 
-        transformation, <a href="https://www.apple.com" target="_blank" class="link link-secondary">Apple</a>'s "Today at Apple" program, and serving as 
+        credits including leading <a href="https://work.co/clients/virgin-america/" target="_blank" class="link link-secondary">Virgin America</a>'s award-winning digital 
+        transformation, <a href="https://work.co/clients/apple/" target="_blank" class="link link-secondary">Apple</a>'s "Today at Apple" program, and serving as 
         Lead Architect for <a href="https://music.youtube.com" target="_blank" class="link link-secondary">YouTube Music</a> and <a href="https://tv.youtube.com" target="_blank" class="link link-secondary">YouTube TV</a>.
       </p>
       

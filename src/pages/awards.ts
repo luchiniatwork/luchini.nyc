@@ -2,7 +2,8 @@ import { layout } from "../lib/html.ts";
 
 // Award data organized by category
 const projectAwards = [
-  { year: "2018", award: "Digiday", achievement: "Best Brand Platform", project: "Givewith" },
+    { year: "2020", award: "Fast Company Innovation", achievement: "Best Design of Latin America", project: "Minha Claro"},
+    { year: "2018", award: "Digiday", achievement: "Best Brand Platform", project: "Givewith" },
   { year: "2018", award: "CES Innovation Awards", achievement: "Software and Mobile Apps", project: "Philz Coffee" },
   { year: "2018", award: "W3 Awards", achievement: "Best User Experience for Mobile Sites & Apps", project: "Philz Coffee" },
   { year: "2018", award: "HOW International Design Awards", achievement: "Website", project: "Aesop" },
