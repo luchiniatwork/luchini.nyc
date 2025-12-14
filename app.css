@@ -36,11 +36,13 @@
     scroll-behavior: smooth;
   }
   
-  /* Better text rendering */
+  /* Better text rendering and readability */
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
   }
 }
 
@@ -74,6 +76,12 @@
   --tw-prose-code: oklch(var(--a));
   --tw-prose-pre-code: oklch(var(--bc) / 0.9);
   --tw-prose-pre-bg: oklch(var(--b2));
+  line-height: 1.8;
+  letter-spacing: 0.015em;
+}
+
+.prose p {
+  margin-bottom: 1.5em;
 }
 
 .prose a {

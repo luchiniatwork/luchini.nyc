@@ -1,13 +1,9 @@
-import { layout, card, readingTime } from "../lib/html.ts";
-import { loadPosts, formatDate, type Post } from "../lib/posts.ts";
+import { layout, card } from "../lib/html.ts";
 
 /**
  * Homepage
  */
 export async function homePage(): Promise<string> {
-  const posts = await loadPosts();
-  const recentPosts = posts.slice(0, 3);
-  
   return layout(`
     <!-- Hero section -->
     <section class="py-8">
@@ -39,20 +35,6 @@ export async function homePage(): Promise<string> {
             class="rounded-xl shadow-lg w-full aspect-square object-cover"
           >
         </div>
-      </div>
-    </section>
-    
-    <!-- Recent posts -->
-    <section class="py-8 border-t border-base-300">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold">Recent Writing</h2>
-        <a href="/posts" class="btn btn-ghost btn-sm">
-          View all &rarr;
-        </a>
-      </div>
-      
-      <div class="grid gap-4">
-        ${recentPosts.map(post => recentPostCard(post)).join("")}
       </div>
     </section>
     
@@ -151,25 +133,4 @@ export async function homePage(): Promise<string> {
   });
 }
 
-/**
- * Recent post card for homepage
- */
-function recentPostCard(post: Post): string {
-  return `
-    <a href="/posts/${post.slug}" class="card bg-base-200 hover:bg-base-300 transition-colors group">
-      <div class="card-body py-4">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-          <h3 class="font-semibold group-hover:text-secondary transition-colors">
-            ${post.title}
-          </h3>
-          <div class="flex items-center gap-3 text-sm opacity-60 shrink-0">
-            <span>${readingTime(post.content)}</span>
-            <span>•</span>
-            <time>${formatDate(post.date)}</time>
-          </div>
-        </div>
-        <p class="text-sm opacity-70 line-clamp-2 mt-1">${post.excerpt}</p>
-      </div>
-    </a>
-  `;
-}
+

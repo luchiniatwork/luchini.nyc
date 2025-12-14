@@ -106,7 +106,6 @@ export function layout(content: string, options: LayoutOptions = {}): string {
 export function header(currentPath: string = "/"): string {
   const navLinks = [
     { href: "/", label: "Home", icon: "home" },
-    { href: "/posts", label: "Writing", icon: "pencil" },
     { href: "/open-source", label: "Open Source", icon: "code" },
     { href: "/awards", label: "Awards", icon: "trophy" },
   ];
