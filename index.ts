@@ -3,7 +3,9 @@ import { notFoundPage } from "./src/pages/not-found.ts";
 import { postsPage, tagsPage, tagPage } from "./src/pages/posts.ts";
 import { postPage } from "./src/pages/post.ts";
 import { staticPage } from "./src/pages/page.ts";
-import { loadPosts, formatDate } from "./src/lib/posts.ts";
+import { awardsPage } from "./src/pages/awards.ts";
+import { openSourcePage } from "./src/pages/open-source.ts";
+import { loadPosts } from "./src/lib/posts.ts";
 
 // Check if we're in development mode
 const isDev = process.env.NODE_ENV !== "production";
@@ -109,7 +111,23 @@ async function handleRequest(req: Request): Promise<Response> {
     });
   }
 
-  // Static pages (awards, portfolio, open-source, media, running)
+  // Awards page
+  if (path === "/awards" || path === "/awards/") {
+    const html = await awardsPage();
+    return new Response(html, {
+      headers: { "Content-Type": "text/html" },
+    });
+  }
+
+  // Open Source page
+  if (path === "/open-source" || path === "/open-source/") {
+    const html = await openSourcePage();
+    return new Response(html, {
+      headers: { "Content-Type": "text/html" },
+    });
+  }
+
+  // Static pages (portfolio, media, running)
   const pageMatch = path.match(/^\/([a-z-]+)\/?$/);
   if (pageMatch && pageMatch[1]) {
     const slug = pageMatch[1];

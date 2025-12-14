@@ -1,4 +1,4 @@
-import { layout, card } from "../lib/html.ts";
+import { layout } from "../lib/html.ts";
 
 /**
  * Homepage
@@ -42,56 +42,66 @@ export async function homePage(): Promise<string> {
     <section class="py-8 border-t border-base-300">
       <h2 class="text-2xl font-bold mb-6">About</h2>
       
-      <div class="prose prose-invert max-w-none">
-        <p>
-          I'm a CTO, Digital Product Innovation Strategist, and Engineer with 
-          credits including leading Virgin America's award-winning digital 
-          transformation, Apple's "Today at Apple" program, and serving as 
-          Lead Architect for YouTube Music and YouTube TV.
-        </p>
+      <p class="text-lg opacity-80 mb-4 leading-relaxed">
+        I'm a CTO, Digital Product Innovation Strategist, and Engineer with 
+        credits including leading Virgin America's award-winning digital 
+        transformation, Apple's "Today at Apple" program, and serving as 
+        Lead Architect for YouTube Music and YouTube TV.
+      </p>
+      
+      <p class="text-lg opacity-80 mb-8 leading-relaxed">
+        Recipient of <strong>4 Cannes Lions</strong> (including Titanium and Grand Prix), 
+        <strong>5 Webby Awards</strong>, and numerous other industry recognitions for 
+        work spanning Fortune 500 companies and high-growth startups.
+      </p>
+      
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="bg-base-200 rounded-xl p-5 hover:bg-base-300 transition-colors">
+          <h3 class="font-semibold mb-4">Career Highlights</h3>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2">
+              <span class="text-secondary">→</span>
+              <span>Built and led global teams of 100+ engineers</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-secondary">→</span>
+              <span>Delivered products used by millions daily</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-secondary">→</span>
+              <span>Speaker at Clojure/conj, Heart of Clojure</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-secondary">→</span>
+              <span>Dual MBA from Columbia & London Business School</span>
+            </li>
+          </ul>
+        </div>
         
-        <p>
-          Recipient of <strong>4 Cannes Lions</strong> (including Titanium and Grand Prix), 
-          <strong>5 Webby Awards</strong>, and numerous other industry recognitions for 
-          work spanning Fortune 500 companies and high-growth startups.
-        </p>
-        
-        <div class="grid sm:grid-cols-2 gap-6 not-prose mt-8">
-          ${card("Career Highlights", `
-            <ul class="text-sm space-y-2 mt-2">
-              <li class="flex items-start gap-2">
-                <span class="text-secondary">→</span>
-                <span>Built and led global teams of 100+ engineers</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-secondary">→</span>
-                <span>Delivered products used by millions daily</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-secondary">→</span>
-                <span>Speaker at Clojure/conj, Heart of Clojure</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-secondary">→</span>
-                <span>Dual MBA from Columbia & London Business School</span>
-              </li>
-            </ul>
-          `)}
-          
-          ${card("Get in Touch", `
-            <p class="text-sm opacity-80 mt-2 mb-3">
-              Open to conversations about:
-            </p>
-            <ul class="text-sm space-y-1">
-              <li>• Advisory & investment opportunities</li>
-              <li>• Speaking engagements</li>
-              <li>• Podcasts & interviews</li>
-              <li>• Engineering leadership</li>
-            </ul>
-            <a href="mailto:tiago@luchini.nyc" class="btn btn-secondary btn-sm mt-4">
-              Say hello
-            </a>
-          `)}
+        <div class="bg-base-200 rounded-xl p-5 hover:bg-base-300 transition-colors">
+          <h3 class="font-semibold mb-4">Get in Touch</h3>
+          <p class="opacity-70 mb-4">Open to conversations about:</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2">
+              <span class="text-secondary">→</span>
+              <span>Advisory & investment opportunities</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-secondary">→</span>
+              <span>Speaking engagements</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-secondary">→</span>
+              <span>Podcasts & interviews</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-secondary">→</span>
+              <span>Engineering leadership</span>
+            </li>
+          </ul>
+          <a href="mailto:tiago@luchini.nyc" class="btn btn-secondary btn-sm mt-4">
+            Say hello
+          </a>
         </div>
       </div>
     </section>
