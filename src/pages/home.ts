@@ -19,11 +19,11 @@ export async function homePage(): Promise<string> {
             and more. 20+ years bridging business and technology across 4 continents.
           </p>
           <div class="flex flex-wrap gap-3">
-            <a href="/posts" class="btn btn-secondary">
-              Read my writing
-            </a>
             <a href="/open-source" class="btn btn-outline">
               Open source
+            </a>
+            <a href="/awards" class="btn btn-outline">
+              Awards
             </a>
           </div>
         </div>
@@ -99,9 +99,11 @@ export async function homePage(): Promise<string> {
               <span>Engineering leadership</span>
             </li>
           </ul>
-          <a href="mailto:tiago@luchini.nyc" class="btn btn-secondary btn-sm mt-4">
-            Say hello
-          </a>
+          <div class="flex mt-4">
+            <a href="mailto:tiago@luchini.nyc" class="btn btn-secondary ml-auto">
+              Say hello
+            </a>
+          </div>
         </div>
       </div>
     </section>
