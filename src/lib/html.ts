@@ -93,7 +93,6 @@ export function layout(content: string, options: LayoutOptions = {}): string {
     });
     document.body.addEventListener('htmx:afterSwap', function(evt) {
       document.getElementById('main-content')?.classList.remove('opacity-50');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
       updateActiveNavLink();
     });
     
@@ -158,8 +157,8 @@ export function header(currentPath: string = "/"): string {
                    class="btn btn-ghost btn-sm ${isActive(link.href) ? 'btn-active text-secondary' : ''}"
                    hx-indicator="#loading-indicator"
                    hx-target="#main-content"
-                   hx-select="#main-content"
-                   hx-swap="innerHTML transition:true">
+                   hx-select="main#main-content > *"
+                   hx-swap="innerHTML show:window:top">
                   ${link.label}
                 </a>
               `).join("")}
