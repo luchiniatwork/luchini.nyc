@@ -73,17 +73,28 @@ export function layout(content: string, options: LayoutOptions = {}): string {
     <div class="h-1 bg-secondary animate-pulse"></div>
   </div>
   
-  <!-- Header (outside container for full-width sticky) -->
-  ${header(currentPath)}
-  
-  <div class="container mx-auto px-4 max-w-4xl">
-    <!-- Main content with transition -->
-    <main id="main-content" class="py-8 transition-opacity duration-200">
-      ${content}
-    </main>
+  <!-- Mobile drawer wrapper -->
+  <div class="drawer">
+    <input id="nav-drawer" type="checkbox" class="drawer-toggle" />
     
-    <!-- Footer -->
-    ${footer()}
+    <!-- Page content -->
+    <div class="drawer-content">
+      <!-- Header (outside container for full-width sticky) -->
+      ${header(currentPath)}
+      
+      <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Main content with transition -->
+        <main id="main-content" class="py-8 transition-opacity duration-200">
+          ${content}
+        </main>
+        
+        <!-- Footer -->
+        ${footer()}
+      </div>
+    </div>
+    
+    <!-- Mobile drawer sidebar -->
+    ${mobileDrawer(currentPath)}
   </div>
   
   <script>
@@ -94,6 +105,7 @@ export function layout(content: string, options: LayoutOptions = {}): string {
     document.body.addEventListener('htmx:afterSwap', function(evt) {
       document.getElementById('main-content')?.classList.remove('opacity-50');
       updateActiveNavLink();
+      closeDrawer();
     });
     
     // Handle browser back/forward navigation (history restore)
@@ -102,10 +114,16 @@ export function layout(content: string, options: LayoutOptions = {}): string {
       updateActiveNavLink();
     });
     
+    // Close mobile drawer after navigation
+    function closeDrawer() {
+      const drawer = document.getElementById('nav-drawer');
+      if (drawer) drawer.checked = false;
+    }
+    
     // Update active navigation link based on current URL
     function updateActiveNavLink() {
       const currentPath = window.location.pathname;
-      const navLinks = document.querySelectorAll('nav a[href]');
+      const navLinks = document.querySelectorAll('nav a[href], .drawer-side a[href]');
       
       navLinks.forEach(link => {
         const href = link.getAttribute('href');
@@ -125,16 +143,28 @@ export function layout(content: string, options: LayoutOptions = {}): string {
 </html>`;
 }
 
+/** Navigation links configuration */
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/open-source", label: "Open Source" },
+  { href: "/awards", label: "Awards" },
+];
+
+/** Social links configuration */
+const socialLinks = [
+  { href: "https://twitter.com/tiagoluchini", label: "Twitter", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>` },
+  { href: "https://github.com/luchiniatwork", label: "GitHub", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>` },
+  { href: "https://linkedin.com/in/tiagoluchini", label: "LinkedIn", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>` },
+  { href: "mailto:tiago@luchini.nyc", label: "Email", icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>` },
+];
+
+/** Hamburger menu icon */
+const hamburgerIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>`;
+
 /**
  * Header with navigation
  */
 export function header(currentPath: string = "/"): string {
-  const navLinks = [
-    { href: "/", label: "Home", icon: "home" },
-    { href: "/open-source", label: "Open Source", icon: "code" },
-    { href: "/awards", label: "Awards", icon: "trophy" },
-  ];
-  
   const isActive = (href: string) => {
     if (href === "/") return currentPath === "/";
     return currentPath?.startsWith(href);
@@ -143,15 +173,20 @@ export function header(currentPath: string = "/"): string {
   return `
     <header class="sticky top-0 z-40 bg-base-100 shadow-sm">
       <div class="container mx-auto px-4 max-w-4xl py-4">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div class="flex items-center justify-between">
+          <!-- Hamburger button (mobile only) -->
+          <label for="nav-drawer" class="btn btn-ghost btn-square sm:hidden" aria-label="Open menu">
+            ${hamburgerIcon}
+          </label>
+          
           <!-- Logo/Name -->
           <a href="/" class="text-xl font-bold hover:text-secondary transition-colors">
             Tiago Luchini
           </a>
           
-          <!-- Navigation and Social -->
-          <div class="flex flex-wrap items-center gap-4">
-            <nav class="flex flex-wrap items-center gap-1">
+          <!-- Desktop Navigation (hidden on mobile) -->
+          <div class="hidden sm:flex items-center gap-4 ml-auto">
+            <nav class="flex items-center gap-1">
               ${navLinks.map(link => `
                 <a href="${link.href}" 
                    class="btn btn-ghost btn-sm ${isActive(link.href) ? 'btn-active text-secondary' : ''}"
@@ -166,23 +201,73 @@ export function header(currentPath: string = "/"): string {
             
             <!-- Social links -->
             <div class="flex items-center gap-1 border-l border-base-300 pl-4">
-              <a href="https://twitter.com/tiagoluchini" class="btn btn-ghost btn-sm btn-square" aria-label="Twitter" target="_blank" rel="noopener noreferrer" hx-boost="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
-              <a href="https://github.com/luchiniatwork" class="btn btn-ghost btn-sm btn-square" aria-label="GitHub" target="_blank" rel="noopener noreferrer" hx-boost="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              </a>
-              <a href="https://linkedin.com/in/tiagoluchini" class="btn btn-ghost btn-sm btn-square" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" hx-boost="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              </a>
-              <a href="mailto:tiago@luchini.nyc" class="btn btn-ghost btn-sm btn-square" aria-label="Email" hx-boost="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
-              </a>
+              ${socialLinks.map(link => `
+                <a href="${link.href}" 
+                   class="btn btn-ghost btn-sm btn-square" 
+                   aria-label="${link.label}" 
+                   ${link.href.startsWith('mailto:') ? '' : 'target="_blank" rel="noopener noreferrer"'} 
+                   hx-boost="false">
+                  ${link.icon}
+                </a>
+              `).join("")}
             </div>
           </div>
         </div>
       </div>
     </header>`;
+}
+
+/**
+ * Mobile drawer sidebar
+ */
+export function mobileDrawer(currentPath: string = "/"): string {
+  const isActive = (href: string) => {
+    if (href === "/") return currentPath === "/";
+    return currentPath?.startsWith(href);
+  };
+  
+  return `
+    <div class="drawer-side z-50">
+      <label for="nav-drawer" class="drawer-overlay" aria-label="Close menu"></label>
+      <div class="menu bg-base-200 min-h-full w-64 p-4">
+        <!-- Drawer header -->
+        <div class="mb-4 pb-4 border-b border-base-300">
+          <span class="text-lg font-bold">Tiago Luchini</span>
+        </div>
+        
+        <!-- Navigation links -->
+        <ul class="space-y-1">
+          ${navLinks.map(link => `
+            <li>
+              <a href="${link.href}" 
+                 class="btn btn-ghost justify-start ${isActive(link.href) ? 'btn-active text-secondary' : ''}"
+                 hx-indicator="#loading-indicator"
+                 hx-target="#main-content"
+                 hx-select="main#main-content > *"
+                 hx-swap="innerHTML show:window:top">
+                ${link.label}
+              </a>
+            </li>
+          `).join("")}
+        </ul>
+        
+        <!-- Social links -->
+        <div class="mt-auto pt-4 border-t border-base-300">
+          <p class="text-sm opacity-60 mb-2">Connect</p>
+          <div class="flex items-center gap-1">
+            ${socialLinks.map(link => `
+              <a href="${link.href}" 
+                 class="btn btn-ghost btn-sm btn-square" 
+                 aria-label="${link.label}" 
+                 ${link.href.startsWith('mailto:') ? '' : 'target="_blank" rel="noopener noreferrer"'} 
+                 hx-boost="false">
+                ${link.icon}
+              </a>
+            `).join("")}
+          </div>
+        </div>
+      </div>
+    </div>`;
 }
 
 /**
