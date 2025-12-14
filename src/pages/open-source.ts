@@ -104,7 +104,7 @@ export async function openSourcePage(): Promise<string> {
     <section class="py-8">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Open Source</h1>
       <p class="text-lg opacity-80 mb-8 max-w-2xl">
-        A collection of Clojure libraries, tools, and experiments. 
+        A collection of libraries, tools, and experiments. 
         Focused on domain modeling, resilience patterns, and developer productivity.
       </p>
       
