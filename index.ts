@@ -37,6 +37,14 @@ async function handleRequest(req: Request): Promise<Response> {
   const url = new URL(req.url);
   const path = url.pathname;
 
+  // Redirect www to apex domain
+  if (url.hostname === "www.luchini.nyc") {
+    return Response.redirect(
+      `https://luchini.nyc${url.pathname}${url.search}`,
+      301
+    );
+  }
+
   // Serve static files from public directory
   if (
     path.startsWith("/img/") ||
