@@ -4,18 +4,18 @@
   "description": "## Dependencies",
   "main": "index.js",
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.17",
-    "daisyui": "^5.5.8",
+    "@tailwindcss/cli": "^4.1.18",
+    "daisyui": "^5.5.14",
     "marked": "^17.0.1",
-    "tailwindcss": "^4.1.17"
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
-    "@types/bun": "latest",
+    "@types/bun": "^1.3.4",
     "bun-html-live-reload": "^1.0.4"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   },
   "scripts": {
     "build:css": "bunx @tailwindcss/cli -i app.css -o public/output.css",
