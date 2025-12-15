@@ -7,26 +7,47 @@ export interface LayoutOptions {
   description?: string;
   author?: string;
   currentPath?: string;
+  enableAnalytics?: boolean;
 }
+
+// Check if we're in production (analytics only enabled in production)
+export const isProduction = process.env.NODE_ENV === "production";
 
 const defaultOptions: LayoutOptions = {
   title: "Tiago Luchini",
   description: "CTO, Digital Product Innovation Strategist, Business Leader, and Engineer",
   author: "Tiago Luchini",
   currentPath: "/",
+  enableAnalytics: isProduction,
 };
 
+// Google Analytics 4 Measurement ID (only used in production)
+const GA4_MEASUREMENT_ID = "G-C3BX0EC0LK";
+
 /**
- * Base HTML layout wrapper
+ * Generate GA4 tracking script
  */
+function analyticsScript(): string {
+  return `
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${GA4_MEASUREMENT_ID}');
+  </script>`;
+}
+
 export function layout(content: string, options: LayoutOptions = {}): string {
-  const { title, description, author, currentPath } = { ...defaultOptions, ...options };
+  const { title, description, author, currentPath, enableAnalytics } = { ...defaultOptions, ...options };
   
   return `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  ${enableAnalytics ? analyticsScript() : ""}
   <title>${title}</title>
   <meta name="description" content="${description}">
   <meta name="author" content="${author}">
