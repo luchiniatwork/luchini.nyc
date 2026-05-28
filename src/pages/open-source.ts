@@ -57,13 +57,13 @@ const categories: ProjectCategory[] = [
   },
 
   {
-    id: "forks",
-    title: "Active Forks",
-    subtitle: "Maintained forks with improvements",
-    icon: "git-branch",
+    id: "ai",
+    title: "AI Projects",
+    subtitle: "Agent infrastructure and collaboration tools",
+    icon: "sparkles",
     projects: [
-      { name: "garden-watcher", url: "https://github.com/luchiniatwork/garden-watcher", description: "Component that watches and recompiles Garden stylesheets" },
-      { name: "hystrix-event-stream-clj", url: "https://github.com/luchiniatwork/hystrix-event-stream-clj", description: "Easy Hystrix event stream output in Clojure" },
+      { name: "Moneta", url: "https://github.com/luchiniatwork/moneta", description: "Shared persistent memory for AI coding agents" },
+      { name: "Eshu", url: "https://github.com/luchiniatwork/eshu", description: "Messaging system for AI agents and humans" },
     ]
   },
   {
@@ -105,7 +105,7 @@ export async function openSourcePage(): Promise<string> {
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Open Source</h1>
       <p class="text-lg opacity-80 mb-8 max-w-2xl">
         A collection of libraries, tools, and experiments. 
-        Focused on domain modeling, resilience patterns, and developer productivity.
+        Focused on domain modeling, resilience patterns, AI agent infrastructure, and developer productivity.
       </p>
       
       <!-- Stats -->
@@ -216,7 +216,7 @@ function getCategoryIcon(categoryId: string, size: "sm" | "md" = "md"): string {
     resilience4clj: `<svg xmlns="http://www.w3.org/2000/svg" width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-secondary"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>`,
     standalone: `<svg xmlns="http://www.w3.org/2000/svg" width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-secondary"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>`,
     company: `<svg xmlns="http://www.w3.org/2000/svg" width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-secondary"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>`,
-    forks: `<svg xmlns="http://www.w3.org/2000/svg" width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-secondary"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></svg>`,
+    ai: `<svg xmlns="http://www.w3.org/2000/svg" width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-secondary"><path d="M12 3v3"/><path d="M18.36 5.64 16.24 7.76"/><path d="M21 12h-3"/><path d="m18.36 18.36-2.12-2.12"/><path d="M12 18v3"/><path d="m5.64 18.36 2.12-2.12"/><path d="M3 12h3"/><path d="m5.64 5.64 2.12 2.12"/><circle cx="12" cy="12" r="3"/></svg>`,
     tools: `<svg xmlns="http://www.w3.org/2000/svg" width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-secondary"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
     legacy: `<svg xmlns="http://www.w3.org/2000/svg" width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-secondary"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>`,
   };
