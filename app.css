@@ -195,7 +195,7 @@ a.card:hover,
 
 /* Selection color */
 ::selection {
-  background: oklch(var(--s) / 0.3);
+  background: hsl(var(--s) / 0.3);
 }
 
 /* Focus styles */
