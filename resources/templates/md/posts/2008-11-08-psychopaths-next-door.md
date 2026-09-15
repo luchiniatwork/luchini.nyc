@@ -1,7 +1,10 @@
-{:title  "Psychopaths Next Door"
- :layout :post
- :date   "2008-11-08"
- :tags   ["management" "life"]}
+---
+title: "Psychopaths Next Door"
+layout: post
+date: 2008-11-08
+tags: ["management", "life"]
+draft: true
+---
 
 There are around 69 million psychopaths in the world, around 1% of the human population. The psychopaths we normally hear about are quite violent. Therefore, it is no surprise that prisons are among the places where you find them in quantity: 20% of prisoners and 86,5% of serial killers are considered psychopaths.
 

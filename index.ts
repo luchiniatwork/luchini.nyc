@@ -34,14 +34,19 @@ function getContentType(path: string): string {
 
 // Request handler
 async function handleRequest(req: Request): Promise<Response> {
-  const url = new URL(req.url);
+  let url: URL;
+  try {
+    url = new URL(req.url);
+  } catch {
+    return new Response("Bad Request", { status: 400 });
+  }
   const path = url.pathname;
 
   // Redirect www to apex domain
   if (url.hostname === "www.luchini.nyc") {
     return Response.redirect(
       `https://luchini.nyc${url.pathname}${url.search}`,
-      301
+      301,
     );
   }
 
@@ -97,6 +102,25 @@ async function handleRequest(req: Request): Promise<Response> {
     return new Response(html, {
       headers: { "Content-Type": "text/html" },
     });
+  }
+
+  // Post-local assets (e.g. /posts/2007-08-15-slug/image.gif)
+  const postAssetMatch = path.match(
+    /^\/posts\/(\d{4}-\d{2}-\d{2}-[^/]+\/[^/]+)$/,
+  );
+  if (
+    postAssetMatch &&
+    postAssetMatch[1] &&
+    !postAssetMatch[1].includes("..")
+  ) {
+    const file = Bun.file(
+      `./resources/templates/md/posts/${postAssetMatch[1]}`,
+    );
+    if (await file.exists()) {
+      return new Response(file, {
+        headers: { "Content-Type": getContentType(path) },
+      });
+    }
   }
 
   // Single blog post
@@ -160,18 +184,22 @@ async function handleRequest(req: Request): Promise<Response> {
 async function generateRSSFeed(): Promise<string> {
   const posts = await loadPosts();
   const recentPosts = posts.slice(0, 20); // Last 20 posts
-  
-  const items = recentPosts.map(post => `
+
+  const items = recentPosts
+    .map(
+      (post) => `
     <item>
       <title><![CDATA[${post.title}]]></title>
       <link>https://luchini.nyc/posts/${post.slug}</link>
       <guid>https://luchini.nyc/posts/${post.slug}</guid>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       <description><![CDATA[${post.excerpt}]]></description>
-      ${(post.tags || []).map(tag => `<category>${tag}</category>`).join("")}
+      ${(post.tags || []).map((tag) => `<category>${tag}</category>`).join("")}
     </item>
-  `).join("");
-  
+  `,
+    )
+    .join("");
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>

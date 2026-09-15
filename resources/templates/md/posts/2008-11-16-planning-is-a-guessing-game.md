@@ -1,7 +1,10 @@
-{:title  "Planning for the future is a guessing game"
- :layout :post
- :date   "2008-11-16"
- :tags   ["management" "life"]}
+---
+title: "Planning for the future is a guessing game"
+layout: post
+date: 2008-11-16
+tags: ["management", "life"]
+draft: true
+---
 
 In my first draft of this article, the opening sentence was "Planning is dangerous". But I decided to change it, as I do not want to sound like I am completely against planning.
 

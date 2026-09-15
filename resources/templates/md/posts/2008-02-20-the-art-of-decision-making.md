@@ -1,7 +1,10 @@
-{:title  "The art of decision-making - There is nothing more dangerous than hesitation"
- :layout :post
- :date   "2008-02-20"
- :tags   ["management" "life"]}
+---
+title: "The art of decision-making - There is nothing more dangerous than hesitation"
+layout: post
+date: 2008-02-20
+tags: ["management", "life"]
+draft: true
+---
 
 At some point in our academic life we all learn about decision-making - if not in theory, at least in practice. Even with all the tools available and other paraphernalia to support decision-making, there is one subject missing from our curriculum: responsiveness. Forget Pareto, grid analysis or Kepner- Tregoe: when deciding, you need, above all, responsiveness.
 

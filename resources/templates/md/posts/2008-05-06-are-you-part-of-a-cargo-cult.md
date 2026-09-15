@@ -1,7 +1,10 @@
-{:title  "Are you part of a cargo cult, searching for the formula for success?"
- :layout :post
- :date   "2008-05-06"
- :tags   ["management" "life" "technology"]}
+---
+title: "Are you part of a cargo cult, searching for the formula for success?"
+layout: post
+date: 2008-05-06
+tags: ["management", "life", "technology"]
+draft: true
+---
 
 Have you ever heard of cargo cults? It is a very interesting manifestation of human behavior and one of the most incredible anthropological events of our time.
 

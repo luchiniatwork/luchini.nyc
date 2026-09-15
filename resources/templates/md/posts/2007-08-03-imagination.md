@@ -1,7 +1,10 @@
-{:title  "Imagination"
- :layout :post
- :date   "2007-08-03"
- :tags   ["technology" "life"]}
+---
+title: "Imagination"
+layout: post
+date: 2007-08-03
+tags: ["technology", "life"]
+draft: true
+---
 
 In a world full of censorial inputs we are rapidly loosing our
 imagination and delegating creations 100% to movie makers and market

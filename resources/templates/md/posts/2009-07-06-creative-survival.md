@@ -1,7 +1,10 @@
-{:title  "Creative survival – Harnessing our resources"
- :layout :post
- :date   "2009-07-06"
- :tags   ["management" "business"]}
+---
+title: "Creative survival – Harnessing our resources"
+layout: post
+date: 2009-07-06
+tags: ["management", "business"]
+draft: true
+---
 
 Where I come from, creativity is a requirement for survival. The standard stereotype of a Brazilian is one of extreme creative resourcefulness. Creativity in this case unfortunately does not mean - in the traditional sense of the word - the ability to express oneself in a work of art. Instead it means the art of imaginatively harnessing the resources around oneself in order to survive yet another day.
 

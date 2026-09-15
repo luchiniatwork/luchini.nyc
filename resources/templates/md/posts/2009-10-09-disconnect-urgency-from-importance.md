@@ -1,7 +1,10 @@
-{:title  "Disconnect urgency from importance – How to know when the time is ripe"
- :layout :post
- :date   "2009-10-09"
- :tags   ["management" "business"]}
+---
+title: "Disconnect urgency from importance – How to know when the time is ripe"
+layout: post
+date: 2009-10-09
+tags: ["management", "business"]
+draft: true
+---
 
 When it comes to time management, an important tool on the leader's belt is the ability to say ‘no’.
 

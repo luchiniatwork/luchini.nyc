@@ -1,7 +1,10 @@
-{:title  "Usability really matters"
- :layout :post
- :date   "2007-12-18"
- :tags   ["usability" "technology"]}
+---
+title: "Usability really matters"
+layout: post
+date: 2007-12-18
+tags: ["usability", "technology"]
+draft: true
+---
 
 How come that these big companies that advertise their mega-ultra
 ability to research usability issues simply forget about them?

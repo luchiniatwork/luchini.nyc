@@ -1,7 +1,10 @@
-{:title  "10 things I learned after a long EJB3 project"
- :layout :post
- :date   "2007-06-11"
- :tags   ["technology" "java"]}
+---
+title: "10 things I learned after a long EJB3 project"
+layout: post
+date: 2007-06-11
+tags: ["technology", "java"]
+draft: true
+---
 
 From time to time, I am one of those lucky professionals having the chance of working with state-of-the-art and break-through technologies.
 
@@ -28,7 +31,6 @@ Having said all these nice things, let's check the bad facts.
 - although not specifically stated on the spec but technically possible, injecting environment entries into entity beans does not work. The xml schema definition refuses the ejb-jar descriptor when this approach is tried.
 - furthermore, other injections also seem to be just ignored by the EJB container.
 
-
 **3) Default Entity Listeners**
 
 - the spec is really confusing and dubious at this point. Although the documentation points to a certain xml format with default entity listeners been possible, the official xml definition file does not even consider this directly.
@@ -43,7 +45,7 @@ Having said all these nice things, let's check the bad facts.
 **5) @GeneratedValue does not work in composite primary-keys**
 
 - although nothing technical could actually deny this concept, JBoss does not implement it at all.
-- there is a JIRA entry regarding this subject at http://jira.jboss.com/jira/browse/EJBTHREE-508 but the resolution state is "rejected" due to the quite arguable comment of "this is not expected to work. It doesn't really make sense to get a PK including a surrogate key and something else"
+- there is a JIRA entry regarding this subject at <http://jira.jboss.com/jira/browse/EJBTHREE-508> but the resolution state is "rejected" due to the quite arguable comment of "this is not expected to work. It doesn't really make sense to get a PK including a surrogate key and something else"
 
 **6) Persistency cascading and multiple persistence fails if not proper surrogate key is previously given**
 

@@ -1,7 +1,10 @@
-{:title  "Flex Chart - High-low and dashed lines"
- :layout :post
- :date   "2007-10-17"
- :tags   ["technology" "actionscript"]}
+---
+title: "Flex Chart - High-low and dashed lines"
+layout: post
+date: 2007-10-17
+tags: ["technology", "actionscript"]
+draft: true
+---
 
 Recently I came across what should be a quite simple scenario but,
 thanks to Adobe, it provided me with some interesting challenges.

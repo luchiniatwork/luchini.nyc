@@ -1,26 +1,59 @@
-import { layout, readingTime } from "../lib/html.ts";
-import { loadPosts, getPostsByYear, formatDate, type Post } from "../lib/posts.ts";
+import { layout, readingTime, escapeHtml } from "../lib/html.ts";
+import {
+  loadPosts,
+  getPostsByYear,
+  formatDate,
+  type Post,
+} from "../lib/posts.ts";
 
 /**
  * Blog archive page - lists all posts
  */
 export async function postsPage(): Promise<string> {
   const postsByYear = await getPostsByYear();
-  const years = Array.from(postsByYear.keys()).sort((a, b) => b.localeCompare(a));
-  
-  const postsList = years.map(year => {
-    const posts = postsByYear.get(year)!;
-    return `
+  const years = Array.from(postsByYear.keys()).sort((a, b) =>
+    b.localeCompare(a),
+  );
+
+  if (years.length === 0) {
+    return layout(
+      `
+    <header class="py-4">
+      <h1 class="text-4xl font-bold mb-2">Writing</h1>
+      <p class="text-lg opacity-70">
+        Thoughts on technology, leadership, and life.
+      </p>
+    </header>
+
+    <div class="py-16 text-center">
+      <p class="text-lg opacity-70">No posts published yet &mdash; check back soon.</p>
+    </div>
+  `,
+      {
+        title: "Writing - Tiago Luchini",
+        description:
+          "Blog posts on technology, leadership, and life by Tiago Luchini",
+        currentPath: "/posts",
+      },
+    );
+  }
+
+  const postsList = years
+    .map((year) => {
+      const posts = postsByYear.get(year)!;
+      return `
       <div class="mb-10">
         <h2 class="text-2xl font-bold mb-4 text-secondary">${year}</h2>
         <div class="space-y-3">
-          ${posts.map(post => postCard(post)).join("")}
+          ${posts.map((post) => postCard(post)).join("")}
         </div>
       </div>
     `;
-  }).join("");
+    })
+    .join("");
 
-  return layout(`
+  return layout(
+    `
     <header class="py-4">
       <h1 class="text-4xl font-bold mb-2">Writing</h1>
       <p class="text-lg opacity-70">
@@ -35,11 +68,14 @@ export async function postsPage(): Promise<string> {
     </div>
     
     ${postsList}
-  `, { 
-    title: "Writing - Tiago Luchini",
-    description: "Blog posts on technology, leadership, and life by Tiago Luchini",
-    currentPath: "/posts"
-  });
+  `,
+    {
+      title: "Writing - Tiago Luchini",
+      description:
+        "Blog posts on technology, leadership, and life by Tiago Luchini",
+      currentPath: "/posts",
+    },
+  );
 }
 
 /**
@@ -52,7 +88,8 @@ function postCard(post: Post): string {
         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
           <div class="flex-1">
             <h3 class="font-semibold group-hover:text-secondary transition-colors">
-              ${post.title}
+              ${escapeHtml(post.title)}
+              ${post.draft ? `<span class="badge badge-sm badge-warning ml-2">draft</span>` : ""}
             </h3>
             <p class="text-sm opacity-60 line-clamp-2 mt-1">${post.excerpt}</p>
           </div>
@@ -60,13 +97,21 @@ function postCard(post: Post): string {
             <time>${formatDate(post.date)}</time>
           </div>
         </div>
-        ${post.tags && post.tags.length > 0 ? `
+        ${
+          post.tags && post.tags.length > 0
+            ? `
           <div class="flex flex-wrap gap-1 mt-2">
-            ${post.tags.map(tag => `
+            ${post.tags
+              .map(
+                (tag) => `
               <span class="badge badge-sm badge-outline opacity-60">${tag}</span>
-            `).join("")}
+            `,
+              )
+              .join("")}
           </div>
-        ` : ""}
+        `
+            : ""
+        }
       </div>
     </a>
   `;
@@ -78,7 +123,7 @@ function postCard(post: Post): string {
 export async function tagsPage(): Promise<string> {
   const posts = await loadPosts();
   const tagMap = new Map<string, Post[]>();
-  
+
   for (const post of posts) {
     for (const tag of post.tags || []) {
       if (!tagMap.has(tag)) {
@@ -87,10 +132,13 @@ export async function tagsPage(): Promise<string> {
       tagMap.get(tag)!.push(post);
     }
   }
-  
-  const sortedTags = Array.from(tagMap.entries()).sort((a, b) => b[1].length - a[1].length);
-  
-  return layout(`
+
+  const sortedTags = Array.from(tagMap.entries()).sort(
+    (a, b) => b[1].length - a[1].length,
+  );
+
+  return layout(
+    `
     <header class="py-4">
       <div class="flex items-center gap-2 mb-4">
         <a href="/posts" class="text-sm opacity-60 hover:opacity-100 transition-opacity">
@@ -104,18 +152,24 @@ export async function tagsPage(): Promise<string> {
     </header>
     
     <div class="flex flex-wrap gap-2 py-8">
-      ${sortedTags.map(([tag, tagPosts]) => `
+      ${sortedTags
+        .map(
+          ([tag, tagPosts]) => `
         <a href="/tags/${tag}" class="btn btn-outline gap-2">
           ${tag}
           <span class="badge badge-sm badge-secondary">${tagPosts.length}</span>
         </a>
-      `).join("")}
+      `,
+        )
+        .join("")}
     </div>
-  `, { 
-    title: "Tags - Tiago Luchini",
-    description: "Browse blog posts by topic",
-    currentPath: "/posts"
-  });
+  `,
+    {
+      title: "Tags - Tiago Luchini",
+      description: "Browse blog posts by topic",
+      currentPath: "/posts",
+    },
+  );
 }
 
 /**
@@ -123,22 +177,26 @@ export async function tagsPage(): Promise<string> {
  */
 export async function tagPage(tag: string): Promise<string> {
   const posts = await loadPosts();
-  const tagPosts = posts.filter(p => (p.tags || []).includes(tag));
-  
+  const tagPosts = posts.filter((p) => (p.tags || []).includes(tag));
+
   if (tagPosts.length === 0) {
-    return layout(`
+    return layout(
+      `
       <div class="text-center py-16">
         <h1 class="text-4xl font-bold mb-4">Tag not found</h1>
-        <p class="text-lg opacity-70 mb-8">No posts found with tag "${tag}"</p>
+        <p class="text-lg opacity-70 mb-8">No posts found with tag "${escapeHtml(tag)}"</p>
         <a href="/posts" class="btn btn-primary">Browse all posts</a>
       </div>
-    `, { 
-      title: `Tag: ${tag} - Tiago Luchini`,
-      currentPath: "/posts"
-    });
+    `,
+      {
+        title: `Tag: ${tag} - Tiago Luchini`,
+        currentPath: "/posts",
+      },
+    );
   }
-  
-  return layout(`
+
+  return layout(
+    `
     <header class="py-4">
       <div class="flex items-center gap-2 mb-4">
         <a href="/tags" class="text-sm opacity-60 hover:opacity-100 transition-opacity">
@@ -146,7 +204,7 @@ export async function tagPage(tag: string): Promise<string> {
         </a>
       </div>
       <h1 class="text-4xl font-bold mb-2">
-        <span class="opacity-40">#</span>${tag}
+        <span class="opacity-40">#</span>${escapeHtml(tag)}
       </h1>
       <p class="text-lg opacity-70">
         ${tagPosts.length} post${tagPosts.length === 1 ? "" : "s"}
@@ -154,11 +212,13 @@ export async function tagPage(tag: string): Promise<string> {
     </header>
     
     <div class="py-8 space-y-3">
-      ${tagPosts.map(post => postCard(post)).join("")}
+      ${tagPosts.map((post) => postCard(post)).join("")}
     </div>
-  `, { 
-    title: `#${tag} - Tiago Luchini`,
-    description: `Blog posts tagged with "${tag}"`,
-    currentPath: "/posts"
-  });
+  `,
+    {
+      title: `#${tag} - Tiago Luchini`,
+      description: `Blog posts tagged with "${tag}"`,
+      currentPath: "/posts",
+    },
+  );
 }

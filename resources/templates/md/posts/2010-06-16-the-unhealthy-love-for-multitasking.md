@@ -1,7 +1,10 @@
-{:title  "The unhealthy love for multitasking"
- :layout :post
- :date   "2010-06-16"
- :tags   ["management" "life"]}
+---
+title: "The unhealthy love for multitasking"
+layout: post
+date: 2010-06-16
+tags: ["management", "life"]
+draft: true
+---
 
 It has been a growing trend to praise multitasking.
 

@@ -1,8 +1,11 @@
-{:title  "What the force of proper motivation can achieve?"
- :layout :post
- :date   "2009-01-13"
- :tags   ["management" "life"]}
- 
+---
+title: "What the force of proper motivation can achieve?"
+layout: post
+date: 2009-01-13
+tags: ["management", "life"]
+draft: true
+---
+
 Non-Governmental Organizations (NGOs) have always amazed me. To learn about motivation we must pay a brief visit to the wonderful world of NGOs.
 
 Some NGOs, mainly the bigger ones, employ professionals. They of course need administrators, secretaries, IT managers and all sort of professionals commonly also employed by the private-sector.

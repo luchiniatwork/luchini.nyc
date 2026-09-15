@@ -1,14 +1,16 @@
-{:title  "12 thing I learned evangelizing Clojure at work"
- :layout :post
- :date   "2018-03-07"
- :tags   ["technology" "clojure"]}
+---
+title: "12 thing I learned evangelizing Clojure at work"
+layout: post
+date: 2018-03-07
+tags: ["technology", "clojure"]
+draft: true
+---
 
 ## Background
 
 A few days ago I stumbled on Didier's [observations from evangelizing Clojure at work for the last year](http://www.rubberducking.com/2018/03/my-observations-from-evangelizing.html). It's worth reading. His metaphors are graphical, down-to-earth, and beautifully accurate.
 
 During last year I was on a similar mission and, to build on Didier's points, here's a list of 12 things I learned broken down into 4 things that worked and I would do again, 4 things that didn't work but could easily be fixed, and 4 things that didn't work I wouldn't do again.
-
 
 ## Four things that worked and I would do again
 
@@ -42,7 +44,6 @@ Our successful Clojure cases were those where we allocated enough time for learn
 
 A caveat though: don't let the learning process be too long or too loose. Make sure you have targets and guidelines actively driven by experienced developers or you risk making the learning process morose and fruitless.
 
-
 ## Four things that did not work (but could be easily fixed)
 
 ### 1) Reloaded Workflow and Stuart Sierra's Components
@@ -74,7 +75,6 @@ After you get across the syntax barrier of Clojure there's a much, much bigger o
 All of us struggled - to one extent or another - with Clojure's purely functional nature in the early days. Some of us didn't get through that barrier because thinking with a functional perspective is much harder than learning Clojure itself.
 
 In retrospect we should have trained our team in functional programming (via Clojure of course) and not Clojure alone. It would have been a much smoother and enjoyable ride.
-
 
 ## Four things that did not work (and I won't do again)
 
@@ -109,7 +109,6 @@ This was by far our biggest mistake. Clojure was an abysmal failure in situation
 If your team has never worked with AWS, for instance, and you are trying to get Clojure at the same time, chances are things will be tougher and Clojure might get most of the blame.
 
 The reason is simple: it's just so much easier to find JavaScript examples online that solve exactly your problem for AWS with a simple copy & paste; you'll feel completely abandoned in your endeavors with this "alien Clojure" you haven't even grasped yet.
-
 
 ## Final words
 

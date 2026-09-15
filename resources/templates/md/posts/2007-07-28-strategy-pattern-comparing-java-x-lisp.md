@@ -1,7 +1,10 @@
-{:title  "Strategy Pattern: comparing Java vs. LISP"
- :layout :post
- :date   "2007-07-28"
- :tags   ["technology" "java" "lisp"]}
+---
+title: "Strategy Pattern: comparing Java vs. LISP"
+layout: post
+date: 2007-07-28
+tags: ["technology", "java", "lisp"]
+draft: true
+---
 
 Very brave authors dare to say that some Design Patterns are very simple to be implemented or just unnecessary on LISP. Their point is that Lisp has very good practices at its core so Design Patterns tend to arise easier.
 
@@ -61,6 +64,7 @@ We send a list containing 4 words (foo, bar, foobar and baz) to the `extract` me
 foo
 foobar
 ```
+
 **Strategy Pattern**
 
 So our code works. But hei... we are good programmers and our current solution is very limited. If, by any chance, our business rules change in the future, we will be facing a huge problem.

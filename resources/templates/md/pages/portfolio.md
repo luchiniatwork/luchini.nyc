@@ -1,7 +1,9 @@
-{:title "Portfolio"
- :layout :page
- :page-index 0
- :navbar? true}
+---
+title: "Portfolio"
+layout: page
+pageIndex: 0
+navbar: true
+---
 
 ## Technology
 

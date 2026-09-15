@@ -1,14 +1,15 @@
-{:title  "Testing the data layer of applications"
- :layout :post
- :toc    true
- :draft? true
- :date   "2018-03-10"
- :tags   ["technology" "clojure"]}
+---
+title: "Testing the data layer of applications"
+layout: post
+date: 2018-03-10
+tags: ["technology", "clojure"]
+toc: true
+draft: true
+---
 
 Integrating service providers into consumers is a messy business that's often overlooked. Coupling issues abound. Establishing and maintaining contracts alone can be a great deal of stress: who owns the contract? The provider or the consumer? What happens when contracts need to change? How do we manage breakage? Etc.
 
 This article shows a particular stack - chosen for its very attributes - and an accompaining workflow that together tackle some of these challenges.
-
 
 ## The scenario
 
@@ -22,7 +23,6 @@ Meanwhile, both app team and service team need to agree on the contract of the A
 
 Defining, agreeing, and evolving this contract is work. Very often the app team and the service team are not even in the same country. More often than not they are even from different companies. Still, they need to come to terms with that one touch point or everything falls apart.
 
-
 ## Where is the value, really?
 
 Before diving any further, there's something to consider: where is the value in the relationship between the app and the service layer?
@@ -32,7 +32,6 @@ There is a tendency to see value as delivered from the service tier to the consu
 However, there are some great ideas in the [Consumer-Driven Contract pattern](https://www.martinfowler.com/articles/consumerDrivenContracts.html) that would suggest otherwise. The proposed pardigm here is that the consumer defines the value of the contract - and not the other way around.
 
 In practice, the value of a service is always in proportion to it been consumed. A service provider sitting idly somewhere, not being used by anyone, does not have any value at all.
-
 
 ## The contract
 
@@ -48,7 +47,7 @@ Here's where documentation comes in. Hopefuly there will be a Swagger, API Bluep
 
 More often than we would like to confess, there's no documentation at all or the documentation is out of sync with the implementation.
 
-If the documentation is to be a contract but it's not up-to-date or is non-existant, what are we supposed to code against then? We need stronger 
+If the documentation is to be a contract but it's not up-to-date or is non-existant, what are we supposed to code against then? We need stronger
 
 TBD: talk about graphql and all
 

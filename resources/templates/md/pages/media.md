@@ -1,7 +1,9 @@
-{:title "Media"
- :layout :page
- :page-index 3
- :navbar? true}
+---
+title: "Media"
+layout: page
+pageIndex: 3
+navbar: true
+---
 
 ## Project-Related Publications
 

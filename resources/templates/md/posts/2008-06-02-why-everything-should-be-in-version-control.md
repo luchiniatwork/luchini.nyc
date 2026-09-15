@@ -1,8 +1,11 @@
-{:title  "Why everything should be in version control"
- :layout :post
- :date   "2008-06-02"
- :tags   ["technology"]}
- 
+---
+title: "Why everything should be in version control"
+layout: post
+date: 2008-06-02
+tags: ["technology"]
+draft: true
+---
+
 I hear a lot of criticism because of my decision to have project documentation stationed somewhere in the project's version control system. "Version control systems should be used for source-code only" is the kind of thing people tell me all the time.
 
 I am fully aware of the limitations of source control systems when it comes to binary files and I am also aware this is not the way most people work - but - as I see it - I am not "most people".

@@ -1,7 +1,10 @@
-{:title  "There are no geniuses"
- :layout :post
- :date   "2008-10-10"
- :tags   ["finland" "life"]}
+---
+title: "There are no geniuses"
+layout: post
+date: 2008-10-10
+tags: ["finland", "life"]
+draft: true
+---
 
 One of my personal mottoes is: "you are dead when you stop learning". I know it's a little clichè but it does make a lot of difference on your daily life if you can truly seek for new knowledge every single day - and trust me - I try very hard.
 

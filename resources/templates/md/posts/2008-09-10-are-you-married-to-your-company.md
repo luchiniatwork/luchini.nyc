@@ -1,7 +1,10 @@
-{:title  "Are you married to your company?"
- :layout :post
- :date   "2008-09-10"
- :tags   ["management" "life"]}
+---
+title: "Are you married to your company?"
+layout: post
+date: 2008-09-10
+tags: ["management", "life"]
+draft: true
+---
 
 The relationship between companies and employees is very similar to a marriage.
 
@@ -25,7 +28,7 @@ When recruiting new employees we normally ask candidates for their reason to cha
 
 Mending broken relationships is a pretty hard exercise, which we seldom are brave enough to endure. If communication and transparency are important assets when keeping trust alive, they are six-fold more important in restoring a relationship back to the level of trust.
 
-## So remember to...
+## So remember to
 
 - Work hard to keep your employer-employee relationship alive by being transparent and communicative.
 - Make sure that all those around you are aware of what is happening, of where we are going and what we are doing.

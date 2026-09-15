@@ -1,7 +1,10 @@
-{:title  "Coping with Change – keep pushing the barriers forward"
- :layout :post
- :date   "2008-10-06"
- :tags   ["management" "technology" "life"]}
+---
+title: "Coping with Change – keep pushing the barriers forward"
+layout: post
+date: 2008-10-06
+tags: ["management", "technology", "life"]
+draft: true
+---
 
 Unless you are a thrill-seeker, getting out of your comfort zone is hardly the first thing on your agenda.
 

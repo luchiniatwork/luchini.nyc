@@ -4,7 +4,7 @@ Plan for extending the markdown-sourced blog on luchini.nyc. Written 2026-09-14,
 
 ## Current state (evidence, pre-migration)
 
-- **Content:** `resources/templates/md/posts/*.md` — 51 posts, `YYYY-MM-DD-slug.md` filenames, Cryogen-style EDN frontmatter (`:title :layout :date :tags :abstract :draft?`); `resources/templates/md/pages/*.md` uses EDN too (`:page-index :navbar? :home?`)
+- **Content:** `resources/templates/md/posts/*.md` — 45 posts (+ 6 post-asset directories), `YYYY-MM-DD-slug.md` filenames, Cryogen-style EDN frontmatter (`:title :layout :date :tags :abstract :draft?`); `resources/templates/md/pages/*.md` uses EDN too (`:page-index :navbar? :home?`)
 - **Pipeline:** `src/lib/markdown.ts` (EDN frontmatter parser + marked) → `src/lib/posts.ts` (load/cache/query) → `src/pages/*.ts` (HTML strings) → routes in `index.ts`
 - **Existing routes:** `/posts` (archive by year), `/posts/:slug` (with prev/next nav, reading time), `/tags`, `/tags/:tag`, `/feed.xml` (last 20 posts)
 - **Tests:** `bun run test` runs Playwright, but there are zero spec files
@@ -21,7 +21,24 @@ Plan for extending the markdown-sourced blog on luchini.nyc. Written 2026-09-14,
 
 ## Phase 0 — Frontmatter migration & draft gate
 
+**Status: implemented (2026-09-15).** Migration verified (45 posts + 3 pages, metadata preserved, all posts `draft: true`); draft gate verified in dev and prod modes.
+
 One atomic change: parser swap, content migration, and draft filtering must ship together. The migration marks **every post `draft: true`** — nothing is publicly published until curated.
+
+Implementation notes — the legacy EDN parser turned out to be buggier than planned for, and the migration fixed these as a side effect:
+
+- Its keyword regex couldn't match `?`-suffixed keys, so `:draft?`/`:navbar?` were *never parsed* (root cause of the draft leak; also `navbar` flags on pages)
+- Its value-slicing broke on multi-space-aligned frontmatter, producing garbage `date` strings and silently dropping tags on posts that also set `:draft?`
+- Escaped quotes in titles were never unescaped (e.g. `\"community\"` rendered literally)
+
+The migration script is self-contained (`scripts/migrate-frontmatter.ts`, fixed EDN parser + YAML emitter), idempotent (skips already-migrated files), and includes a verification pass.
+
+Follow-up fixes from manual QA (2026-09-15):
+
+- `layout()` now HTML-escapes all frontmatter-derived head values (excerpts with quotes/embeds broke `content="..."` attributes and leaked text onto the page); post titles escaped in h1/cards, URL-derived tag names escaped in tag pages
+- `extractExcerpt` strips raw HTML tags so embeds don't leak into excerpts/RSS/meta
+- `.prose` heading sizes/weights restored in app.css (Tailwind v4 preflight had reset them; headings rendered as paragraphs)
+- Post-asset serving pulled forward from Phase 2.3: `/posts/<dated-dir>/<file>` now serves files from the legacy Cryogen asset directories (post images render)
 
 ### 0.1 Replace EDN parser with YAML
 

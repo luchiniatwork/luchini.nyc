@@ -1,8 +1,11 @@
-{:title  "West meets East: why does my Red Bull taste like tea?"
- :layout :post
- :date   "2009-05-20"
- :tags   ["management" "business" "china"]}
- 
+---
+title: "West meets East: why does my Red Bull taste like tea?"
+layout: post
+date: 2009-05-20
+tags: ["management", "business", "china"]
+draft: true
+---
+
 Some weeks ago Coca-Cola announced its Chinese ambition: triple annual sales of non-alcoholic drinks by 2020 in China alone. The number of cases sold will, in their plans, reach an annual amount of 30 billion. Coca-Cola's expansion plans target to double global revenues as high as 200USD billion annually in the next 10 years. The company expects that 60% of its new growth will come from China, India and other emerging markets.
 
 It comes without surprise that China is an attractive play-field for companies of all shapes and sizes. China's almost 1.6 billion people represents Earth's largest consuming market in one big blow. It is very tempting to any businessman or woman to see the potential here. As one walks around the streets of Beijing, it is easy to see the dream of huge profits knocking at the door: teenagers with their eyes glued to their portable video games, hundreds of modern mobile phones been used for all sorts of tasks, famous western brands been dressed from tip to toes, modern and new cars parading on the spotless 6, 7 or even 11-lane roads. All these signs of prosperity and modernity are already in place and are just small examples of a much bigger universe.

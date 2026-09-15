@@ -1,8 +1,11 @@
-{:title  "Leading by inspiration"
- :layout :post
- :date   "2009-06-12"
- :tags   ["management"]}
- 
+---
+title: "Leading by inspiration"
+layout: post
+date: 2009-06-12
+tags: ["management"]
+draft: true
+---
+
 While writing another article, about thinking differently, I bumped across a famous quote from George Patton: “If you tell people where to go, but not how to get there, you’ll be amazed at the results.”
 
 It has long been my personal leadership style not to control people. It is a difficult preposition for a total control-freak like me. If left to my own devices, I would make sure that every single person from my team was doing exactly as I instructed them. Indeed, I wrongly and accidentally tried this approach very early in my career. While effective in some sick way, it caused problems that are broadly shared by all teams under iron-fist bosses.

@@ -1,8 +1,10 @@
-{:title  "Delivering Software is an Ultra-Marathon; not a Series of Dashes"
- :layout :post
- :date   "2018-08-10"
- :tags   ["management" "software" "running"]
- :draft? true}
+---
+title: "Delivering Software is an Ultra-Marathon; not a Series of Dashes"
+layout: post
+date: 2018-08-10
+tags: ["management", "software", "running"]
+draft: true
+---
 
 The following tweet from Grady Brooch surfaced on my timeline today:
 
@@ -109,8 +111,6 @@ You need to hold those two in mind at the same time.
 ## You will need support (can't usually do it alone)
 
 ## It's not entertaining as shorter events
-
-
 
 Non similarities
 

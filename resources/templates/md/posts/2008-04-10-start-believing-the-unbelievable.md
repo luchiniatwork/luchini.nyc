@@ -1,7 +1,10 @@
-{:title  "Start believing in the unbelievable"
- :layout :post
- :date   "2008-04-10"
- :tags   ["management" "life"]}
+---
+title: "Start believing in the unbelievable"
+layout: post
+date: 2008-04-10
+tags: ["management", "life"]
+draft: true
+---
 
 An American engineer called Rick Cavallaro was presented a brainteaser: could a sailboat sailing downwind outrun a balloon?
 

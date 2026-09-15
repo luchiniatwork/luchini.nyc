@@ -3,7 +3,11 @@
  */
 
 import { readdir } from "node:fs/promises";
-import { parseMarkdown, extractExcerpt, type ParsedMarkdown } from "./markdown.ts";
+import {
+  parseMarkdown,
+  extractExcerpt,
+  type ParsedMarkdown,
+} from "./markdown.ts";
 
 export interface Post {
   slug: string;
@@ -13,6 +17,7 @@ export interface Post {
   excerpt: string;
   content: string;
   html: string;
+  draft: boolean;
 }
 
 export interface Page {
@@ -26,6 +31,9 @@ export interface Page {
 
 const POSTS_DIR = "./resources/templates/md/posts";
 const PAGES_DIR = "./resources/templates/md/pages";
+
+// Drafts are visible in development but never published in production
+const isProd = process.env.NODE_ENV === "production";
 
 // Cache for posts (cleared on file changes in dev mode)
 let postsCache: Post[] | null = null;
@@ -62,7 +70,7 @@ export async function loadPosts(): Promise<Post[]> {
   for (const entry of entries) {
     // Skip directories (posts with assets)
     if (entry.isDirectory()) continue;
-    
+
     // Only process markdown files
     if (!entry.name.endsWith(".md")) continue;
 
@@ -70,13 +78,18 @@ export async function loadPosts(): Promise<Post[]> {
       const filePath = `${POSTS_DIR}/${entry.name}`;
       const source = await Bun.file(filePath).text();
       const parsed = parseMarkdown(source);
-      
+
       const slug = extractSlugFromFilename(entry.name);
-      const date = parsed.frontmatter.date || extractDateFromFilename(entry.name) || "1970-01-01";
-      
+      const date =
+        parsed.frontmatter.date ||
+        extractDateFromFilename(entry.name) ||
+        "1970-01-01";
+
       // Ensure tags is always an array
-      const tags = Array.isArray(parsed.frontmatter.tags) ? parsed.frontmatter.tags : [];
-      
+      const tags = Array.isArray(parsed.frontmatter.tags)
+        ? parsed.frontmatter.tags
+        : [];
+
       posts.push({
         slug,
         title: parsed.frontmatter.title,
@@ -85,6 +98,7 @@ export async function loadPosts(): Promise<Post[]> {
         excerpt: extractExcerpt(parsed.content),
         content: parsed.content,
         html: parsed.html,
+        draft: parsed.frontmatter.draft === true,
       });
     } catch (error) {
       console.error(`Error parsing post ${entry.name}:`, error);
@@ -93,9 +107,12 @@ export async function loadPosts(): Promise<Post[]> {
 
   // Sort by date descending (newest first)
   posts.sort((a, b) => b.date.localeCompare(a.date));
-  
-  postsCache = posts;
-  return posts;
+
+  // Drafts never reach production listings, feeds, or direct URLs
+  const visible = isProd ? posts.filter((p) => !p.draft) : posts;
+
+  postsCache = visible;
+  return visible;
 }
 
 /**
@@ -103,7 +120,7 @@ export async function loadPosts(): Promise<Post[]> {
  */
 export async function getPost(slug: string): Promise<Post | null> {
   const posts = await loadPosts();
-  return posts.find(p => p.slug === slug) || null;
+  return posts.find((p) => p.slug === slug) || null;
 }
 
 /**
@@ -111,7 +128,7 @@ export async function getPost(slug: string): Promise<Post | null> {
  */
 export async function getPostsByTag(tag: string): Promise<Post[]> {
   const posts = await loadPosts();
-  return posts.filter(p => p.tags.includes(tag));
+  return posts.filter((p) => p.tags.includes(tag));
 }
 
 /**
@@ -120,13 +137,13 @@ export async function getPostsByTag(tag: string): Promise<Post[]> {
 export async function getAllTags(): Promise<Map<string, number>> {
   const posts = await loadPosts();
   const tagCounts = new Map<string, number>();
-  
+
   for (const post of posts) {
     for (const tag of post.tags) {
       tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
     }
   }
-  
+
   return tagCounts;
 }
 
@@ -148,12 +165,12 @@ export async function loadPages(): Promise<Map<string, Page>> {
       const filePath = `${PAGES_DIR}/${entry.name}`;
       const source = await Bun.file(filePath).text();
       const parsed = parseMarkdown(source);
-      
+
       const slug = entry.name.replace(/\.md$/, "");
-      
+
       // Skip home page (handled separately)
       if (parsed.frontmatter.home) continue;
-      
+
       pages.set(slug, {
         slug,
         title: parsed.frontmatter.title,
@@ -205,7 +222,7 @@ export function formatDate(dateStr: string): string {
 export async function getPostsByYear(): Promise<Map<string, Post[]>> {
   const posts = await loadPosts();
   const byYear = new Map<string, Post[]>();
-  
+
   for (const post of posts) {
     const year = post.date.slice(0, 4);
     if (!byYear.has(year)) {
@@ -213,6 +230,6 @@ export async function getPostsByYear(): Promise<Map<string, Post[]>> {
     }
     byYear.get(year)!.push(post);
   }
-  
+
   return byYear;
 }

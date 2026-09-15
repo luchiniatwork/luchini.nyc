@@ -1,7 +1,10 @@
-{:title  "Digital archeology"
- :layout :post
- :date   "2018-03-04"
- :tags   ["technology" "life"]}
+---
+title: "Digital archeology"
+layout: post
+date: 2018-03-04
+tags: ["technology", "life"]
+draft: true
+---
 
 Two events from earlier this week ended up sending me on an digital archeology quest.
 

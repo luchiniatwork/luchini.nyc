@@ -1,8 +1,10 @@
-{:title  "What do we mean when we say \"community\"?"
- :layout :post
- :date   "2018-07-12"
- :tags   ["open source"]
- :draft? true}
+---
+title: "What do we mean when we say \"community\"?"
+layout: post
+date: 2018-07-12
+tags: ["open source"]
+draft: true
+---
 
 "Community" is a word often used in the software development
 industry. It is commonly used in arguments about tools or

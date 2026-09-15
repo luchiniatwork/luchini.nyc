@@ -1,7 +1,10 @@
-{:title  "Timeboxing requires a brave mentality and the guts to compromise"
- :layout :post
- :date   "2008-01-10"
- :tags   ["management"]}
+---
+title: "Timeboxing requires a brave mentality and the guts to compromise"
+layout: post
+date: 2008-01-10
+tags: ["management"]
+draft: true
+---
 
 There's no way one can't but be amazed by the editorial business. Take magazines, for example: those journalists, writers, editors, photographers, and a huge array of professionals I’m not even aware of, have a specified amount of time to deliver a full-blown magazine. For magazines this may be only a couple of months or a couple of weeks, but if you migrate to newspapers we are talking about mere 24 hours! Some newspapers even have two daily issues: morning and evening.
 

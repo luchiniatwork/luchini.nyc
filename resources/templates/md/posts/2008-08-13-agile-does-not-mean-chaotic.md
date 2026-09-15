@@ -1,7 +1,10 @@
-{:title  "Agile does not mean chaotic, so long as you don't lose product vision"
- :layout :post
- :date   "2008-08-13"
- :tags   ["management" "technology"]}
+---
+title: "Agile does not mean chaotic, so long as you don't lose product vision"
+layout: post
+date: 2008-08-13
+tags: ["management", "technology"]
+draft: true
+---
 
 I am sure you have heard this argument over and over again: “I don’t like Agile because things get too confusing – It’s too chaotic.”
 
@@ -33,7 +36,7 @@ That is exactly what you read: the product vision should never be lost.
 
 A product developed in Agile should be a far superior product than one developed in waterfall. If there’s very little difference between them or if your Agile product underperforms in comparison to the competition, there’s a lot of space for improvement.
 
-## Consider these as guidance:
+## Consider these as guidance
 
 1. Agilists tend to forget about the product and focus too much on the current iteration or current tasks.
 2. Non-agilists tend to forget about the iterations and focus too much on the design and plans.

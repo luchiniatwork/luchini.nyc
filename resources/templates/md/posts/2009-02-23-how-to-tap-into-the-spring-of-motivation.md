@@ -1,7 +1,10 @@
-{:title  "How to tap into the spring of motivation?"
- :layout :post
- :date   "2009-02-23"
- :tags   ["management" "life"]}
+---
+title: "How to tap into the spring of motivation?"
+layout: post
+date: 2009-02-23
+tags: ["management", "life"]
+draft: true
+---
 
 Too many people write and talk about motivation. No matter how much is discussed, the inner engine pushing our hearts and minds forward is not totally understood. While some are motivated purely by money, others are motivated by challenges, by having more leisure time or by working with the right people.
 

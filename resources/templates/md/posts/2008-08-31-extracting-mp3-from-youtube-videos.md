@@ -1,8 +1,11 @@
-{:title  "Extracting MP3 from Youtube videos"
- :layout :post
- :date   "2008-08-31"
- :tags   ["technology"]}
- 
+---
+title: "Extracting MP3 from Youtube videos"
+layout: post
+date: 2008-08-31
+tags: ["technology"]
+draft: true
+---
+
  Here goes a simple tip on how to extract the audio of youtube videos if you use a linux box.
 
 You will need ffmpeg to be able to proceed with these steps. If you don't have it and are on a Debian descendant box, simply type:
@@ -25,7 +28,7 @@ sudo apt-get install ffmpeg
 cp 11D49E9Cd01 movie.flv
 ```
 
-3) Use ffmpeg to extract the audio as an MP3 from the video file:
+1) Use ffmpeg to extract the audio as an MP3 from the video file:
 
 ```bash
 ffmpeg -i movie.flv -ab 128k -acodec libmp3lame movie.mp3

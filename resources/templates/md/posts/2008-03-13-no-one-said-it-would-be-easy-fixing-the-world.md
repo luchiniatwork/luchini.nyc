@@ -1,7 +1,10 @@
-{:title  "No one said it would be easy, fixing the world"
- :layout :post
- :date   "2008-03-13"
- :tags   ["management" "life"]}
+---
+title: "No one said it would be easy, fixing the world"
+layout: post
+date: 2008-03-13
+tags: ["management", "life"]
+draft: true
+---
 
 It must be a common trait of those who choose engineering as their main academic track: this willingness to fix the world.
 

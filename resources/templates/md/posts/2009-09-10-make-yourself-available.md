@@ -1,7 +1,10 @@
-{:title  "Make yourself available – The first step to being a better leader"
- :layout :post
- :date   "2009-09-10"
- :tags   ["management" "business"]}
+---
+title: "Make yourself available – The first step to being a better leader"
+layout: post
+date: 2009-09-10
+tags: ["management", "business"]
+draft: true
+---
 
 Some weeks ago Harvard Business Review magazine published an interesting leadership hint for those of us who are always running against the clock. We live in hectic times where there is very little time to complete all our tasks and we are still expected to coach and lead others. What do we do to make sure everything fits?
 

@@ -1,7 +1,10 @@
-{:title  "Getting the job done"
- :layout :post
- :date   "2007-09-11"
- :tags   ["technology"]}
+---
+title: "Getting the job done"
+layout: post
+date: 2007-09-11
+tags: ["technology"]
+draft: true
+---
 
 Most software solutions we use in our computers are just bloated, resource-consuming monsters that eventually reach the expected result. Studies show that more than 95% of Microsoft Word users use less than 10% of its features. It is an well-known situation.
 

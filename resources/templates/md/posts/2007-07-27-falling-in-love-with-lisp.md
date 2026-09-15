@@ -1,7 +1,10 @@
-{:title  "Falling in love... with LISP"
- :layout :post
- :date   "2007-07-27"
- :tags   ["technology" "lisp"]}
+---
+title: "Falling in love... with LISP"
+layout: post
+date: 2007-07-27
+tags: ["technology", "lisp"]
+draft: true
+---
 
 I am falling in love... No. I am not talking about some new girl - I am more than happy with my superb and lovely wife!  I am talking about LISP: I am falling in love with LISP.
 

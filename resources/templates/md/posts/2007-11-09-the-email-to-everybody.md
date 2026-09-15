@@ -1,7 +1,10 @@
-{:title  "The email to everybody"
- :layout :post
- :date   "2007-11-09"
- :tags   ["management" "life"]}
+---
+title: "The email to everybody"
+layout: post
+date: 2007-11-09
+tags: ["management", "life"]
+draft: true
+---
 
 I come from the dinosaur era when email did not exist – yep, such an era existed - and I can tell you: it sucked. Email is a great communication tool.
 

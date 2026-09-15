@@ -1,9 +1,12 @@
-{:title  "District 9 in China"
- :layout :post
- :date   "2009-08-15"
- :tags   ["movies" "china"]}
+---
+title: "District 9 in China"
+layout: post
+date: 2009-08-15
+tags: ["movies", "china"]
+draft: true
+---
 
-I've just watched Neill Blomkamp's ["Alive in Joburg"](http://www.imdb.com/title/tt0813999/) just as a masochist effort to fire up my growing need to see 
+I've just watched Neill Blomkamp's ["Alive in Joburg"](http://www.imdb.com/title/tt0813999/) just as a masochist effort to fire up my growing need to see
 [District 9](http://www.imdb.com/title/tt1136608/).
 
 "Why masochist?" you may ask. And I answer very bluntly: because its coming to the big screens in China is not confirmed yet. It may take months or simply not come at all.

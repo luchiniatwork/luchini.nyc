@@ -1,7 +1,9 @@
-{:title "Running"
- :layout :page
- :page-index 4
- :navbar? true}
+---
+title: "Running"
+layout: page
+pageIndex: 4
+navbar: true
+---
 
 ## Pics & Reports
 

@@ -1,7 +1,10 @@
-{:title  "Hidden simplicity"
- :layout :post
- :date   "2009-09-21"
- :tags   ["technology"]}
+---
+title: "Hidden simplicity"
+layout: post
+date: 2009-09-21
+tags: ["technology"]
+draft: true
+---
 
 A traditional line of thought from those refraining to migrate to Linux is that it has a steep learning curve. "It takes time to learn how to install it; it takes time to learn how to use it", they say trying to convince you that Linux is this kind of cryptic and unreachable entity.
 

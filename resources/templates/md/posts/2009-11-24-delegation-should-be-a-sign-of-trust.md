@@ -1,7 +1,10 @@
-{:title  "Delegation should be a sign of trust, not an emergency measure"
- :layout :post
- :date   "2009-11-24"
- :tags   ["management" "business"]}
+---
+title: "Delegation should be a sign of trust, not an emergency measure"
+layout: post
+date: 2009-11-24
+tags: ["management", "business"]
+draft: true
+---
 
 In my last article, [Disconnect urgency from importance][1], I introduced the
 valuable tool all leaders should master: the ability to say no. The first step

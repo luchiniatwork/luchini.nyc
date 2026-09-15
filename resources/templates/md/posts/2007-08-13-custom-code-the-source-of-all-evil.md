@@ -1,7 +1,10 @@
-{:title  "Custom code - the source of all evil?"
- :layout :post
- :date   "2007-08-13"
- :tags   ["technology" "management"]}
+---
+title: "Custom code - the source of all evil?"
+layout: post
+date: 2007-08-13
+tags: ["technology", "management"]
+draft: true
+---
 
 Following up from my [previous article](../../posts/whose-side-are-it-managers/) about IT managers having a tendency to blame home-grown software for IT failures, I feel obliged to express that it does not necessarily mean companies don't need home-grown software; it means solely IT managers are reluctant to accept in-house software.
 

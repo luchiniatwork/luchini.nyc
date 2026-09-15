@@ -1,7 +1,10 @@
-{:title  "Dare to think differently"
- :layout :post
- :date   "2009-08-16"
- :tags   ["management" "business"]}
+---
+title: "Dare to think differently"
+layout: post
+date: 2009-08-16
+tags: ["management", "business"]
+draft: true
+---
 
 All of us, without exception, can innovate. Creativity is embedded into human minds since early age.
 

@@ -1,7 +1,10 @@
-{:title  "Nursery Gaming"
- :layout :post
- :date   "2009-12-17"
- :tags   ["life" "board games" "humor"]}
+---
+title: "Nursery Gaming"
+layout: post
+date: 2009-12-17
+tags: ["life", "board games", "humor"]
+draft: true
+---
 
 ![Nursery Gaming](2009-12-17-nursery-gaming/nursery_gaming.jpg)
 

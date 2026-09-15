@@ -1,7 +1,10 @@
-{:title  "Scrum everywhere"
- :layout :post
- :date   "2007-05-10"
- :tags   ["management" "life"]}
+---
+title: "Scrum everywhere"
+layout: post
+date: 2007-05-10
+tags: ["management", "life"]
+draft: true
+---
 
 Change is part of life and has been seen in the past as something negative. It makes sense, when we lived in caves, any change in the food chain, would affect our feeding habits. We moved out of the caves but retained some resistance to change nevertheless.
 

@@ -1,13 +1,16 @@
-{:title  "Internet tablet - What's the point?"
- :layout :post
- :date   "2007-08-15"
- :tags   ["technology"]}
+---
+title: "Internet tablet - What's the point?"
+layout: post
+date: 2007-08-15
+tags: ["technology"]
+draft: true
+---
 
 ![N800](2007-08-15-internet-tablet-what-is-the-point/n800.gif)
 
 I have been recently introduced to Nokia's Internet Tablet
 devices. The latest member of the family, [Nokia N800](http://europe.nokia.com/n800),
-is a palm-sized device with a generous touch-screen. It comes with 
+is a palm-sized device with a generous touch-screen. It comes with
 a traditional stylus and is Bluetooth and Wi-fi (802.11 b/g) enabled.
 The underlying operating system is called Internet Tablet OS 2007 which is
 derived from Linux Debian. The presentation stack - dubbed Maemo - uses a
