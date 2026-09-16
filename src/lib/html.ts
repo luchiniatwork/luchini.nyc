@@ -17,6 +17,8 @@ export interface LayoutOptions {
   publishedTime?: string;
   /** Emitted as article:tag meta entries for articles */
   tags?: string[];
+  /** Pre-serialized JSON-LD schema; embedded with script-tag sanitization */
+  jsonLd?: string;
 }
 
 // Check if we're in production (analytics only enabled in production)
@@ -67,6 +69,7 @@ export function layout(content: string, options: LayoutOptions = {}): string {
     ogImage,
     publishedTime,
     tags,
+    jsonLd,
   } = { ...defaultOptions, ...options };
   const safeTitle = escapeHtml(title ?? "");
   const safeDescription = escapeHtml(description ?? "");
@@ -143,7 +146,15 @@ export function layout(content: string, options: LayoutOptions = {}): string {
   
   <!-- Styles -->
   <link rel="stylesheet" href="/output.css">
-  
+
+  ${
+    jsonLd
+      ? `<!-- Structured data -->
+  <script type="application/ld+json">${jsonLd.replace(/<\//g, "<\\/")}</script>
+  `
+      : ""
+  }
+
   <!-- HTMX -->
   <script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
 </head>

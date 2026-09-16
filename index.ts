@@ -5,7 +5,13 @@ import { postPage } from "./src/pages/post.ts";
 import { staticPage } from "./src/pages/page.ts";
 import { awardsPage } from "./src/pages/awards.ts";
 import { openSourcePage } from "./src/pages/open-source.ts";
-import { loadPosts } from "./src/lib/posts.ts";
+import {
+  loadPosts,
+  loadPages,
+  getAllTags,
+  getPostsByTag,
+  type Post,
+} from "./src/lib/posts.ts";
 
 // Check if we're in development mode
 const isDev = process.env.NODE_ENV !== "production";
@@ -147,8 +153,32 @@ async function handleRequest(req: Request): Promise<Response> {
 
   // RSS feed
   if (path === "/feed.xml" || path === "/rss.xml") {
-    const feed = await generateRSSFeed();
+    const posts = await loadPosts();
+    const feed = generateRSSFeed(posts, "Tiago Luchini", "feed.xml");
     return new Response(feed, {
+      headers: { "Content-Type": "application/xml" },
+    });
+  }
+
+  // Per-tag RSS feed
+  const tagFeedMatch = path.match(/^\/tags\/([^/]+)\/feed\.xml$/);
+  if (tagFeedMatch && tagFeedMatch[1]) {
+    const tag = decodeURIComponent(tagFeedMatch[1]);
+    const tagPosts = await getPostsByTag(tag);
+    const feed = generateRSSFeed(
+      tagPosts,
+      `Tiago Luchini - #${tag}`,
+      `tags/${encodeURIComponent(tag)}/feed.xml`,
+    );
+    return new Response(feed, {
+      headers: { "Content-Type": "application/xml" },
+    });
+  }
+
+  // XML sitemap
+  if (path === "/sitemap.xml") {
+    const sitemap = await generateSitemap();
+    return new Response(sitemap, {
       headers: { "Content-Type": "application/xml" },
     });
   }
@@ -188,40 +218,113 @@ async function handleRequest(req: Request): Promise<Response> {
   });
 }
 
+const BASE_URL = "https://luchini.nyc";
+
 /**
- * Generate RSS feed
+ * Escape XML special characters in element text
  */
-async function generateRSSFeed(): Promise<string> {
-  const posts = await loadPosts();
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+/**
+ * Safely wrap text in CDATA (splits any embedded "]]>" terminator)
+ */
+function cdata(text: string): string {
+  return `<![CDATA[${text.replace(/]]>/g, "]]]]><![CDATA[>")}]]>`;
+}
+
+/**
+ * Generate an RSS feed for the given posts
+ */
+function generateRSSFeed(
+  posts: Post[],
+  channelTitle: string,
+  feedPath: string,
+): string {
   const recentPosts = posts.slice(0, 20); // Last 20 posts
 
   const items = recentPosts
     .map(
       (post) => `
     <item>
-      <title><![CDATA[${post.title}]]></title>
-      <link>https://luchini.nyc/posts/${post.slug}</link>
-      <guid>https://luchini.nyc/posts/${post.slug}</guid>
+      <title>${cdata(post.title)}</title>
+      <link>${BASE_URL}/posts/${post.slug}</link>
+      <guid>${BASE_URL}/posts/${post.slug}</guid>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
-      <description><![CDATA[${post.excerpt}]]></description>
-      ${(post.tags || []).map((tag) => `<category>${tag}</category>`).join("")}
+      <description>${cdata(post.excerpt)}</description>
+      <content:encoded>${cdata(post.html)}</content:encoded>
+      ${(post.tags || []).map((tag) => `<category>${escapeXml(tag)}</category>`).join("")}
     </item>
   `,
     )
     .join("");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tiago Luchini</title>
-    <link>https://luchini.nyc</link>
+    <title>${escapeXml(channelTitle)}</title>
+    <link>${BASE_URL}</link>
     <description>Thoughts on technology, leadership, and life by Tiago Luchini</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="https://luchini.nyc/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="${BASE_URL}/${feedPath}" rel="self" type="application/rss+xml"/>
     ${items}
   </channel>
 </rss>`;
+}
+
+/**
+ * Generate the XML sitemap (published posts only, via the loadPosts
+ * production filter)
+ */
+async function generateSitemap(): Promise<string> {
+  const posts = await loadPosts();
+  const pages = await loadPages();
+  const tags = await getAllTags();
+
+  const urls: { loc: string; lastmod?: string }[] = [
+    { loc: `${BASE_URL}/` },
+    { loc: `${BASE_URL}/posts` },
+    { loc: `${BASE_URL}/tags` },
+    { loc: `${BASE_URL}/awards` },
+    { loc: `${BASE_URL}/open-source` },
+  ];
+
+  for (const slug of pages.keys()) {
+    urls.push({ loc: `${BASE_URL}/${slug}` });
+  }
+
+  for (const post of posts) {
+    urls.push({
+      loc: `${BASE_URL}/posts/${post.slug}`,
+      lastmod: post.updated ?? post.date,
+    });
+  }
+
+  for (const tag of tags.keys()) {
+    urls.push({ loc: `${BASE_URL}/tags/${encodeURIComponent(tag)}` });
+  }
+
+  const seriesNames = new Set(
+    posts.map((post) => post.series).filter((s): s is string => Boolean(s)),
+  );
+  for (const name of seriesNames) {
+    urls.push({ loc: `${BASE_URL}/series/${encodeURIComponent(name)}` });
+  }
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls
+  .map(
+    (u) =>
+      `  <url><loc>${u.loc}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ""}</url>`,
+  )
+  .join("\n")}
+</urlset>`;
 }
 
 // Start server with optional live reload in development

@@ -32,6 +32,30 @@ export async function postPage(slug: string): Promise<string | null> {
   // Related posts by shared tags
   const relatedPosts = await getRelatedPosts(post);
 
+  // Structured data for search engines
+  const jsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.updated ?? post.date,
+    author: {
+      "@type": "Person",
+      name: "Tiago Luchini",
+      url: "https://luchini.nyc",
+    },
+    mainEntityOfPage: `https://luchini.nyc/posts/${post.slug}`,
+    ...(post.tags.length > 0 ? { keywords: post.tags.join(", ") } : {}),
+    ...(post.cover
+      ? {
+          image: post.cover.startsWith("http")
+            ? post.cover
+            : `https://luchini.nyc${post.cover}`,
+        }
+      : {}),
+  });
+
   return layout(
     `
     <article class="max-w-none">
@@ -126,6 +150,7 @@ export async function postPage(slug: string): Promise<string | null> {
       ogImage: post.cover,
       publishedTime: post.date,
       tags: post.tags,
+      jsonLd,
     },
   );
 }

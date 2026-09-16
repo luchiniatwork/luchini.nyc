@@ -131,6 +131,8 @@ Follow-up fixes from manual QA (2026-09-15):
 
 ## Phase 4 — Distribution & SEO
 
+**Status: implemented (2026-09-16).** Verified live: `/sitemap.xml` lists static pages, published posts (`lastmod` from `updated` ?? `date`), tag and series pages (drafts excluded via the `loadPosts` prod filter); `/feed.xml` gained full-content `content:encoded` (CDATA-safe) and per-tag feeds at `/tags/:tag/feed.xml`; post pages embed `Article` JSON-LD (headline, dates with `dateModified` from `updated`, author, keywords, cover image) via a `jsonLd` layout option with script-tag sanitization.
+
 ### 4.1 `/sitemap.xml`
 
 - Static pages + published posts + tag pages, with `lastmod` from post dates.
