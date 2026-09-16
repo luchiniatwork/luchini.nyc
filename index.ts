@@ -328,21 +328,26 @@ ${urls
 }
 
 // Start server with optional live reload in development
+// PORT overrides the default 3000 (used by the Playwright prod server)
+const port = Number(process.env.PORT) || 3000;
+
 if (isDev) {
   try {
     const { withHtmlLiveReload } = await import("bun-html-live-reload");
-    // @ts-expect-error - bun-html-live-reload types are not accurate
-    Bun.serve(withHtmlLiveReload(handleRequest));
-    console.log("🚀 Server running at http://localhost:3000");
+    Bun.serve({
+      port,
+      fetch: withHtmlLiveReload(handleRequest),
+    });
+    console.log(`🚀 Server running at http://localhost:${port}`);
     console.log("📦 Development mode with hot reload enabled");
   } catch {
-    Bun.serve({ port: 3000, fetch: handleRequest });
-    console.log("🚀 Server running at http://localhost:3000");
+    Bun.serve({ port, fetch: handleRequest });
+    console.log(`🚀 Server running at http://localhost:${port}`);
     console.log("⚠️  Live reload not available");
   }
 } else {
-  Bun.serve({ port: 3000, fetch: handleRequest });
-  console.log("🚀 Server running at http://localhost:3000");
+  Bun.serve({ port, fetch: handleRequest });
+  console.log(`🚀 Server running at http://localhost:${port}`);
 }
 
 export { handleRequest };

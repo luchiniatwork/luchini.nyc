@@ -147,6 +147,8 @@ Follow-up fixes from manual QA (2026-09-15):
 
 ## Phase 5 — Quality gates
 
+**Status: implemented (2026-09-16).** 12 Playwright specs green (archive year grouping, search filtering + no-match state, post page article meta/canonical/JSON-LD, TOC anchors, tag pages, draft gating: prod empty state + 404 + empty feed + sitemap without drafts, homepage writing visibility, RSS content). `playwright.config.ts` runs two web servers (dev :3000, prod :3001 — `PORT` env support added to index.ts) and auto-detects the nix-provided chromium headless shell on Nix hosts (stock Playwright browsers can't launch there). Frontmatter validation warns loudly in dev and skips-and-logs in prod (layout enum, date presence) for both posts and pages. Pagination on /posts remains deferred per plan.
+
 ### 5.1 Playwright specs
 
 - First specs in the repo: archive renders grouped by year, single post renders, tag pages list correct posts, **drafts excluded in prod mode**, RSS is valid XML with expected item count, search returns results.

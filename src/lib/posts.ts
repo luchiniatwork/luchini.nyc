@@ -3,7 +3,12 @@
  */
 
 import { readdir } from "node:fs/promises";
-import { parseMarkdown, extractExcerpt, type Heading } from "./markdown.ts";
+import {
+  parseMarkdown,
+  extractExcerpt,
+  type Frontmatter,
+  type Heading,
+} from "./markdown.ts";
 
 export interface Post {
   slug: string;
@@ -58,6 +63,49 @@ function extractDateFromFilename(filename: string): string | undefined {
 }
 
 /**
+ * Soft frontmatter validation. Returns a list of problems (empty when
+ * valid). Structural failures (unparseable YAML, missing title) already
+ * throw in normalizeFrontmatter and are caught per file.
+ */
+function validateFrontmatter(
+  filename: string,
+  frontmatter: Frontmatter,
+  kind: "post" | "page",
+): string[] {
+  const problems: string[] = [];
+
+  if (!["post", "page", "home"].includes(frontmatter.layout)) {
+    problems.push(`unexpected layout "${frontmatter.layout}"`);
+  }
+  if (
+    kind === "post" &&
+    !frontmatter.date &&
+    !extractDateFromFilename(filename)
+  ) {
+    problems.push("missing date (frontmatter and filename)");
+  }
+
+  return problems;
+}
+
+/**
+ * Report validation problems: warn loudly in development, skip-and-log
+ * in production. Returns true when the entry should be skipped.
+ */
+function reportProblems(filename: string, problems: string[]): boolean {
+  if (problems.length === 0) {
+    return false;
+  }
+  const message = `${filename}: ${problems.join(", ")}`;
+  if (isProd) {
+    console.error(`Skipping invalid entry: ${message}`);
+    return true;
+  }
+  console.warn(`⚠️  Invalid frontmatter: ${message}`);
+  return false;
+}
+
+/**
  * Load all blog posts
  */
 export async function loadPosts(): Promise<Post[]> {
@@ -79,6 +127,15 @@ export async function loadPosts(): Promise<Post[]> {
       const filePath = `${POSTS_DIR}/${entry.name}`;
       const source = await Bun.file(filePath).text();
       const parsed = parseMarkdown(source);
+
+      if (
+        reportProblems(
+          entry.name,
+          validateFrontmatter(entry.name, parsed.frontmatter, "post"),
+        )
+      ) {
+        continue;
+      }
 
       const slug = extractSlugFromFilename(entry.name);
       const date =
@@ -205,6 +262,15 @@ export async function loadPages(): Promise<Map<string, Page>> {
       const filePath = `${PAGES_DIR}/${entry.name}`;
       const source = await Bun.file(filePath).text();
       const parsed = parseMarkdown(source);
+
+      if (
+        reportProblems(
+          entry.name,
+          validateFrontmatter(entry.name, parsed.frontmatter, "page"),
+        )
+      ) {
+        continue;
+      }
 
       const slug = entry.name.replace(/\.md$/, "");
 
