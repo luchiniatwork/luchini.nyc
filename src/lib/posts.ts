@@ -3,11 +3,7 @@
  */
 
 import { readdir } from "node:fs/promises";
-import {
-  parseMarkdown,
-  extractExcerpt,
-  type ParsedMarkdown,
-} from "./markdown.ts";
+import { parseMarkdown, extractExcerpt } from "./markdown.ts";
 
 export interface Post {
   slug: string;
@@ -95,7 +91,8 @@ export async function loadPosts(): Promise<Post[]> {
         title: parsed.frontmatter.title,
         date,
         tags,
-        excerpt: extractExcerpt(parsed.content),
+        // Author-provided abstract wins over the auto-derived excerpt
+        excerpt: parsed.frontmatter.abstract ?? extractExcerpt(parsed.content),
         content: parsed.content,
         html: parsed.html,
         draft: parsed.frontmatter.draft === true,
@@ -206,9 +203,14 @@ export function clearCaches(): void {
 
 /**
  * Format date for display
+ *
+ * Parses YYYY-MM-DD as a plain calendar date in local time. Using
+ * `new Date(dateStr)` would parse it as UTC midnight and render one
+ * day early whenever the server timezone is behind UTC.
  */
 export function formatDate(dateStr: string): string {
-  const date = new Date(dateStr);
+  const [year, month, day] = dateStr.slice(0, 10).split("-").map(Number);
+  const date = new Date(year ?? 1970, (month ?? 1) - 1, day ?? 1);
   return date.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",

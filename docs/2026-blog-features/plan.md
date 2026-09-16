@@ -71,6 +71,8 @@ Follow-up fixes from manual QA (2026-09-15):
 
 ## Phase 1 — Correctness fixes
 
+**Status: implemented (2026-09-16).** Abstract preference verified both directions; `formatDate` renders calendar dates TZ-independently; post pages emit canonical link, `og:type=article`, per-post `og:url`, `article:published_time`/`article:tag`, and `twitter:image` (non-post pages keep website defaults).
+
 ### 1.1 Use `abstract` when present
 
 - **Gap:** `:abstract` is parsed but never read; excerpts are always regex-derived via `extractExcerpt`.

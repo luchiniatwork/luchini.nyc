@@ -8,6 +8,15 @@ export interface LayoutOptions {
   author?: string;
   currentPath?: string;
   enableAnalytics?: boolean;
+  /** Path used for the canonical link and og:url (e.g. "/posts/my-post") */
+  canonicalPath?: string;
+  ogType?: "website" | "article";
+  /** Absolute URL or site-relative path for og:image / twitter:image */
+  ogImage?: string;
+  /** Date (YYYY-MM-DD) emitted as article:published_time for articles */
+  publishedTime?: string;
+  /** Emitted as article:tag meta entries for articles */
+  tags?: string[];
 }
 
 // Check if we're in production (analytics only enabled in production)
@@ -24,6 +33,9 @@ const defaultOptions: LayoutOptions = {
 
 // Google Analytics 4 Measurement ID (only used in production)
 const GA4_MEASUREMENT_ID = "G-C3BX0EC0LK";
+
+// Canonical origin for absolute URLs in meta tags
+const BASE_URL = "https://luchini.nyc";
 
 /**
  * Generate GA4 tracking script
@@ -44,13 +56,45 @@ function analyticsScript(): string {
 // value interpolated into the head — titles/excerpts regularly contain
 // quotes and angle brackets that would otherwise break out of attributes.
 export function layout(content: string, options: LayoutOptions = {}): string {
-  const { title, description, author, currentPath, enableAnalytics } = {
-    ...defaultOptions,
-    ...options,
-  };
+  const {
+    title,
+    description,
+    author,
+    currentPath,
+    enableAnalytics,
+    canonicalPath,
+    ogType,
+    ogImage,
+    publishedTime,
+    tags,
+  } = { ...defaultOptions, ...options };
   const safeTitle = escapeHtml(title ?? "");
   const safeDescription = escapeHtml(description ?? "");
   const safeAuthor = escapeHtml(author ?? "");
+  const canonicalUrl = canonicalPath
+    ? `${BASE_URL}${canonicalPath}`
+    : undefined;
+  const resolvedOgImage = escapeHtml(
+    ogImage
+      ? ogImage.startsWith("http")
+        ? ogImage
+        : `${BASE_URL}${ogImage}`
+      : `${BASE_URL}/img/avatar.jpg`,
+  );
+  const articleMeta =
+    ogType === "article"
+      ? [
+          publishedTime
+            ? `<meta property="article:published_time" content="${escapeHtml(publishedTime)}">`
+            : "",
+          ...(tags ?? []).map(
+            (tag) =>
+              `<meta property="article:tag" content="${escapeHtml(tag)}">`,
+          ),
+        ]
+          .filter(Boolean)
+          .join("\n  ")
+      : "";
 
   return `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -63,18 +107,23 @@ export function layout(content: string, options: LayoutOptions = {}): string {
   <meta name="author" content="${safeAuthor}">
   <meta name="keywords" content="Technology, Leadership, Clojure, Software Engineering, CTO">
   
+  <!-- Canonical -->
+  ${canonicalUrl ? `<link rel="canonical" href="${escapeHtml(canonicalUrl)}">` : ""}
+
   <!-- Open Graph -->
   <meta property="og:title" content="${safeTitle}">
   <meta property="og:description" content="${safeDescription}">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://luchini.nyc">
-  <meta property="og:image" content="https://luchini.nyc/img/avatar.jpg">
-  
+  <meta property="og:type" content="${ogType ?? "website"}">
+  <meta property="og:url" content="${canonicalUrl ? escapeHtml(canonicalUrl) : BASE_URL}">
+  <meta property="og:image" content="${resolvedOgImage}">
+  ${articleMeta}
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@tiagoluchini">
   <meta name="twitter:title" content="${safeTitle}">
   <meta name="twitter:description" content="${safeDescription}">
+  <meta name="twitter:image" content="${resolvedOgImage}">
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/img/ico/favicon.ico">

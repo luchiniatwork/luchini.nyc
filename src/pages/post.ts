@@ -75,6 +75,10 @@ export async function postPage(slug: string): Promise<string | null> {
       title: `${post.title} - Tiago Luchini`,
       description: post.excerpt,
       currentPath: "/posts",
+      canonicalPath: `/posts/${post.slug}`,
+      ogType: "article",
+      publishedTime: post.date,
+      tags: post.tags,
     },
   );
 }
