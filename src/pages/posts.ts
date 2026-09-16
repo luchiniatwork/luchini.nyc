@@ -1,7 +1,8 @@
-import { layout, readingTime, escapeHtml } from "../lib/html.ts";
+import { layout, escapeHtml } from "../lib/html.ts";
 import {
   loadPosts,
   getPostsByYear,
+  getSeriesPosts,
   formatDate,
   type Post,
 } from "../lib/posts.ts";
@@ -86,12 +87,18 @@ function postCard(post: Post): string {
     <a href="/posts/${post.slug}" class="card bg-base-200 hover:bg-base-300 transition-colors group block">
       <div class="card-body py-4">
         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+          ${
+            post.cover
+              ? `<img src="${escapeHtml(post.cover)}" alt="" class="w-20 h-20 rounded-lg object-cover shrink-0">
+          `
+              : ""
+          }
           <div class="flex-1">
             <h3 class="font-semibold group-hover:text-secondary transition-colors">
               ${escapeHtml(post.title)}
               ${post.draft ? `<span class="badge badge-sm badge-warning ml-2">draft</span>` : ""}
             </h3>
-            <p class="text-sm opacity-60 line-clamp-2 mt-1">${post.excerpt}</p>
+            <p class="text-sm opacity-60 line-clamp-2 mt-1">${escapeHtml(post.excerpt)}</p>
           </div>
           <div class="flex items-center gap-2 text-sm opacity-50 shrink-0 sm:text-right">
             <time>${formatDate(post.date)}</time>
@@ -219,6 +226,55 @@ export async function tagPage(tag: string): Promise<string> {
       title: `#${tag} - Tiago Luchini`,
       description: `Blog posts tagged with "${tag}"`,
       currentPath: "/posts",
+    },
+  );
+}
+
+/**
+ * Series page - lists all posts in a series in reading order
+ */
+export async function seriesPage(name: string): Promise<string> {
+  const seriesPosts = await getSeriesPosts(name);
+
+  if (seriesPosts.length === 0) {
+    return layout(
+      `
+      <div class="text-center py-16">
+        <h1 class="text-4xl font-bold mb-4">Series not found</h1>
+        <p class="text-lg opacity-70 mb-8">No posts found in the "${escapeHtml(name)}" series</p>
+        <a href="/posts" class="btn btn-primary">Browse all posts</a>
+      </div>
+    `,
+      {
+        title: `Series: ${name} - Tiago Luchini`,
+        currentPath: "/posts",
+      },
+    );
+  }
+
+  return layout(
+    `
+    <header class="py-4">
+      <div class="flex items-center gap-2 mb-4">
+        <a href="/posts" class="text-sm opacity-60 hover:opacity-100 transition-opacity">
+          &larr; All posts
+        </a>
+      </div>
+      <h1 class="text-4xl font-bold mb-2">${escapeHtml(name)}</h1>
+      <p class="text-lg opacity-70">
+        A ${seriesPosts.length}-part series
+      </p>
+    </header>
+
+    <div class="py-8 space-y-3">
+      ${seriesPosts.map((post) => postCard(post)).join("")}
+    </div>
+  `,
+    {
+      title: `${name} - Tiago Luchini`,
+      description: `All ${seriesPosts.length} parts of the "${name}" series`,
+      currentPath: "/posts",
+      canonicalPath: `/series/${encodeURIComponent(name)}`,
     },
   );
 }

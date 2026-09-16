@@ -90,6 +90,8 @@ Follow-up fixes from manual QA (2026-09-15):
 
 ## Phase 2 — Content model extensions
 
+**Status: implemented (2026-09-16).** Verified with fixture posts (removed after QA): `cover:` drives og:image, a post-page header image, and archive card thumbnails; `series:` renders a "Part N of M" index block on posts plus `/series/:name` listing pages in reading order; `updated:` renders "Updated …" next to the publish date. 2.3's asset serving landed earlier (Phase 0 QA follow-up); legacy relative image refs resolve without HTML rewriting, so nothing else was needed there. RSS/sitemap `lastmod` wiring for `updated:` deferred to Phase 4.
+
 ### 2.1 `cover:`
 
 - Per-post social image. Feeds `og:image`/`twitter:image`, an optional header image on the post page, and thumbnails on archive cards.

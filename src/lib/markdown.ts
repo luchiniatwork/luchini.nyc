@@ -24,6 +24,12 @@ export interface Frontmatter {
   abstract?: string;
   draft?: boolean;
   toc?: boolean;
+  /** Social/header image: absolute URL or site-relative path */
+  cover?: string;
+  /** Series name grouping multi-part posts */
+  series?: string;
+  /** Revision date (YYYY-MM-DD) shown next to the publish date */
+  updated?: string;
 }
 
 export interface ParsedMarkdown {
@@ -76,6 +82,15 @@ function normalizeFrontmatter(raw: unknown): Frontmatter {
   }
   if (fm.toc === true) {
     frontmatter.toc = true;
+  }
+  if (typeof fm.cover === "string") {
+    frontmatter.cover = fm.cover;
+  }
+  if (typeof fm.series === "string") {
+    frontmatter.series = fm.series;
+  }
+  if (fm.updated !== undefined) {
+    frontmatter.updated = String(fm.updated);
   }
 
   return frontmatter;

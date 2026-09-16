@@ -1,6 +1,6 @@
 import { homePage } from "./src/pages/home.ts";
 import { notFoundPage } from "./src/pages/not-found.ts";
-import { postsPage, tagsPage, tagPage } from "./src/pages/posts.ts";
+import { postsPage, tagsPage, tagPage, seriesPage } from "./src/pages/posts.ts";
 import { postPage } from "./src/pages/post.ts";
 import { staticPage } from "./src/pages/page.ts";
 import { awardsPage } from "./src/pages/awards.ts";
@@ -99,6 +99,16 @@ async function handleRequest(req: Request): Promise<Response> {
   if (tagMatch && tagMatch[1]) {
     const tag = decodeURIComponent(tagMatch[1]);
     const html = await tagPage(tag);
+    return new Response(html, {
+      headers: { "Content-Type": "text/html" },
+    });
+  }
+
+  // Series page
+  const seriesMatch = path.match(/^\/series\/([^/]+)\/?$/);
+  if (seriesMatch && seriesMatch[1]) {
+    const name = decodeURIComponent(seriesMatch[1]);
+    const html = await seriesPage(name);
     return new Response(html, {
       headers: { "Content-Type": "text/html" },
     });

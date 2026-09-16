@@ -14,6 +14,9 @@ export interface Post {
   content: string;
   html: string;
   draft: boolean;
+  cover?: string;
+  series?: string;
+  updated?: string;
 }
 
 export interface Page {
@@ -96,6 +99,9 @@ export async function loadPosts(): Promise<Post[]> {
         content: parsed.content,
         html: parsed.html,
         draft: parsed.frontmatter.draft === true,
+        cover: parsed.frontmatter.cover,
+        series: parsed.frontmatter.series,
+        updated: parsed.frontmatter.updated,
       });
     } catch (error) {
       console.error(`Error parsing post ${entry.name}:`, error);
@@ -126,6 +132,16 @@ export async function getPost(slug: string): Promise<Post | null> {
 export async function getPostsByTag(tag: string): Promise<Post[]> {
   const posts = await loadPosts();
   return posts.filter((p) => p.tags.includes(tag));
+}
+
+/**
+ * Get posts in a series, ordered oldest first (reading order)
+ */
+export async function getSeriesPosts(series: string): Promise<Post[]> {
+  const posts = await loadPosts();
+  return posts
+    .filter((p) => p.series === series)
+    .sort((a, b) => a.date.localeCompare(b.date));
 }
 
 /**
