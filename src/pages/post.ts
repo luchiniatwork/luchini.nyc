@@ -3,9 +3,11 @@ import {
   getPost,
   loadPosts,
   getSeriesPosts,
+  getRelatedPosts,
   formatDate,
   type Post,
 } from "../lib/posts.ts";
+import { postCard } from "./posts.ts";
 
 /**
  * Individual blog post page
@@ -26,6 +28,9 @@ export async function postPage(slug: string): Promise<string | null> {
 
   // Series context when the post belongs to one
   const seriesPosts = post.series ? await getSeriesPosts(post.series) : null;
+
+  // Related posts by shared tags
+  const relatedPosts = await getRelatedPosts(post);
 
   return layout(
     `
@@ -88,11 +93,26 @@ export async function postPage(slug: string): Promise<string | null> {
           : ""
       }
 
+      ${tocBlock(post)}
+
       <div class="prose prose-invert prose-lg max-w-none py-8 border-t border-base-300">
         ${post.html}
       </div>
 
       ${seriesBlock(post, seriesPosts)}
+
+      ${
+        relatedPosts.length > 0
+          ? `
+        <section class="py-8 border-t border-base-300">
+          <h2 class="text-xl font-bold mb-4">Related posts</h2>
+          <div class="space-y-3">
+            ${relatedPosts.map((p) => postCard(p)).join("")}
+          </div>
+        </section>
+      `
+          : ""
+      }
 
       ${postNavigation(prevPost, nextPost)}
     </article>
@@ -108,6 +128,39 @@ export async function postPage(slug: string): Promise<string | null> {
       tags: post.tags,
     },
   );
+}
+
+/**
+ * Collapsible table of contents. Shown when a post has 3+ headings,
+ * unless the frontmatter toc flag explicitly overrides (true forces,
+ * false suppresses).
+ */
+function tocBlock(post: Post): string {
+  const show =
+    post.toc === true || (post.toc !== false && post.headings.length >= 3);
+  if (!show || post.headings.length === 0) {
+    return "";
+  }
+
+  return `
+    <aside class="collapse collapse-arrow bg-base-200 rounded-xl my-6">
+      <input type="checkbox" aria-label="Toggle table of contents">
+      <div class="collapse-title text-sm font-semibold opacity-70">Contents</div>
+      <div class="collapse-content">
+        <ul class="space-y-1 text-sm">
+          ${post.headings
+            .map(
+              (heading) => `
+            <li class="${heading.depth === 3 ? "ml-4" : ""}">
+              <a href="#${heading.slug}" class="hover:text-secondary transition-colors">${escapeHtml(heading.text)}</a>
+            </li>
+          `,
+            )
+            .join("")}
+        </ul>
+      </div>
+    </aside>
+  `;
 }
 
 /**

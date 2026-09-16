@@ -32,10 +32,17 @@ export interface Frontmatter {
   updated?: string;
 }
 
+export interface Heading {
+  depth: number; // 2 or 3 (h2/h3 are included in the TOC)
+  text: string; // plain text with inline markdown stripped
+  slug: string; // anchor id, deduplicated
+}
+
 export interface ParsedMarkdown {
   frontmatter: Frontmatter;
   content: string;
   html: string;
+  headings: Heading[];
 }
 
 /**
@@ -82,6 +89,8 @@ function normalizeFrontmatter(raw: unknown): Frontmatter {
   }
   if (fm.toc === true) {
     frontmatter.toc = true;
+  } else if (fm.toc === false) {
+    frontmatter.toc = false;
   }
   if (typeof fm.cover === "string") {
     frontmatter.cover = fm.cover;
@@ -94,6 +103,103 @@ function normalizeFrontmatter(raw: unknown): Frontmatter {
   }
 
   return frontmatter;
+}
+
+/**
+ * GitHub-style slug for heading anchors
+ */
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/**
+ * Strip inline markdown formatting for plain-text display
+ */
+function stripInlineMarkdown(text: string): string {
+  return text
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\*([^*]+)\*/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .trim();
+}
+
+/**
+ * Walk lexer tokens (including nested blockquote/list tokens) in document
+ * order and collect h2/h3 headings.
+ */
+function collectHeadings(
+  tokens: unknown[],
+  out: { depth: number; text: string }[],
+): void {
+  for (const raw of tokens) {
+    const token = raw as {
+      type?: string;
+      depth?: number;
+      text?: string;
+      tokens?: unknown[];
+      items?: { tokens?: unknown[] }[];
+    };
+    if (token.type === "heading" && typeof token.depth === "number") {
+      out.push({ depth: token.depth, text: token.text ?? "" });
+    }
+    if (Array.isArray(token.tokens)) {
+      collectHeadings(token.tokens, out);
+    }
+    if (Array.isArray(token.items)) {
+      for (const item of token.items) {
+        if (Array.isArray(item.tokens)) {
+          collectHeadings(item.tokens, out);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Extract h2/h3 headings for the table of contents and inject matching id
+ * anchors into the rendered HTML. Id assignment relies on lexer order being
+ * render order; raw-HTML headings not produced by markdown are left alone
+ * (guarded by depth comparison).
+ */
+function processHeadings(
+  content: string,
+  html: string,
+): { headings: Heading[]; html: string } {
+  const rawHeadings: { depth: number; text: string }[] = [];
+  collectHeadings(marked.lexer(content), rawHeadings);
+
+  const slugCounts = new Map<string, number>();
+  const headings: Heading[] = [];
+
+  for (const raw of rawHeadings) {
+    if (raw.depth < 2 || raw.depth > 3) continue;
+    const text = stripInlineMarkdown(raw.text);
+    if (!text) continue;
+    const base = slugify(text);
+    const count = slugCounts.get(base) ?? 0;
+    slugCounts.set(base, count + 1);
+    headings.push({
+      depth: raw.depth,
+      text,
+      slug: count === 0 ? base : `${base}-${count}`,
+    });
+  }
+
+  let index = 0;
+  const htmlWithIds = html.replace(/<h([23])>/g, (match, depth: string) => {
+    const heading = headings[index];
+    if (heading && String(heading.depth) === depth) {
+      index++;
+      return `<h${depth} id="${heading.slug}">`;
+    }
+    return match;
+  });
+
+  return { headings, html: htmlWithIds };
 }
 
 /**
@@ -110,12 +216,14 @@ export function parseMarkdown(source: string): ParsedMarkdown {
   const content = source.slice(match[0].length).trim();
 
   // Configure marked for safe HTML output
-  const html = marked.parse(content, { async: false }) as string;
+  const rawHtml = marked.parse(content, { async: false }) as string;
+  const { headings, html } = processHeadings(content, rawHtml);
 
   return {
     frontmatter,
     content,
     html,
+    headings,
   };
 }
 

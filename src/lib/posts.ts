@@ -3,7 +3,7 @@
  */
 
 import { readdir } from "node:fs/promises";
-import { parseMarkdown, extractExcerpt } from "./markdown.ts";
+import { parseMarkdown, extractExcerpt, type Heading } from "./markdown.ts";
 
 export interface Post {
   slug: string;
@@ -17,6 +17,8 @@ export interface Post {
   cover?: string;
   series?: string;
   updated?: string;
+  toc?: boolean;
+  headings: Heading[];
 }
 
 export interface Page {
@@ -102,6 +104,8 @@ export async function loadPosts(): Promise<Post[]> {
         cover: parsed.frontmatter.cover,
         series: parsed.frontmatter.series,
         updated: parsed.frontmatter.updated,
+        toc: parsed.frontmatter.toc,
+        headings: parsed.headings,
       });
     } catch (error) {
       console.error(`Error parsing post ${entry.name}:`, error);
@@ -142,6 +146,29 @@ export async function getSeriesPosts(series: string): Promise<Post[]> {
   return posts
     .filter((p) => p.series === series)
     .sort((a, b) => a.date.localeCompare(b.date));
+}
+
+/**
+ * Get posts related to the given one by shared tags, most shared tags
+ * first, ties broken by recency. Excludes the post itself and posts
+ * sharing no tags.
+ */
+export async function getRelatedPosts(
+  post: Post,
+  limit: number = 3,
+): Promise<Post[]> {
+  const posts = await loadPosts();
+
+  return posts
+    .filter((p) => p.slug !== post.slug)
+    .map((p) => ({
+      post: p,
+      score: p.tags.filter((tag) => post.tags.includes(tag)).length,
+    }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score || b.post.date.localeCompare(a.post.date))
+    .slice(0, limit)
+    .map(({ post }) => post);
 }
 
 /**

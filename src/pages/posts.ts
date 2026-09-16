@@ -43,7 +43,7 @@ export async function postsPage(): Promise<string> {
     .map((year) => {
       const posts = postsByYear.get(year)!;
       return `
-      <div class="mb-10">
+      <div class="mb-10" data-year-group>
         <h2 class="text-2xl font-bold mb-4 text-secondary">${year}</h2>
         <div class="space-y-3">
           ${posts.map((post) => postCard(post)).join("")}
@@ -62,13 +62,44 @@ export async function postsPage(): Promise<string> {
       </p>
     </header>
     
-    <div class="flex flex-wrap gap-2 py-4 border-b border-base-300 mb-8">
+    <div class="flex flex-wrap items-center gap-2 py-4 border-b border-base-300 mb-8">
+      <input
+        type="search"
+        placeholder="Filter posts&hellip;"
+        aria-label="Filter posts"
+        class="input input-bordered input-sm flex-1 min-w-48 max-w-sm"
+        oninput="filterPosts(this.value)"
+      >
       <a href="/tags" class="btn btn-ghost btn-sm">
         Browse by tag &rarr;
       </a>
     </div>
-    
+
+    <div id="no-search-results" class="hidden py-8 text-center opacity-70">
+      No posts match your filter.
+    </div>
+
     ${postsList}
+
+    <script>
+      window.filterPosts = function (query) {
+        const q = query.trim().toLowerCase();
+        let visible = 0;
+        document.querySelectorAll("[data-post-card]").forEach((el) => {
+          const match = !q || (el.getAttribute("data-search") || "").includes(q);
+          el.classList.toggle("hidden", !match);
+          if (match) visible++;
+        });
+        document.querySelectorAll("[data-year-group]").forEach((group) => {
+          group.classList.toggle(
+            "hidden",
+            !group.querySelector("[data-post-card]:not(.hidden)"),
+          );
+        });
+        const empty = document.getElementById("no-search-results");
+        if (empty) empty.classList.toggle("hidden", visible > 0);
+      };
+    </script>
   `,
     {
       title: "Writing - Tiago Luchini",
@@ -80,11 +111,16 @@ export async function postsPage(): Promise<string> {
 }
 
 /**
- * Individual post card for the archive
+ * Individual post card for the archive (exported for reuse on the
+ * homepage, related posts, and series pages)
  */
-function postCard(post: Post): string {
+export function postCard(post: Post): string {
+  const searchText = escapeHtml(
+    `${post.title} ${post.tags.join(" ")} ${post.excerpt}`.toLowerCase(),
+  );
+
   return `
-    <a href="/posts/${post.slug}" class="card bg-base-200 hover:bg-base-300 transition-colors group block">
+    <a href="/posts/${post.slug}" class="card bg-base-200 hover:bg-base-300 transition-colors group block" data-post-card data-search="${searchText}">
       <div class="card-body py-4">
         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
           ${

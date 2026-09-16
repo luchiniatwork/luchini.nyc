@@ -1,10 +1,15 @@
 import { layout } from "../lib/html.ts";
+import { loadPosts } from "../lib/posts.ts";
+import { postCard } from "./posts.ts";
 
 /**
  * Homepage
  */
 export async function homePage(): Promise<string> {
-  return layout(`
+  const recentPosts = (await loadPosts()).slice(0, 3);
+
+  return layout(
+    `
     <!-- Hero section -->
     <section class="py-8">
       <div class="grid md:grid-cols-3 gap-8 items-start">
@@ -40,6 +45,23 @@ export async function homePage(): Promise<string> {
       </div>
     </section>
     
+    ${
+      recentPosts.length > 0
+        ? `
+    <!-- Recent writing section -->
+    <section class="py-8 border-t border-base-300">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold">Recent writing</h2>
+        <a href="/posts" class="btn btn-ghost btn-sm">All posts &rarr;</a>
+      </div>
+      <div class="space-y-3">
+        ${recentPosts.map((post) => postCard(post)).join("")}
+      </div>
+    </section>
+    `
+        : ""
+    }
+
     <!-- About section -->
     <section class="py-8 border-t border-base-300">
       <h2 class="text-2xl font-bold mb-6">About</h2>
@@ -142,9 +164,12 @@ export async function homePage(): Promise<string> {
         </p>
       </div>
     </section>
-  `, { 
-    title: "Tiago Luchini - Co-founder & CTO at Theo Ai",
-    description: "Co-founder & CTO at Theo Ai. Previously Deep Origin, Odeko, Viasat, Work & Co. 20+ years building products and leading global engineering teams.",
-    currentPath: "/"
-  });
+  `,
+    {
+      title: "Tiago Luchini - Co-founder & CTO at Theo Ai",
+      description:
+        "Co-founder & CTO at Theo Ai. Previously Deep Origin, Odeko, Viasat, Work & Co. 20+ years building products and leading global engineering teams.",
+      currentPath: "/",
+    },
+  );
 }

@@ -111,6 +111,8 @@ Follow-up fixes from manual QA (2026-09-15):
 
 ## Phase 3 — Discovery & reading UX
 
+**Status: implemented (2026-09-16).** Verified with fixture posts (removed after QA). Deviation from the original sketch: 3.1 uses DOM filtering of the server-rendered archive (cards carry `data-search` attributes; a small inline script toggles visibility, hides empty year groups, and shows a no-match state) instead of a `/search.json` endpoint + client-side renderer — same no-dependency outcome with zero markup duplication. Related posts score by shared tags with recency tie-break and reuse the exported `postCard`; the homepage "Recent writing" section hides itself while everything is unpublished. TOC headings are extracted with `marked.lexer` (nested tokens walked), ids injected into the HTML in document order, and the collapsible block renders for posts with 3+ headings unless `toc:` overrides (the one legacy `:toc true` post still opts in; `toc: false` suppresses).
+
 ### 3.1 Client-side search
 
 - Serve `/search.json` from the existing `loadPosts()` cache (slug, title, tags, excerpt, date; published posts only). Small vanilla-JS searcher on `/posts`. No new runtime dependencies.
