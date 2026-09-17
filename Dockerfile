@@ -29,6 +29,7 @@ COPY index.ts ./
 COPY app.css ./
 COPY src ./src
 COPY public ./public
+COPY resources ./resources
 
 # Copy built CSS from build stage
 COPY --from=build /app/public/output.css ./public/output.css
