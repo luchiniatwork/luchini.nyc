@@ -33,6 +33,9 @@ export default defineConfig({
   testDir: "./tests",
   timeout: 30_000,
   retries: process.env.CI ? 1 : 0,
+  // HTML report (never auto-opened) on CI so failures can be uploaded
+  // as artifacts; plain list output locally
+  reporter: process.env.CI ? [["html", { open: "never" }], ["list"]] : "list",
   use: {
     baseURL: "http://localhost:3000",
   },
