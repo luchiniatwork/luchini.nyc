@@ -44,23 +44,6 @@ export async function homePage(): Promise<string> {
         </div>
       </div>
     </section>
-    
-    ${
-      recentPosts.length > 0
-        ? `
-    <!-- Recent writing section -->
-    <section class="py-8 border-t border-base-300">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold">Recent writing</h2>
-        <a href="/posts" class="btn btn-ghost btn-sm">All posts &rarr;</a>
-      </div>
-      <div class="space-y-3">
-        ${recentPosts.map((post) => postCard(post)).join("")}
-      </div>
-    </section>
-    `
-        : ""
-    }
 
     <!-- About section -->
     <section class="py-8 border-t border-base-300">
@@ -164,6 +147,23 @@ export async function homePage(): Promise<string> {
         </p>
       </div>
     </section>
+
+    ${
+      recentPosts.length > 0
+        ? `
+    <!-- Recent writing section -->
+    <section class="py-8 border-t border-base-300">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold">Recent writing</h2>
+        <a href="/posts" class="btn btn-ghost btn-sm">All posts &rarr;</a>
+      </div>
+      <div class="space-y-3">
+        ${recentPosts.map((post) => postCard(post)).join("")}
+      </div>
+    </section>
+    `
+        : ""
+    }
   `,
     {
       title: "Tiago Luchini - Co-founder & CTO at Theo Ai",
