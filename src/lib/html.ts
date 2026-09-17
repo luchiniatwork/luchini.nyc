@@ -237,6 +237,7 @@ export function layout(content: string, options: LayoutOptions = {}): string {
 /** Navigation links configuration */
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/posts", label: "Writing" },
   { href: "/open-source", label: "Open Source" },
   { href: "/awards", label: "Awards" },
 ];

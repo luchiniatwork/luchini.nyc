@@ -3,6 +3,28 @@ import { test, expect } from "@playwright/test";
 const DEV = "http://localhost:3000";
 const PROD = "http://localhost:3001";
 
+test.describe("navigation", () => {
+  test("navbar links to the blog and marks it active", async ({ page }) => {
+    await page.goto(`${DEV}/`);
+
+    const writingLink = page
+      .getByRole("navigation")
+      .getByRole("link", { name: "Writing" });
+    await expect(writingLink).toBeVisible();
+
+    await writingLink.click();
+    await page.waitForURL("**/posts");
+    await expect(
+      page.getByRole("heading", { name: "Writing" }),
+    ).toBeVisible();
+
+    // Active state follows onto blog pages
+    await expect(
+      page.getByRole("navigation").getByRole("link", { name: "Writing" }),
+    ).toHaveClass(/btn-active/);
+  });
+});
+
 test.describe("blog archive (dev: drafts visible)", () => {
   test("archive groups posts by year", async ({ page }) => {
     await page.goto(`${DEV}/posts`);
