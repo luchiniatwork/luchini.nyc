@@ -14,9 +14,7 @@ test.describe("navigation", () => {
 
     await writingLink.click();
     await page.waitForURL("**/posts");
-    await expect(
-      page.getByRole("heading", { name: "Writing" }),
-    ).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Writing" })).toBeVisible();
 
     // Active state follows onto blog pages
     await expect(
@@ -113,13 +111,13 @@ test.describe("tag pages (dev)", () => {
 });
 
 test.describe("production mode gates drafts", () => {
-  test("archive shows the empty state when nothing is published", async ({
-    page,
-  }) => {
+  test("archive lists only published posts", async ({ page }) => {
     await page.goto(`${PROD}/posts`);
 
-    await expect(page.getByText("No posts published yet")).toBeVisible();
-    await expect(page.locator("[data-post-card]")).toHaveCount(0);
+    await expect(page.getByText("No posts published yet")).toHaveCount(0);
+    await expect(page.locator("[data-post-card]")).toHaveCount(3);
+    // Drafts are excluded entirely in production, so no draft badges
+    await expect(page.locator(".badge-warning")).toHaveCount(0);
   });
 
   test("draft post URLs return 404", async ({ page }) => {
@@ -129,11 +127,20 @@ test.describe("production mode gates drafts", () => {
     expect(response?.status()).toBe(404);
   });
 
-  test("homepage hides recent writing when nothing is published", async ({
+  test("published post URLs return 200", async ({ page }) => {
+    const response = await page.goto(
+      `${PROD}/posts/disconnect-urgency-from-importance`,
+    );
+    expect(response?.status()).toBe(200);
+  });
+
+  test("homepage shows recent writing once posts are published", async ({
     page,
   }) => {
     await page.goto(`${PROD}/`);
-    await expect(page.getByText("Recent writing")).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", { name: "Recent writing" }),
+    ).toBeVisible();
 
     await page.goto(`${DEV}/`);
     await expect(
@@ -141,13 +148,16 @@ test.describe("production mode gates drafts", () => {
     ).toBeVisible();
   });
 
-  test("production RSS feed has no draft items", async ({ request }) => {
+  test("production RSS feed includes published items, no drafts", async ({
+    request,
+  }) => {
     const response = await request.get(`${PROD}/feed.xml`);
     expect(response.status()).toBe(200);
 
     const body = await response.text();
     expect(body).toContain("<rss");
-    expect(body).not.toContain("<item>");
+    expect((body.match(/<item>/g) ?? []).length).toBe(3);
+    expect(body).not.toContain("we-gotta-stop-calling-it-community");
   });
 
   test("dev RSS feed includes items with full content", async ({ request }) => {
@@ -163,6 +173,11 @@ test.describe("production mode gates drafts", () => {
     expect(prodBody).toContain("<urlset");
     expect(prodBody).toContain("<loc>https://luchini.nyc/</loc>");
     expect(prodBody).not.toContain("we-gotta-stop-calling-it-community");
+    expect(prodBody).toContain("disconnect-urgency-from-importance");
+    expect(prodBody).toContain("are-you-part-of-a-cargo-cult");
+    expect(prodBody).toContain(
+      "west-meets-east-why-does-my-redbull-taste-like-tea",
+    );
 
     const devBody = await (await request.get(`${DEV}/sitemap.xml`)).text();
     expect(devBody).toContain("we-gotta-stop-calling-it-community");
