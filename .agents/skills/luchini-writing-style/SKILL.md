@@ -106,3 +106,11 @@ Workflow shortcut: new post → `voice-and-tone.md` + `post-anatomy.md`;
 editing a draft → `sentence-and-rhythm.md` + `phrasebook.md`; republishing an
 old post → `ghostwriter-playbook.md` (repost convention); always finish with
 its checklist.
+
+## Companion skill
+
+Pre-writing research — questions, sources, verified facts, yardstick detail —
+is owned by the sibling skill `luchini-writing-research`
+(`../luchini-writing-research/SKILL.md`). The author researches before
+writing: run that skill first when a post needs a fact base, then draft here.
+Its notes live in `docs/research/`, named after the planned post slug.
