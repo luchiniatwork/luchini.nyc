@@ -35,7 +35,7 @@ test.describe("blog archive (dev: drafts visible)", () => {
       page.getByRole("heading", { name: "2007", exact: true }),
     ).toBeVisible();
 
-    // All posts are currently drafts and must be badged in dev
+    // Draft posts are badged in dev; published ones are not
     await expect(page.locator(".badge-warning").first()).toHaveText("draft");
   });
 

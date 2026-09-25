@@ -15,7 +15,7 @@ Have you ever heard of cargo cults? It is a very interesting manifestation of hu
 
 It has happened on many occasions, but the most famous manifestation took place right after WWII in the Pacific islands: Japanese and American soldiers built military bases on the islands and did not care too much about contacting the indigenous population (there was a war going on after all and they were soldiers not anthropologists).
 
-Both armies sent supplies to their bases either by cargo planes or cargo ships. The indigenous people got familiar with the merchandise either via irregular contact with the soldiers or simply when supplies were accidentally dropped in the wrong place. The natives had no knowledge of industrial processes and could not fathom how those beautiful clothes and shiny objects were produced. It did not take long for them to classify these items as heavenly gifts – some of them were literally pouring down from heavens.
+Both armies sent supplies to their bases either by cargo planes or cargo ships. The indigenous people got familiar with the merchandise either via irregular contact with the soldiers or simply when supplies were accidentally dropped in the wrong place. The natives had no knowledge of industrial processes and could not fathom how those beautiful clothes and shiny objects were produced. It did not take long for them to classify these items as heavenly gifts -- some of them were literally pouring down from heavens.
 
 When the war ended, all the soldiers went home and left the bases deserted. The heavenly gifts obviously ceased as well -- a very unfair predicament to the indigenous people of the region.
 
@@ -35,9 +35,9 @@ Physicist Richard Feynman gave this idea its modern name in his 1974 Caltech com
 
 Take Twitter, for example. When Twitter boomed, it was a matter of mere weeks for hundreds of similar services to appear: publish 12-second-videos, 1-paragraph-texts, 5-second-voice-messages -- take your pick.
 
-The rationale was that Twitter’s success had to be due to its 140-character- limitation. Copy the ritual and the gods will be pleased, right? Wrong. Twitter’s limitation was due to an actual technical limitation around the SMS platform – nothing divine.
+The rationale was that Twitter's success had to be due to its 140-character limitation. Copy the ritual and the gods will be pleased, right? Wrong. Twitter's limitation was due to an actual technical limitation around the SMS platform -- nothing divine.
 
-Back then, the same fever was everywhere: “gamification” sites like Foursquare handing out badges, achievements and little golden stars without really thinking about the entertainment value, and hundreds of games copying Angry Birds' mechanics, hoping to be “the next Angry Birds”. Foursquare shut its app down in 2024 -- the badges did not save it.
+Back then, the same fever was everywhere: "gamification" sites like Foursquare handing out badges, achievements and little golden stars without really thinking about the entertainment value, and hundreds of games copying Angry Birds' mechanics, hoping to be "the next Angry Birds". Foursquare shut its app down in 2024 -- the badges did not save it.
 
 Of course, there are cheap copies of everything, but the real danger is in truly believing that a previously observed consequence will be achieved by replicating a ritual or the 'cause'.
 
@@ -55,12 +55,12 @@ The ritual is called AI washing. In [August 2025, MIT researchers reported](http
 
 Gartner coined the term ["agent washing"](https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027) for vendors rebranding chatbots and old automation scripts as "AI agents". Of the thousands of vendors selling agentic AI, Gartner estimates only about 130 are the real thing -- and predicts more than 40% of these projects will be canceled by the end of 2027.
 
-Sometimes the coconut walkie-talkie is literal. In [April 2025, the SEC charged](https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26282) the founder of a shopping app called Nate with fraud: he raised more than $40 million claiming AI completed purchases automatically, while humans in the Philippines and Romania processed the orders by hand. The runway, the headset, the wooden rifle -- all there.
+Sometimes the coconut walkie-talkie is literal. In [April 2025, the SEC charged](https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26282) the founder of a shopping app called Nate with fraud: he raised more than $40 million claiming AI completed purchases automatically, while humans in [the Philippines and Romania](https://www.techspot.com/news/107510-founder-nate-app-faces-fraud-charge-using-ai.html) processed the orders by hand. The runway, the headset, the wooden rifle -- all there.
 
 And the consequence-copying continues. Klarna boasted that its AI assistant did the work of 700 customer-service agents -- then [reversed course](https://www.businessinsider.com/klarna-reassigns-workers-to-customer-support-after-ai-quality-concerns-2025-9) when quality dropped, moving humans back into support roles. Cutting costs with AI was the ritual. Serving customers well was the root cause that got lost.
 
 ## Quit copying, start focusing
 
-Building airplanes of bamboo won’t make supplies come from the heavens. You have probably seen all the Scrum/Agile implementations out there that simply do not work. Every Agilist knows that calling a process Agile won’t make it so. Having regular, protocol-only stand-up meetings won’t make communication flow. They’ll just get in the way. Believing that these rituals will make your product successful is a mistake. It is pure cargo cult. Today the same ritual wears a new uniform: mandatory prompt-engineering trainings, AI-usage OKRs, an "AI-first" slide in every board deck.
+Building airplanes of bamboo won't make supplies come from the heavens. You have probably seen all the Scrum/Agile implementations out there that simply do not work. Every Agilist knows that calling a process Agile won't make it so. Having regular, protocol-only stand-up meetings won't make communication flow. They'll just get in the way. Believing that these rituals will make your product successful is a mistake. It is pure cargo cult. Today the same ritual wears a new uniform: mandatory prompt-engineering trainings, AI-usage OKRs, an "AI-first" slide in every board deck.
 
 What is important is to look for the right root causes for success in everything. Stop copying rituals for their own sake and focus instead on the core issues. If rituals emerge this way, they make sure that the cause and the consequence are properly connected to each other.
