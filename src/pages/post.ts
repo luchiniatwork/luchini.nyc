@@ -88,6 +88,14 @@ export async function postPage(slug: string): Promise<string | null> {
           `
               : ""
           }
+          ${
+            !post.draft && post.scheduled
+              ? `
+          <span>•</span>
+          <span class="badge badge-info badge-sm">scheduled</span>
+          `
+              : ""
+          }
           
           ${
             post.tags && post.tags.length > 0

@@ -85,6 +85,26 @@ one.*"). Preserve original prose — fix only typos, factual errors, and dead
 references. Add modern material as clearly marked new sections near the end,
 with linked sources.
 
+## Scheduling convention (future-dated posts)
+
+"This post is scheduled for March 31st" means: set `date: YYYY-MM-DD`
+(the next occurrence of that calendar date — echo the full resolved date
+back before merging), flip `draft: false`, and rename the filename date
+prefix to match. The slug is unchanged, so links never break.
+
+Production hides future-dated posts everywhere (archive, tags, RSS,
+sitemap, related posts, direct URL → 404) and starts serving them
+automatically once the date passes — no redeploy. Dev shows them with a
+`scheduled` badge. The gate is date-granular against the UTC calendar
+date: a post goes live at 00:00 UTC (evening of the prior day in US
+timezones); a time of day cannot be expressed.
+
+The post must merge to `prod` before its date — batch-merging a queue
+of scheduled posts is the intended workflow. Scheduling does not change
+prod-visible counts, so no `tests/blog.spec.ts` updates are needed
+(unlike publishing, per file mechanics above); the committed
+`2099-01-01-scheduled-test-fixture.md` covers the gate.
+
 ## Reference documents (read these for depth)
 
 All under `docs/writing-style/` in this repository (resolve relative to the

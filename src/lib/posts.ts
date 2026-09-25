@@ -19,6 +19,7 @@ export interface Post {
   content: string;
   html: string;
   draft: boolean;
+  scheduled: boolean;
   cover?: string;
   series?: string;
   updated?: string;
@@ -38,8 +39,20 @@ export interface Page {
 const POSTS_DIR = "./resources/templates/md/posts";
 const PAGES_DIR = "./resources/templates/md/pages";
 
-// Drafts are visible in development but never published in production
+// Drafts and scheduled (future-dated) posts are visible in development
+// but never published in production
 const isProd = process.env.NODE_ENV === "production";
+
+/**
+ * A post is "scheduled" when its date is still in the future. Dates are
+ * YYYY-MM-DD calendar dates, compared against the UTC calendar date —
+ * consistent with RSS pubDate, which also treats them as UTC midnight.
+ * Scheduled posts start appearing automatically once their date passes.
+ */
+function isFutureDate(date: string): boolean {
+  const todayUtc = new Date().toISOString().slice(0, 10);
+  return date.slice(0, 10) > todayUtc;
+}
 
 // Cache for posts (cleared on file changes in dev mode)
 let postsCache: Post[] | null = null;
@@ -106,13 +119,35 @@ function reportProblems(filename: string, problems: string[]): boolean {
 }
 
 /**
- * Load all blog posts
+ * Load all blog posts.
+ *
+ * Parsed posts are cached, but the draft/scheduled visibility filter is
+ * applied per call rather than cached: a long-lived production machine
+ * must start serving a scheduled post as soon as its date passes,
+ * without a restart or redeploy.
  */
 export async function loadPosts(): Promise<Post[]> {
-  if (postsCache) {
-    return postsCache;
+  if (!postsCache) {
+    postsCache = await readAllPosts();
   }
 
+  const flagged = postsCache.map((post) => ({
+    ...post,
+    scheduled: isFutureDate(post.date),
+  }));
+
+  // Drafts and scheduled posts never reach production listings, feeds,
+  // sitemap, or direct URLs
+  return isProd
+    ? flagged.filter((post) => !post.draft && !post.scheduled)
+    : flagged;
+}
+
+/**
+ * Read and parse every post from disk, sorted newest first, with no
+ * visibility filtering (the cache holds drafts and scheduled posts).
+ */
+async function readAllPosts(): Promise<Post[]> {
   const entries = await readdir(POSTS_DIR, { withFileTypes: true });
   const posts: Post[] = [];
 
@@ -158,6 +193,8 @@ export async function loadPosts(): Promise<Post[]> {
         content: parsed.content,
         html: parsed.html,
         draft: parsed.frontmatter.draft === true,
+        // Refreshed per call in loadPosts; this value is never read
+        scheduled: isFutureDate(date),
         cover: parsed.frontmatter.cover,
         series: parsed.frontmatter.series,
         updated: parsed.frontmatter.updated,
@@ -172,11 +209,7 @@ export async function loadPosts(): Promise<Post[]> {
   // Sort by date descending (newest first)
   posts.sort((a, b) => b.date.localeCompare(a.date));
 
-  // Drafts never reach production listings, feeds, or direct URLs
-  const visible = isProd ? posts.filter((p) => !p.draft) : posts;
-
-  postsCache = visible;
-  return visible;
+  return posts;
 }
 
 /**

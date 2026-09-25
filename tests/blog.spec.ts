@@ -183,3 +183,67 @@ test.describe("production mode gates drafts", () => {
     expect(devBody).toContain("we-gotta-stop-calling-it-community");
   });
 });
+
+test.describe("scheduled posts (future-dated)", () => {
+  // 2099-01-01-scheduled-test-fixture.md is committed on purpose: the
+  // scheduling gate can only be exercised with a real future-dated post.
+  test("dev archive shows the fixture with a scheduled badge", async ({
+    page,
+  }) => {
+    await page.goto(`${DEV}/posts`);
+
+    const card = page.locator("[data-post-card]", {
+      hasText: "Scheduled Test Fixture",
+    });
+    await expect(card).toBeVisible();
+    await expect(card.locator(".badge-info")).toHaveText("scheduled");
+    // Distinct from drafts: no draft badge on a scheduled-only post
+    await expect(card.locator(".badge-warning")).toHaveCount(0);
+  });
+
+  test("dev serves the fixture URL with a scheduled badge", async ({
+    page,
+  }) => {
+    const response = await page.goto(`${DEV}/posts/scheduled-test-fixture`);
+    expect(response?.status()).toBe(200);
+    await expect(page.locator(".badge-info")).toHaveText("scheduled");
+  });
+
+  test("production archive excludes the fixture", async ({ page }) => {
+    await page.goto(`${PROD}/posts`);
+
+    await expect(page.locator("[data-post-card]")).toHaveCount(3);
+    await expect(page.getByText("Scheduled Test Fixture")).toHaveCount(0);
+    await expect(page.locator(".badge-info")).toHaveCount(0);
+  });
+
+  test("production returns 404 for the fixture URL", async ({ page }) => {
+    const response = await page.goto(`${PROD}/posts/scheduled-test-fixture`);
+    expect(response?.status()).toBe(404);
+  });
+
+  test("production RSS excludes the fixture, dev RSS includes it", async ({
+    request,
+  }) => {
+    const prodFeed = await (await request.get(`${PROD}/feed.xml`)).text();
+    expect(prodFeed).not.toContain("scheduled-test-fixture");
+    expect((prodFeed.match(/<item>/g) ?? []).length).toBe(3);
+
+    const devFeed = await (await request.get(`${DEV}/feed.xml`)).text();
+    expect(devFeed).toContain("scheduled-test-fixture");
+  });
+
+  test("production sitemap excludes the fixture, dev sitemap includes it", async ({
+    request,
+  }) => {
+    const prodSitemap = await (
+      await request.get(`${PROD}/sitemap.xml`)
+    ).text();
+    expect(prodSitemap).not.toContain("scheduled-test-fixture");
+
+    const devSitemap = await (
+      await request.get(`${DEV}/sitemap.xml`)
+    ).text();
+    expect(devSitemap).toContain("scheduled-test-fixture");
+  });
+});

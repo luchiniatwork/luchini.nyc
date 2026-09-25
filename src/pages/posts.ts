@@ -133,6 +133,7 @@ export function postCard(post: Post): string {
             <h3 class="font-semibold group-hover:text-secondary transition-colors">
               ${escapeHtml(post.title)}
               ${post.draft ? `<span class="badge badge-sm badge-warning ml-2">draft</span>` : ""}
+              ${!post.draft && post.scheduled ? `<span class="badge badge-sm badge-info ml-2">scheduled</span>` : ""}
             </h3>
             <p class="text-sm opacity-60 line-clamp-2 mt-1">${escapeHtml(post.excerpt)}</p>
           </div>

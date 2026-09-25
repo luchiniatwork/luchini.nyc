@@ -161,6 +161,15 @@ Follow-up fixes from manual QA (2026-09-15):
 
 - Explicitly deferred. Fine at 51 posts; revisit past ~100.
 
+## Phase 6 — Scheduled posts (future-dated)
+
+**Status: implemented (2026-09-25).** Future-dated posts are gated exactly like drafts: hidden in production from archive, tag pages, RSS, sitemap, related posts, and direct URLs (404, no existence leak); visible in dev with an info-styled "scheduled" badge on archive cards and the post page. Publishing is automatic: the post appears once its date passes, with no redeploy.
+
+- `loadPosts()` caches the parsed posts but applies the draft/scheduled filter **per call**, so a long-lived production machine starts serving a scheduled post as soon as its date passes (Fly's `auto_stop_machines` also refreshes cold caches naturally).
+- Dates are `YYYY-MM-DD` calendar dates compared against the UTC calendar date, consistent with RSS `pubDate` handling (Phase 1.2).
+- Curation workflow extension: write, set the intended date, merge to `prod` at any time — the post goes live on its own. Batch-merging several scheduled posts is supported.
+- `2099-01-01-scheduled-test-fixture.md` is a committed fixture (never publishes in practice); Playwright specs cover dev badge/URL and prod archive/RSS/sitemap/404 exclusion.
+
 ## Suggested implementation order
 
 1. **Phase 0** — migration + draft gate ship together (atomic); site goes to "all drafts" state
